@@ -13,13 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Transactional
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
     public Long deleteUser(Long id) {
         User user = userRepository.findById(id).orElseThrow(
                 () -> new CustomException(ErrorCode.USER_NOT_FOUND)
@@ -31,7 +34,9 @@ public class UserService {
 
     @Transactional
     public User join(UserRequestDto userRequestDto) {
-        userRequestDto.setPassword(passwordEncoder.encode(userRequestDto.getPassword())); // 비밀번호 암호화
+        String encode = passwordEncoder.encode(userRequestDto.getPassword());
+        userRequestDto.setPassword(encode); // 비밀번호 암호화
+        userRequestDto.setPasswordConfirm(encode);
 
         return userRepository.save(userRequestDto.toEntity());
     }

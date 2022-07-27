@@ -25,7 +25,7 @@ public class UserController {
      */
     @GetMapping("/signup")
     public String sign_up(Model model) {
-        model.addAttribute("userRequestDto", new UserRequestDto());
+        model.addAttribute("userRequestDto", UserRequestDto.builder().build()); // new UserRequestDto()
         return "user/signup";
     }
 

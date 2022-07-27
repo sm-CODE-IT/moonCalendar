@@ -9,8 +9,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 @Getter @Setter
-@Data
-@NoArgsConstructor
 public class UserRequestDto {
     @NotEmpty(message = "이름은 필수 입력 항목입니다.")
     private String name;
@@ -22,9 +20,17 @@ public class UserRequestDto {
     private String password;
     @NotEmpty(message = "비밀번호 확인은 필수항목입니다.")
     private String passwordConfirm;
-//    private Role role;
-//    private LocalDateTime created_at;
+//    private Role role = Role.USER;
+//    private LocallDateTime created_at;
 //    private LocalDateTime modified_at;
+
+    @Builder
+    public UserRequestDto(String name, String email, String password, String passwordConfirm) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.passwordConfirm = passwordConfirm;
+    }
 
     // dto -> entity
     public User toEntity() {
@@ -34,13 +40,5 @@ public class UserRequestDto {
                 .password(password)
                 .role(Role.USER)
                 .build();
-    }
-
-    @Builder
-    public UserRequestDto(String name, String email, String password, String passwordConfirm) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.passwordConfirm = passwordConfirm;
     }
 }

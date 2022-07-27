@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -35,8 +36,7 @@ public class User extends BaseTimeEntity {
     private Role role;
 
     @Builder
-    public User(Long id, String name, String email, String gender, String password, String picture, Role role) {
-        this.id = id; // ???
+    public User(String name, String email, String gender, String password, String picture, Role role) {
         this.name = name;
         this.email = email;
         this.gender = gender;
