@@ -8,6 +8,7 @@ import com.codeIT.moonCalendar.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Transactional
     public Long deleteUser(Long id) {
         User user = userRepository.findById(id).orElseThrow(
                 () -> new CustomException(ErrorCode.USER_NOT_FOUND)
@@ -27,6 +29,7 @@ public class UserService {
         return id;
     }
 
+    @Transactional
     public User join(UserRequestDto userRequestDto) {
         userRequestDto.setPassword(passwordEncoder.encode(userRequestDto.getPassword())); // 비밀번호 암호화
 
