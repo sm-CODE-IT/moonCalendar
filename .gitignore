@@ -38,3 +38,6 @@ out/
 
 ### google login ###
 application-oauth.properties
+
+### application properties ###
+application.properties
