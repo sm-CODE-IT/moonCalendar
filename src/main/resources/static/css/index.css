@@ -1,0 +1,95 @@
+body {
+    background: #ffffff;
+    height: 500vw;
+}
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 250px;
+
+    position: absolute;
+    height: 120px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+}
+.logo {
+    width: 120px;
+    height: 120px;
+}
+.buttonBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.mode {
+    position: relative;
+    width: 56px;
+    height: 32px;
+}
+.modeBack {
+    position: absolute;
+    width: 56px;
+    height: 32px;
+}
+.modeBtn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 25px;
+    top: 1px;
+}
+.feedbackBtn {
+    width: 170px;
+    height: 50px;
+}
+.signBtn {
+    width: 120px;
+    height: 50px;
+}
+.background {
+    position: fixed;
+}
+/* 첫 페이지 */
+.simpleIntro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 150px 0px;
+}
+.topLine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 50vw;
+}
+.intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.introText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 34px;
+}
+.introText-first {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+.stamp1 {
+    width: 64px;
+    height: 64px;
+}
+.Headline1 {
+
+}
