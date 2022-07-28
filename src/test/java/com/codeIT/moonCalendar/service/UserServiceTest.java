@@ -2,11 +2,14 @@ package com.codeIT.moonCalendar.service;
 
 import com.codeIT.moonCalendar.domain.user.User;
 import com.codeIT.moonCalendar.dto.UserRequestDto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
@@ -41,7 +44,7 @@ class UserServiceTest {
 
         // then
         User findUser = userService.findUserByEmail(saveUser.getEmail());
-        Assertions.assertThat(saveUser.getId()).isEqualTo(findUser.getId());
+        assertThat(saveUser.getId()).isEqualTo(findUser.getId());
     }
 
     @Test
@@ -68,5 +71,30 @@ class UserServiceTest {
         }catch (Exception e) {
             System.out.println("\nError : " + e.getMessage());
         }
+    }
+
+    @Test
+    void 전체_회원_조회() {
+        // given
+        UserRequestDto userRequestDto1 = UserRequestDto.builder()
+                .name("홍길동")
+                .email("hong@gmail.com")
+                .password("honggil0#")
+                .passwordConfirm("honggil0#")
+                .build();
+        UserRequestDto userRequestDto2 = UserRequestDto.builder()
+                .name("익명이")
+                .email("ikm@gmail.com")
+                .password("noname00#")
+                .passwordConfirm("noname00#")
+                .build();
+
+        // when
+        userService.join(userRequestDto1);
+        userService.join(userRequestDto2);
+
+        // then
+        List<User> allUsers = userService.findAllUsers();
+        assertThat(allUsers.size()).isEqualTo(2);
     }
 }
