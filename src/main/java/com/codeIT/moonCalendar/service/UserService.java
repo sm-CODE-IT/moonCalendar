@@ -5,7 +5,6 @@ import com.codeIT.moonCalendar.domain.user.UserRepository;
 import com.codeIT.moonCalendar.dto.UserRequestDto;
 import com.codeIT.moonCalendar.exception.CustomException;
 import com.codeIT.moonCalendar.exception.ErrorCode;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

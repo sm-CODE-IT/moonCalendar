@@ -20,9 +20,6 @@ public class UserRequestDto {
     private String password;
     @NotEmpty(message = "비밀번호 확인은 필수항목입니다.")
     private String passwordConfirm;
-//    private Role role = Role.USER;
-//    private LocallDateTime created_at;
-//    private LocalDateTime modified_at;
 
     @Builder
     public UserRequestDto(String name, String email, String password, String passwordConfirm) {
