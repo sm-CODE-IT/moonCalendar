@@ -13,17 +13,22 @@
 </div>
 <div sec:authorize="isAnonymous()">
     <!-- 일반 로그인(이메일, 패스워드) -->
-    <div>
-        <label for="login_email">이메일</label>
-        <input type="email" name="login_email" id="login_email" placeholder="Your Email">
-    </div>
-    <div>
-        <label for="login_password">패스워드</label>
-        <input type="password" name="login_password" id="login_password" placeholder="Password">
-    </div>
+    <form th:action="@{/user/signin}" method="post">
+        <div>
+            <label for="login_email">이메일</label>
+            <input type="email" name="login_email" id="login_email" placeholder="Email">
+        </div>
+        <div>
+            <label for="login_password">패스워드</label>
+            <input type="password" name="login_password" id="login_password" placeholder="Password">
+        </div>
+        <div>
+            <button type="submit">로그인</button>
+        </div>
+    </form>
 </div>
 <div>
-    <a th:href="@{/user/signup}" sec:authorize="isAnonymous()" role="button">일반 회원가입</a>
+    <a th:href="@{/user/signup}" sec:authorize="isAnonymous()" role="button">회원가입</a>
 </div>
 <div>
     <a th:href="@{/oauth2/authorization/google}" sec:authorize="isAnonymous()" role="button">Google Login</a>
