@@ -20,11 +20,20 @@ public class UserController {
     private final UserService userService;
 
     /**
+     * 로그인 페이지
+     * @return
+     */
+    @GetMapping("/login")
+    public String sign_in_page() {
+        return "user/signin";
+    }
+
+    /**
      * 회원가입 페이지
      * @return
      */
     @GetMapping("/signup")
-    public String sign_up(Model model) {
+    public String sign_up_page(Model model) {
         model.addAttribute("userRequestDto", UserRequestDto.builder().build()); // new UserRequestDto()
         return "user/signup";
     }
