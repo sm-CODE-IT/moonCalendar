@@ -1,6 +1,7 @@
 package com.codeIT.moonCalendar.config.auth;
 
 import com.codeIT.moonCalendar.domain.user.Role;
+import com.codeIT.moonCalendar.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,14 +31,17 @@ public class SecurityConfig {
                 .and()
 
                 .authorizeRequests() // URL 권한 관리 설정하는 옵션의 시작점
-                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile", "/user/**") // 권한 관리 대상 지정하기
+                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/user/**") // 권한 관리 대상 지정하기
                 .permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated() // 설정된 것들 이외의 모든 나머지 URL에 대해 인증을 필요로 하기
                 .and()
                 // 일반 로그인 관련 설정
                 .formLogin()
-                .loginPage("/user/signin")
+                .loginPage("/user/login")
+                .loginProcessingUrl("/user/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
                 .defaultSuccessUrl("/")
                 .and()
                 // 로그아웃 성공 시 / 주소로 이동
@@ -52,4 +56,5 @@ public class SecurityConfig {
                 .userService(customOAuth2UserService);
         return http.build();
     }
+
 }
