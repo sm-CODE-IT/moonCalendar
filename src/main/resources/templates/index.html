@@ -8,7 +8,8 @@
 </head>
 <body>
 <div>
-    <a sec:authorize="isAnonymous()" th:href="@{/user/signin}">로그인</a>
+    <a sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+    <span sec:authorize="isAuthenticated()" th:text="${userName}"></span>
 </div>
 <div>
     <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
