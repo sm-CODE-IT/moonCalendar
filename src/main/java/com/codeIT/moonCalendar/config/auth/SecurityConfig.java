@@ -1,7 +1,6 @@
 package com.codeIT.moonCalendar.config.auth;
 
 import com.codeIT.moonCalendar.domain.user.Role;
-import com.codeIT.moonCalendar.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
