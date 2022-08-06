@@ -2,6 +2,8 @@
 import MyButton from "./MyButton";
 /* toggle button ani */
 import { motion } from "framer-motion";
+/* util */
+import useTheme from "../util/useTheme";
 
 const MyHeader = ({
   btn1Type,
@@ -11,24 +13,41 @@ const MyHeader = ({
   btn2Text,
   btn2Func,
 }) => {
-  const setTheme = (theme) => (document.documentElement.className = theme);
+  /* for Dark/Light Mode */
+  const [themeMode, toggleTheme] = useTheme();
+  const logoBtnSrc =
+    themeMode === "light"
+      ? process.env.PUBLIC_URL + "/assets/lightLogo.png"
+      : process.env.PUBLIC_URL + "/assets/darkLogo.png";
+  const themeBtnSrc =
+    themeMode === "light"
+      ? process.env.PUBLIC_URL + "/assets/lightButton.png"
+      : process.env.PUBLIC_URL + "/assets/darkButton.png";
 
   return (
     <header>
       <div className="head_btn_left">
-        <img src=".././assets/lightLogo.png" />
-        <img src=".././assets/darkLogo.png" />
+        <img className="logo light" src={logoBtnSrc} />
       </div>
       <div className="head_btn_right">
         <div className="head_btn_right1">
-          <div>
+          <motion.img
+            src={themeBtnSrc}
+            className={["theme_btn", `${themeBtnSrc}`].join(" ")}
+            onClick={toggleTheme}
+            whileTap={{
+              opacity: 0,
+              rotate: 100,
+            }}
+          />
+          {/* <div>
             <motion.button
               className="theme-btn light"
               onClick={() => setTheme("dark")}
               whileTap={{ opacity: 0, rotate: 70, transition: { duration: 8 } }}
               title="Light mode"
             >
-              <img src=".././assets/lightButton.png" />
+              <img src={"/assets/lightButton.png"} />
             </motion.button>
             <motion.button
               className="theme-btn dark"
@@ -36,9 +55,9 @@ const MyHeader = ({
               whileTap={{ opacity: 0, rotate: 70, transition: { duration: 8 } }}
               title="Dark mode"
             >
-              <img src=".././assets/darkButton.png" />
+              <img src={"/assets/darkButton.png"} />
             </motion.button>
-          </div>
+          </div> */}
         </div>
         <div className="head_btn_right2">
           <MyButton type={btn1Type} text={btn1Text} onClick={btn1Func} />

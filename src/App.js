@@ -1,5 +1,6 @@
 import MyButton from "./components/MyButton";
 import MyHeader from "./components/MyHeader";
+import Line from "./components/Line";
 import "./App.css";
 
 //for popup
@@ -30,8 +31,21 @@ const App = () => {
         btn2Text="sign"
         btn2Func={(e) => alert("sign clicked")}
       />
-      <body>
-        <p>
+      <div className="forPadding">
+        <Line weight={1} theme="light" />
+      </div>
+      <div className="forPadding">
+        <Line weight={3} theme="dark" />
+      </div>
+      <div className="forPadding">
+        <Line weight={5} theme="light" />
+      </div>
+      <div className="forPadding">
+        <Line weight={10} theme="dark" />
+      </div>
+
+      {/* <body>
+        <p className="body2">
           Hello User2022년에 가장 기대되는 K-POP 걸그룹 1위로 선정되었다. ADOR
           대표인 민희진이 제작해서 민희진 걸그룹으로도 많이 불린다. 민희진은
           쏘스뮤직과 합작하여 2019년 10월부터 전 세계 7개국의 16개 도시를 돌며
@@ -105,7 +119,7 @@ const App = () => {
             }
           />
         )}
-      </body>
+      </body> */}
     </div>
   );
 };
