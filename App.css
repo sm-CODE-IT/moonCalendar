@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+ .App{
+  font-family:"NanumMyeongjo";
+}
+header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height:8.3vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+header > div {
+  display: flex;
+}
+
+header .head_text {
+  width: 50%;
+  font-size: 25px;
+  justify-content: center;
+}
+
+header .head_btn_left {
+  width: 25%;
+  justify-content: start;
+  margin-left:9.6vw;
+  
+}
+
+header .head_btn_right {
+  width: 5%;
+  justify-content: end;
+}
+
+header .head_btn_right2{
+  width:10%;
+  justify-content:end;
+  margin-left: 1vw;
+}
+
+header .head_btn_right3{
+  width:10%;
+  justify-content:end;
+  margin-left: 1vw;
+  margin-right:9.6vw;
+}
+
+/*  MyButton */
+
+.MyButton {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  font-weight: 600;
+  font-size: 24px;
+  line-height:36px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right:15px;
+  white-space: nowrap;
+  font-family: "NanumMyeongjo";
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  background-color: var(--btn-color);
+  color: var(--btntxt-color);
+  border:1px solid var(--border-color);
+  
+}
+
+
+.MyButton_sign{
+  
+  width:120px;
+  height:50px;
+
+}
+
+.MyButton_Feedback {
+
+  width:170px;
+  height:50px;
+}
+.MyButton_submit{
+ 
+  width:317px;
+  height:50px;
+}
+
+/*input*/
+input{
+  font-size:15px;
+  display:inline;
+
+  text-shadow:5px 10px 5px #000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: 1px solid #AAAAAA;
+  padding-left: 3%;
+
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+
+}
+.input_text{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 10px;
+  position: absolute;
+width: 45px;
+height: 16px;
+
+
+}
+
+.input_img{
+  position:absolute;
+    bottom:20%;
+    left:10px;
+    width:30px;
+    height:30px;
+}
+
+.input_text{
+  position:absolute;
+  width:fit-content;
+  bottom:115%;
+  left: 2em;;
+  border: #e2e2e2;
+  background-color: white;
+}
+
+/*PopupContent*/
+.background{
+  display:flex;
+  align-items:center;
+  justify-content: flex-start;
+  position:fixed;
+  background-color: rgba(255,255,255,0.7);
+  left:0;
+  top:0;
+  width: 100%;
+  height:100vh;
+  z-index: 0;
+}
+
+.popupbox{
+  display:flex;
+  position:relative;
+  z-index: 0;
+  width:50%;
+  min-height:60%;
+  background-color: white;
+  border:1px solid #999;
+  border-radius: 4px;
+  margin :20px auto;
+  padding:20px;
+  
+}
+
+
+ h1{
+  font-family: "NanumMyeongjo";
+  position: absolute;
+  left: 40%;
+  top:18%;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 6.6%;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+.close{
+  position:absolute;
+  cursor:pointer;
+  border:1px solid #999;
+  border-radius:50%;
+  margin:10px;
+  right:0%;
+  top:0%;
+  
+}
+.inputfield{
+  display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding: 10px 0px 10px 10px;
+gap: 12px;
+
+position: absolute;
+left: 40.1%;
+
+top: 32.72%;
+
+
+}
+
+.signin_logo{
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+ 
+ left:0%;
+  top: 22.18%;
+  bottom: 8.65%;
+  width:30%;
+  height:50%;
+  z-index:1;
+ 
+}
+.line{
+position: absolute;
+left: 35%;
+right: 65%;
+top: 1.67%;
+bottom: -1.44%;
+z-index: 1;
+
+border: 2px solid #000000;
+}
+.line_1{
+  
+  position: absolute;
+  left: 42.5%;
+  right: 38.1%;
+  top: 69.22%;
+  bottom: 30.78%;
+  
+  border: 4px solid #000000;
+  }
+  .line_3{
+    position: absolute;
+  left: 67.4%;
+  right: 11.5%;
+  top: 69.22%;
+  bottom: 30.78%;
+  
+  border: 4px solid #000000;
+  }
+  
+
+.social{
+  position:absolute;
+  display:flex;
+  
+  left: 54.3%;
+  right: 38.2%;
+  
+  bottom: 25%;
+
+}
+.google{
+  margin-right:60%;
+}
+
+/* dark, light mode */
+
+:root, :root.light{
+  --bg-color: #fff;
+  --txt-color: #123;
+  --btn-color: #AAAAAA;
+  --border-color:#000000;
+  --btntxt-color:black;
+}
+:root.dark {
+  --bg-color: #121212;
+  --txt-color: #45ADFE;
+  --btn-color:#363636;
+  --border-color:#FFFFFF;
+  --btntxt-color:white;
+
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    }

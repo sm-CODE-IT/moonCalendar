@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# moonCalendar
+
+## ✨ Contributions
+|김민희|김정윤|손수경|윤소영|
+|------|------|------|------|
+|Frontend|Backend|Frontend|Backend|
+>>>>>>> 7b67001319dd41560fc6738d9eaa1d9b68c91151
