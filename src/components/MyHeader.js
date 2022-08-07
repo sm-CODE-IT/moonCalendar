@@ -26,9 +26,10 @@ const MyHeader = ({
 
   return (
     <header>
+     
       <div className="head_btn_left">
-        <img className="logo light" src={logoBtnSrc} />
-      </div>
+        <img  className="logo" src={logoBtnSrc} />
+     </div>
       <div className="head_btn_right">
         <div className="head_btn_right1">
           <motion.img
@@ -39,6 +40,7 @@ const MyHeader = ({
               opacity: 0,
               rotate: 100,
             }}
+            style={{width:50,height:50}}
           />
           {/* <div>
             <motion.button
@@ -66,6 +68,7 @@ const MyHeader = ({
           <MyButton type={btn2Type} text={btn2Text} onClick={btn2Func} />
         </div>
       </div>
+      
     </header>
   );
 };

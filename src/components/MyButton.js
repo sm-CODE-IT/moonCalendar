@@ -1,9 +1,9 @@
 const MyButton = ({ text, type, onClick }) => {
-    const btnType = ["light","dark"].includes(type) ? type : "default";
+   
   
     return (
       <button
-        className={["MyButton", `MyButton_${btnType}`].join(" ")}
+        className="button MyButton"
         onClick={onClick}
       >
         {text}

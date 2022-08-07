@@ -129,19 +129,13 @@ body {
   margin: 0;
 }
 header {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  height: 8.3vh;
+  padding-bottom:1rem;
+  height:4rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--line-color);
+  border-bottom: 1px solid #e2e2e2;
+  justify-content: space-between;
 }
-
-header > div {
-  display: flex;
-}
-
-
 
 .theme-btn.dark {
   display: none;
@@ -157,43 +151,59 @@ header > div {
 }
 
 header .head_btn_left {
-  width: 70%;
-  height:13vh;
-  justify-content: start;
+  height:6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left:10vw;
+
 }
 
 header .head_btn_right {
-  width:30%;
-  height:5vh;
   display:flex;
-  justify-content: space-around;
+  position:relative;
+  justify-content: center;
   align-items: center;
 }
 .head_btn_right1 {
+  margin-right: 1rem;
+  position: relative;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  max-width:100%;
+  max-height:100%;
   
-  padding: 0.1em;
+}
+/*.theme-btn {
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5em;
   border-radius: 50%;
   cursor: pointer;
   border: none;
   background-color: transparent;
 }
-.theme-btn {
-  width: 2em;
-  height: 2em;
+.theme-btn img{
+  width:100%;
+  height: 100%;
   object-fit: cover;
 }
-
+*/
 header .head_btn_right2{
-  width:10%;
-  margin-right:0.78vw; 
+  margin-right:1rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 header .head_btn_right3{
-  width:10%;
-  height:5vh;
-  
-  margin-right:10vw;
+  margin-right:10rem;
+  display:flex;
+  align-items: center;  /*이 코드를 안주면 창 높이를 작게 만들었을 때 혼자 밑으로 내려감?*/
+  justify-content: center;
 }
 
 
@@ -203,44 +213,29 @@ header .head_btn_right3{
 .MyButton {
   cursor: pointer;
   border: none;
-  border-radius: 10%;
+  border-radius: 10px;
 
 
-  padding-top: 0.2vh;
-  padding-bottom: 0.2vh;
-  padding-left: 1.5vw;
-  padding-right: 1.5vw;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
-  font-weight: 600;
-  font-size: 1vw;
-  line-height:4vh;
  
   
+  line-height:2.3rem;
   white-space: nowrap;
-  font-family: "NanumMyeongjo";
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
   text-align: center;
 
   background-color: var(--btn-color);
   color: var(--btntxt-color);
   border:1px solid var(--border-color);
   
-}
-
-
-.MyButton_light{
   
-  width:120px;
-  height:50px;
-
 }
 
-.MyButton_dark {
 
-  width:170px;
-  height:50px;
-}
 
 /*input*/
 input{
