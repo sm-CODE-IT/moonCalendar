@@ -21,8 +21,7 @@ const App = () => {
     console.log(e.target.value);
   };
   return (
-    <div>
-      <button onClick={toggle}> Click</button>
+    <div className="App">
       <MyHeader
         btn1Type="Feedback"
         btn1Text="Feedback"
@@ -43,8 +42,6 @@ const App = () => {
       <div className="forPadding">
         <Line weight={10} theme="dark" />
       </div>
-
-      
     </div>
   );
 };
