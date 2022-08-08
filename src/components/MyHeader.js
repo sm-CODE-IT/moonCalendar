@@ -41,24 +41,6 @@ const MyHeader = ({
             }}
             style={{ width: 50, height: 50 }}
           />
-          {/* <div>
-            <motion.button
-              className="theme-btn light"
-              onClick={() => setTheme("dark")}
-              whileTap={{ opacity: 0, rotate: 70, transition: { duration: 8 } }}
-              title="Light mode"
-            >
-              <img src={"/assets/lightButton.png"} />
-            </motion.button>
-            <motion.button
-              className="theme-btn dark"
-              onClick={() => setTheme("light")}
-              whileTap={{ opacity: 0, rotate: 70, transition: { duration: 8 } }}
-              title="Dark mode"
-            >
-              <img src={"/assets/darkButton.png"} />
-            </motion.button>
-          </div> */}
         </div>
         <div className="head_btn_right2">
           <MyButton type={btn1Type} text={btn1Text} onClick={btn1Func} />

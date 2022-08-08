@@ -128,6 +128,7 @@ body {
   height: 100vh;
   margin: 0;
 }
+/* MyHeader */
 .MyHeader {
   padding: 1rem;
   height: 6rem;
@@ -165,20 +166,16 @@ body {
   /* justify-content: center; */
 }
 /*  MyButton */
-
 .MyButton {
   cursor: pointer;
   border: none;
   border-radius: 10px;
-
 
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
   padding-left: 2rem;
   padding-right: 2rem;
 
- 
-  
   line-height:2.3rem;
   white-space: nowrap;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -187,12 +184,7 @@ body {
   background-color: var(--btn-color);
   color: var(--btntxt-color);
   border:1px solid var(--border-color);
-  
-  
 }
-
-
-
 /*input*/
 input{
   font-size:15px;
@@ -216,20 +208,16 @@ input{
   padding: 0px;
   gap: 10px;
   position: absolute;
-width: 45px;
-height: 16px;
-
-
+  width: 45px;
+  height: 16px;
 }
-
 .input_img{
   position:absolute;
-    bottom:20%;
-    left:10px;
-    width:30px;
-    height:30px;
+  bottom:20%;
+  left:10px;
+  width:30px;
+  height:30px;
 }
-
 .input_text{
   position:absolute;
   width:fit-content;
@@ -238,7 +226,6 @@ height: 16px;
   border: #e2e2e2;
   background-color: white;
 }
-
 /*PopupContent*/
 .background{
   display:flex;
@@ -252,7 +239,6 @@ height: 16px;
   height:100vh;
   z-index: 0;
 }
-
 .popupbox{
   display:flex;
   position:relative;
@@ -266,8 +252,6 @@ height: 16px;
   padding:20px;
   
 }
-
-
 h1{
   font-family: "NanumMyeongjo";
   position: absolute;
@@ -287,35 +271,30 @@ h1{
   margin:10px;
   right:0%;
   top:0%;
-  
 }
 .inputfield{
   display: flex;
-flex-direction: column;
-align-items: flex-end;
-padding: 10px 0px 10px 10px;
-gap: 12px;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px 0px 10px 10px;
+  gap: 12px;
 
-position: absolute;
-left: 40.1%;
+  position: absolute;
+  left: 40.1%;
 
-top: 32.72%;
-
-
+  top: 32.72%;
 }
-
 .signin_logo{
   justify-content: flex-start;
   align-items: center;
   position: absolute;
  
- left:0%;
+  left:0%;
   top: 22.18%;
   bottom: 8.65%;
   width:30%;
   height:50%;
   z-index:1;
- 
 }
 /* .line{
 position: absolute;
@@ -346,17 +325,13 @@ border: 2px solid #000000;
   
   border: 4px solid #000000;
   } */
-  
-
 .social{
   position:absolute;
   display:flex;
   
   left: 54.3%;
   right: 38.2%;
-  
   bottom: 25%;
-
 }
 .google{
   margin-right:60%;
