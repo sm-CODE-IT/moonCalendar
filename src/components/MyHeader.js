@@ -75,7 +75,7 @@ const MyHeader = ({
               className="button"
               type={btn1Type}
               text={btn1Text}
-              onClick={() => alert("navigate('feedback')")}
+              onClick={() => navigate("/feedback")}
             />
           </div>
           <div className="head_btn_right3">
