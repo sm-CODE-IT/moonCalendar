@@ -6,8 +6,8 @@ import "./App.css";
 //for popup
 import React, { useState, useNavigate } from "react";
 
-import PopupContent from "./components/PopupContent";
-import Signin from "./pages/Signin";
+// import PopupContent from "./components/PopupContent";
+// import Signin from "./pages/Signin";
 
 const App = () => {
   const [isOpenPopup, setisOpenPopup] = useState(false);
