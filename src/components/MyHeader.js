@@ -4,6 +4,8 @@ import MyButton from "./MyButton";
 import { motion } from "framer-motion";
 /* util */
 import useTheme from "../util/useTheme";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MyHeader = ({
   btn1Type,
@@ -24,29 +26,66 @@ const MyHeader = ({
       ? process.env.PUBLIC_URL + "/assets/lightButton.png"
       : process.env.PUBLIC_URL + "/assets/darkButton.png";
 
+  /* for link pages */
+  const navigate = useNavigate();
+
+  /* for scroll */
+  /* when scroll up -> show Header */
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    setVisible(prevScrollPos > currentScrollPos);
+    setPrevScrollPos(currentScrollPos);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, visible, handleScroll]);
+
   return (
-    <header className="MyHeader">
-      <div className="head_btn_left">
-        <img className="logo" src={logoBtnSrc} />
-      </div>
-      <div className="head_btn_right">
-        <div className="head_btn_right1">
-          <motion.img
-            src={themeBtnSrc}
-            className={["theme_btn", `${themeBtnSrc}`].join(" ")}
-            onClick={toggleTheme}
-            whileTap={{
-              opacity: 0,
-              rotate: 100,
-            }}
-            style={{ width: 50, height: 50 }}
+    <header
+      className={["MyHeader", visible ? "scroll_up" : "scroll_down"].join(" ")}
+    >
+      <div className="MyHeader_wrapper">
+        <div className="head_btn_left">
+          <img
+            className="logo"
+            src={logoBtnSrc}
+            onClick={() => navigate("/")}
           />
         </div>
-        <div className="head_btn_right2">
-          <MyButton type={btn1Type} text={btn1Text} onClick={btn1Func} />
-        </div>
-        <div className="head_btn_right3">
-          <MyButton type={btn2Type} text={btn2Text} onClick={btn2Func} />
+        <div className="head_btn_right">
+          <div className="head_btn_right1">
+            <motion.img
+              src={themeBtnSrc}
+              className={["theme_btn", `${themeMode}`].join(" ")}
+              onClick={toggleTheme}
+              whileTap={{
+                opacity: 0,
+                rotate: 100,
+              }}
+              style={{ width: 40, height: 40 }}
+            />
+          </div>
+          <div className="head_btn_right2">
+            <MyButton
+              className="button"
+              type={btn1Type}
+              text={btn1Text}
+              onClick={() => alert("navigate('feedback')")}
+            />
+          </div>
+          <div className="head_btn_right3">
+            <MyButton
+              className="button"
+              type={btn2Type}
+              text={btn2Text}
+              onClick={() => alert("navigate('sign')")}
+            />
+          </div>
         </div>
       </div>
     </header>
