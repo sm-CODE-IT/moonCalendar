@@ -356,3 +356,6 @@ body {
   justify-content: center;
   align-items: center;
 }
+.Feedback #file_input {
+  display: none;
+}
