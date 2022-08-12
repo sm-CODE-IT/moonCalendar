@@ -382,7 +382,7 @@ body {
 }
 /* EditDiary */
 .EditDiary {
-  height: 200vh;
+  /* height: 200vh; */
 }
 .EditDiary .main_wrapper {
   display: flex;
@@ -420,22 +420,15 @@ body {
 .EditDiary .input:focus {
   outline: none;
 }
-.EditDiary .input_title {
-  background-color: #42abbc;
-}
-.EditDiary .input_content_wrapper {
-  margin: 1rem;
-  padding: 0.5rem;
-  background-color: var(--system-red);
-  min-height: 100vh;
-}
 .EditDiary .input_content {
-  padding: 0.75rem;
-  background-color: #124bed;
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 200px;
-  border-radius: 10px;
+  box-sizing:content-box;
+  min-height: 80vh;
+  resize: vertical;
 
   white-space: wrap;
+}
+.EditDiary .div_dotted_line {
+  margin-top: 0.5rem;
+  background: none;
+  border-bottom-style: dashed;
 }

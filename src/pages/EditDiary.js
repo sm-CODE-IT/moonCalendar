@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 /* components */
 import MyHeader from "../components/MyHeader";
@@ -11,17 +11,20 @@ const EditDiary = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isTopZero, setisTopZero] = useState(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  console.log(isTopZero);
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
     setisTopZero(prevScrollPos <= currentScrollPos);
     setPrevScrollPos(currentScrollPos);
-    console.log(isTopZero);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos, isTopZero, handleScroll]);
+
+  
+
   return (
     <div className="EditDiary">
       <MyHeader
@@ -48,12 +51,18 @@ const EditDiary = () => {
             />
           </div>
           <Line weight={1} eachClassName="div_line"></Line>
+          <div className="diary_info">
+            <div className="date"></div>
+            <div className="who"></div>
+            <div className="weather"></div>
+          </div>
+          <Line weight={1} eachClassName="div_dotted_line"></Line>
           <div className="input_content_wrapper">
-            <teatarea
+            <textarea
               type="text"
               className="body1 input input_content"
               placeholder="content"
-            ></teatarea>
+            ></textarea>
           </div>
         </div>
         <div className="right_side"></div>
