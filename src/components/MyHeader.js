@@ -2,7 +2,6 @@
 import MyButton from "./MyButton";
 /* toggle button ani */
 import { motion } from "framer-motion";
-import { ThemeProvider } from "styled-components";
 /* util */
 import useTheme from "../util/useTheme";
 import { useEffect, useState } from "react";
