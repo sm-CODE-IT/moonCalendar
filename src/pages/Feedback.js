@@ -19,26 +19,25 @@ const Feedback = () => {
 
   /* input 태그에 x 마크 넣으려고 */
   const [isWriting, setIsWriting] = useState(false);
-  
+
   /* for input one (어떤 문제에 대한 피드백?) */
   const inputOneRef = useRef();
   const [inputOneContent, setInputOneContent] = useState("");
-  
+
   /* for input two (상세 내용) */
   const inputTwoRef = useRef();
   const [inputTwoContent, setInputTwoContent] = useState("");
-  
-    
+
   /* for input four (이메일 주소를 입력) */
   const inputFourRef = useRef();
   const [inputFourContent, setInputFourContent] = useState("");
-    
+
   /* for submit button */
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(true);
   const handleSubmit = () => {
     var validRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    
+
     if (inputOneContent.length < 1) {
       inputOneRef.current.focus();
       return;
@@ -57,9 +56,9 @@ const Feedback = () => {
 
     setIsValid(true);
     if (window.confirm("제출하시겠습니까?")) {
-      navigate("/", {replace: true}); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다. 
+      navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
     }
-  }
+  };
 
   return (
     <div className="Feedback">
@@ -107,16 +106,19 @@ const Feedback = () => {
             <div className="input_three">
               <p className="body1">상세 이미지</p>
 
-              <label for="file_input" className="plus_button_wrapper" >
+              <label for="file_input" className="plus_button_wrapper">
                 <img src={plusButtonSrc} alt="" className="plus_button" />
-                
               </label>
-              <input type="file" id="file_input" accept=".png, .jpg"/>
+              <input type="file" id="file_input" accept=".png, .jpg" />
             </div>
-            
+
             <div className="input_four">
               <p className="body1">이메일 주소 *</p>
-              {isValid ? <></> : <p className="caption alert">* ex. xxxxxxxx@xxxxx.xxx</p> }
+              {isValid ? (
+                <></>
+              ) : (
+                <p className="caption alert">* ex. xxxxxxxx@xxxxx.xxx</p>
+              )}
               <input
                 type="email"
                 className="input_box_four"
@@ -125,7 +127,6 @@ const Feedback = () => {
                 value={inputFourContent}
                 onChange={(e) => setInputFourContent(e.target.value)}
               />
-              
             </div>
             <div className="myButton_wrapper">
               <MyButton
