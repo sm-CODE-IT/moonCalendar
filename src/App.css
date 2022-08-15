@@ -411,6 +411,12 @@ body {
   background-color: var(--secondary-green);
   opacity: 0.5;
 }
+.EditDiary .date_wrapper, .who_wrapper, .weather_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
 .EditDiary .input {
   margin: 1rem;
   border: none;
@@ -432,14 +438,26 @@ body {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-}
-.EditDiary .date, .who, .weather {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1rem;
+  
 }
 .EditDiary .icon {
   width: 32px;
   height: auto;
+}
+.EditDiary .info_short_ver {
+  font-family: 'Nanum Myeongjo', serif;
+  border-radius: 5px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: none;
+  transition: 1s;
+}
+.EditDiary .MyHeader .red {
+  background-color: var(--system-red);
+}
+.dark ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+.light ::-webkit-calendar-picker-indicator {
+  filter: invert(0);
 }

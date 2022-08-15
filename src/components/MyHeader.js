@@ -75,7 +75,7 @@ export const MyHeader = ({
               className="button"
               type={btn1Type}
               text={btn1Text}
-              onClick={() => navigate("/feedback")}
+              onClick={btn1Func}
             />
           </div>
           <div className="head_btn_right3">
@@ -83,7 +83,7 @@ export const MyHeader = ({
               className="button"
               type={btn2Type}
               text={btn2Text}
-              onClick={() => alert("navigate('sign')")}
+              onClick={btn2Func}
             />
           </div>
         </div>

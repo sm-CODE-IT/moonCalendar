@@ -1,12 +1,15 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext, useCallback } from "react";
 /* components */
 import { MyHeader } from "../components/MyHeader";
 import MyFooter from "../components/MyFooter";
 import Line from "../components/Line";
 /* util */
 import useTheme from "../util/useTheme";
+import { useNavigate } from "react-router-dom";
+import { DiaryDispatchContext } from "../App";
 
 const EditDiary = () => {
+  const navigate = useNavigate();
   //   /* icon */
   //   const { theme } = useContext(MyHeader);
   //   console.log(theme);
@@ -33,15 +36,61 @@ const EditDiary = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos, isTopZero, handleScroll]);
 
+  /* title */
+  const titleRef = useRef();
+  const [title, setTitle] = useState("");
+
+  /* date */
+  const startDateRef = useRef();
+  const [date, setDate] = useState("");
+
+  /* who */
+  const whoRef = useRef();
+  const [who, setWho] = useState("");
+
+  /* weather */
+  const [weather, setWeather] = useState(3);
+  const hendleClickRemote = useCallback((weather) => {
+    setWeather(weather);
+  }, []);
+
+  /* window cursor */
+  const contentRef = useRef();
+  const [content, setContent] = useState("");
+  //   const handleCursor = (e) => {
+  //     console.log(e.clientY);
+  //   };
+
+  /* Submit */
+  const { onCreate } = useContext(DiaryDispatchContext);
+  const handleSubmit = () => {
+    console.log(title, content);
+    if (title.length < 1) {
+      titleRef.current.focus();
+      return;
+    }
+
+    if (content.length < 1) {
+      contentRef.current.focus();
+      return;
+    }
+
+    if (window.confirm("작성을 완료하시겠습니까?")) {
+      onCreate(title, date, who, weather, content);
+    }
+
+    navigate("/", { replace: true });
+  };
+
   return (
     <div className="EditDiary">
       <MyHeader
         btn1Type="short"
-        btn1Text="Feedback"
-        btn1Func={() => navigator("/feedback")}
-        btn2Type="short"
-        btn2Text="sign In"
-        btn2Func={(e) => alert("sign clicked")}
+        btn1Text="Submit"
+        btn1Func={handleSubmit}
+        btn2Type="short red"
+        btn2Text="Cancel"
+        btn2Func={() => navigate(-1)}
       />
       <div
         className={[
@@ -56,29 +105,47 @@ const EditDiary = () => {
               type="text"
               className="h1 input input_title"
               placeholder="Title"
+              value={title}
+              ref={titleRef}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <Line weight={1} eachClassName="div_line"></Line>
           <div className="diary_info">
-            <div className="date">
+            <div className="date_wrapper">
               <img src={calendarSrc} className="icon" />
-              <p className="body2">Date</p>
+              <p className="body2">Date : </p>
+              <input
+                type="date"
+                className="info_short_ver body3 start_date"
+                ref={startDateRef}
+                onChange={(e) => setDate(e.target.value)}
+              />
             </div>
-            <div className="who">
+            <div className="who_wrapper">
               <img src={personSrc} className="icon" />
-              <p className="body2">Who</p>
+              <p className="body2">Who : </p>
+              <input
+                type="text"
+                className="info_short_ver body3 who"
+                placeholder="Name"
+                ref={whoRef}
+                onChange={(e) => setWho(e.target.value)}
+              />
             </div>
-            <div className="weather">
+            <div className="weather_wrapper">
               <img src={weatherSrc} className="icon" />
-              <p className="body2">Weather</p>
+              <p className="body2">Weather : </p>
             </div>
           </div>
           <Line weight={1} eachClassName="div_dotted_line"></Line>
           <div className="input_content_wrapper">
             <textarea
-              type="text"
+              type={"text"}
               className="body1 input input_content"
               placeholder="content"
+              ref={contentRef}
+              onChange={(e) => setContent(e.target.value)}
             ></textarea>
           </div>
         </div>
