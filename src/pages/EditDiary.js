@@ -3,10 +3,12 @@ import { useState, useEffect, useRef, useContext, useCallback } from "react";
 import { MyHeader } from "../components/MyHeader";
 import MyFooter from "../components/MyFooter";
 import Line from "../components/Line";
+import WeatherItem from "../components/WeatherItem";
 /* util */
 import useTheme from "../util/useTheme";
 import { useNavigate } from "react-router-dom";
 import { DiaryDispatchContext } from "../App";
+import { weatherList } from "../util/weatherList";
 
 const EditDiary = () => {
   const navigate = useNavigate();
@@ -50,7 +52,7 @@ const EditDiary = () => {
 
   /* weather */
   const [weather, setWeather] = useState(3);
-  const hendleClickRemote = useCallback((weather) => {
+  const handleRemote = useCallback((weather) => {
     setWeather(weather);
   }, []);
 
@@ -64,7 +66,6 @@ const EditDiary = () => {
   /* Submit */
   const { onCreate } = useContext(DiaryDispatchContext);
   const handleSubmit = () => {
-    console.log(title, content);
     if (title.length < 1) {
       titleRef.current.focus();
       return;
@@ -136,6 +137,16 @@ const EditDiary = () => {
             <div className="weather_wrapper">
               <img src={weatherSrc} className="icon" />
               <p className="body2">Weather : </p>
+              <div className="weather_icons_wrapper">
+                {weatherList.map((it) => (
+                  <WeatherItem
+                    key={it.weather_id}
+                    {...it}
+                    onClick={handleRemote}
+                    isSelected={it.weather_id === weather}
+                  ></WeatherItem>
+                ))}
+              </div>
             </div>
           </div>
           <Line weight={1} eachClassName="div_dotted_line"></Line>
