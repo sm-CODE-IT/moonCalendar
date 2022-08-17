@@ -26,10 +26,10 @@ const Home = () => {
   return (
     <div className="Home">
       <MyHeader
-        btn1Type="Feedback"
+        btn1Type="short"
         btn1Text="Feedback"
-        btn1Func={(e) => alert("Feedback clicked")}
-        btn2Type="sign In"
+        btn1Func={(e) => navigator("/feedback")}
+        btn2Type="short"
         btn2Text="sign In"
         btn2Func={(e) => alert("sign clicked")}
       />

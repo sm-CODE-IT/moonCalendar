@@ -1,4 +1,11 @@
-import { useState, useEffect, useRef, useContext, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useCallback,
+  Suspense,
+} from "react";
 /* components */
 import { MyHeader } from "../components/MyHeader";
 import MyFooter from "../components/MyFooter";
@@ -9,6 +16,8 @@ import useTheme from "../util/useTheme";
 import { useNavigate } from "react-router-dom";
 import { DiaryDispatchContext } from "../App";
 import { weatherList } from "../util/weatherList";
+import { Editor, EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
 
 const EditDiary = () => {
   const navigate = useNavigate();
@@ -51,17 +60,18 @@ const EditDiary = () => {
   const [who, setWho] = useState("");
 
   /* weather */
-  const [weather, setWeather] = useState(3);
+  const [weather, setWeather] = useState(1);
   const handleRemote = useCallback((weather) => {
     setWeather(weather);
   }, []);
 
-  /* window cursor */
+  /* total content */
   const contentRef = useRef();
   const [content, setContent] = useState("");
-  //   const handleCursor = (e) => {
-  //     console.log(e.clientY);
-  //   };
+  const [editorState, setEditorState] = React.useState(() =>
+    EditorState.createEmpty()
+  );
+  console.log(editorState);
 
   /* Submit */
   const { onCreate } = useContext(DiaryDispatchContext);
@@ -80,7 +90,7 @@ const EditDiary = () => {
       onCreate(title, date, who, weather, content);
     }
 
-    navigate("/", { replace: true });
+    navigate("/calendar", { replace: true });
   };
 
   return (
@@ -93,75 +103,76 @@ const EditDiary = () => {
         btn2Text="Cancel"
         btn2Func={() => navigate(-1)}
       />
-      <div
+      <section
         className={[
-          "main_wrapper",
           isTopZero ? "background_scroll_down" : "background_scroll_up",
         ].join(" ")}
       >
-        <div className="left_side"></div>
-        <div className="edit_content">
-          <div className="input_title_wrapper">
-            <input
-              type="text"
-              className="h1 input input_title"
-              placeholder="Title"
-              value={title}
-              ref={titleRef}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-          <Line weight={1} eachClassName="div_line"></Line>
-          <div className="diary_info">
-            <div className="date_wrapper">
-              <img src={calendarSrc} className="icon" />
-              <p className="body2">Date : </p>
-              <input
-                type="date"
-                className="info_short_ver body3 start_date"
-                ref={startDateRef}
-                onChange={(e) => setDate(e.target.value)}
-              />
-            </div>
-            <div className="who_wrapper">
-              <img src={personSrc} className="icon" />
-              <p className="body2">Who : </p>
+        <div className="main_wrapper">
+          <div className="left_side"></div>
+          <div className="edit_content">
+            <div className="input_title_wrapper">
               <input
                 type="text"
-                className="info_short_ver body3 who"
-                placeholder="Name"
-                ref={whoRef}
-                onChange={(e) => setWho(e.target.value)}
+                className="h1 input input_title"
+                placeholder="Title"
+                value={title}
+                ref={titleRef}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </div>
-            <div className="weather_wrapper">
-              <img src={weatherSrc} className="icon" />
-              <p className="body2">Weather : </p>
-              <div className="weather_icons_wrapper">
-                {weatherList.map((it) => (
-                  <WeatherItem
-                    key={it.weather_id}
-                    {...it}
-                    onClick={handleRemote}
-                    isSelected={it.weather_id === weather}
-                  ></WeatherItem>
-                ))}
+            <Line weight={1} eachClassName="div_line"></Line>
+            <div className="diary_info">
+              <div className="date_wrapper">
+                <img src={calendarSrc} className="icon" />
+                <p className="body2">Date : </p>
+                <input
+                  type="date"
+                  className="info_short_ver body3 start_date"
+                  ref={startDateRef}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </div>
+              <div className="who_wrapper">
+                <img src={personSrc} className="icon" />
+                <p className="body2">Who : </p>
+                <input
+                  type="text"
+                  className="info_short_ver body3 who"
+                  placeholder="Name"
+                  ref={whoRef}
+                  onChange={(e) => setWho(e.target.value)}
+                />
+              </div>
+              <div className="weather_wrapper">
+                <img src={weatherSrc} className="icon" />
+                <p className="body2">Weather : </p>
+                <div className="weather_icons_wrapper">
+                  {weatherList.map((it) => (
+                    <WeatherItem
+                      key={it.weather_id}
+                      {...it}
+                      onClick={handleRemote}
+                      isSelected={it.weather_id === weather}
+                    ></WeatherItem>
+                  ))}
+                </div>
               </div>
             </div>
+            <Line weight={1} eachClassName="div_do ted_line"></Line>
+            <div className="input_content_wrapper" ref={contentRef}>
+              {/* Add Content */}
+              <Editor
+                className="body2"
+                editorState={editorState}
+                onChange={setEditorState}
+                placeholder="Enter some text..."
+              />
+            </div>
           </div>
-          <Line weight={1} eachClassName="div_dotted_line"></Line>
-          <div className="input_content_wrapper">
-            <textarea
-              type={"text"}
-              className="body1 input input_content"
-              placeholder="content"
-              ref={contentRef}
-              onChange={(e) => setContent(e.target.value)}
-            ></textarea>
-          </div>
+          <div className="right_side"></div>
         </div>
-        <div className="right_side"></div>
-      </div>
+      </section>
     </div>
   );
 };

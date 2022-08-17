@@ -383,9 +383,6 @@ body {
   display: none;
 }
 /* EditDiary */
-.EditDiary {
-  /* height: 200vh; */
-}
 .EditDiary .main_wrapper {
   display: flex;
   justify-content: space-between;
@@ -393,52 +390,25 @@ body {
   transition: all 0.5s ease-in-out;
 }
 .EditDiary .background_scroll_up {
-  position: fixed;
+  position: absolute;
   top: 7.6rem;
   left: 0;
   right: 0;
   bottom: 0;
 }
 .EditDiary .background_scroll_down {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 }
-.EditDiary .left_side, .right_side {
-  height: 200vh;
-  background-color: var(--secondary-green);
-  opacity: 0.5;
-}
+
 .EditDiary .date_wrapper, .who_wrapper, .weather_wrapper {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
-}
-.EditDiary .input {
-  margin: 1rem;
-  border: none;
-  background-color: var(--bg-color);
-  color: var(--btntxt-color);
-  transition: 1s;
-}
-.EditDiary .input:focus {
-  outline: none;
-}
-.EditDiary .input_content {
-  box-sizing:content-box;
-  min-height: 80vh;
-  resize: vertical;
-
-  white-space: wrap;
-}
-.EditDiary .diary_info {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  
 }
 .EditDiary .icon {
   width: 32px;
@@ -466,6 +436,37 @@ body {
   grid-template-columns: repeat(5, auto);
   gap: 2%;
 }
+.EditDiary .input_content_wrapper {
+  background-color: var(--system-blue);
+  padding: 2rem;
+}
+.EditDiary .input {
+  margin: 1rem;
+  border: none;
+  background-color: var(--bg-color);
+  color: var(--btntxt-color);
+  transition: 1s;
+}
+.EditDiary .input:focus {
+  outline: none;
+}
+.EditDiary .input_content {
+  box-sizing:content-box;
+  min-height: 80vh;
+  resize: vertical;
+
+  white-space: wrap;
+}
+.EditDiary .diary_info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  
+}
+.EditDiary .child_wrapper {
+  background-color: var(--system-blue);
+}
+
 /* WeatherItem */
 .WeatherItem {
   cursor: pointer;

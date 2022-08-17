@@ -23,6 +23,7 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+  return newState;
 };
 
 export const DiaryDispatchContext = React.createContext();
@@ -30,22 +31,12 @@ const App = () => {
   const [data, dispatch] = useReducer(reducer, []);
 
   /* CREATE */
-  const onCreate = (
-    title,
-    isSameDay,
-    startDate,
-    endDate,
-    who,
-    weather,
-    content
-  ) => {
-    dispatchEvent({
+  const onCreate = (title, date, who, weather, content) => {
+    dispatch({
       type: "CREATE",
       data: {
         title,
-        isSameDay,
-        startDate,
-        endDate,
+        date,
         who,
         weather,
         content,
