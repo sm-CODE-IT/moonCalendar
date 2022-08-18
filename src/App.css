@@ -30,10 +30,7 @@
   .Feedback .main_wrapper {
     width: 90vw;
   }
-  .EditDiary .left_side {
-    width: 20vw;
-  }
-  .EditDiary .right_side {
+  .EditDiary .left_side, .right_side {
     display: none;
   }
   .EditDiary .input {
@@ -51,6 +48,7 @@
   --btn-hoverColor: #ffc700;
   --header-color: #e0e0e0;
   --shadow-color: #aaaaaa;
+  --toolbarBtn-color: #e0e0e0;
   --grayscale-gray1: #000000;
   --grayscale-gray2: #363636;
   --grayscale-gray3: #707070;
@@ -75,6 +73,7 @@
   --btn-hoverColor: #42abbc;
   --header-color: #3d3d42;
   --shadow-color: #707070;
+  --toolbarBtn-color: #707070;
   --grayscale-gray1: #000000;
   --grayscale-gray2: #363636;
   --grayscale-gray3: #707070;
@@ -436,10 +435,6 @@ body {
   grid-template-columns: repeat(5, auto);
   gap: 2%;
 }
-.EditDiary .input_content_wrapper {
-  background-color: var(--system-blue);
-  padding: 2rem;
-}
 .EditDiary .input {
   margin: 1rem;
   border: none;
@@ -463,10 +458,48 @@ body {
   flex-direction: column;
   
 }
-.EditDiary .child_wrapper {
-  background-color: var(--system-blue);
+/* toolbar option */
+.EditDiary .editor {
+  color: var(--btntxt-color);
 }
-
+.EditDiary .toolbar_class {
+  background-color: var(--bg-color);
+  border: none;
+  transition: 1s;
+  margin-top: 0.5rem;
+}
+.EditDiary .rdw-dropdown-wrapper {
+  border: 1px solid var(--btntxt-color);
+  border-radius: 5px;
+  background: var(--toolbarBtn-color);
+  color: black;
+  transition: 0.5s;
+}
+.EditDiary .rdw-dropdown-wrapper:focus {
+  outline: none;
+}
+.EditDiary .rdw-dropdown-wrapper:hover {
+  box-shadow: 1px 1px 0px #BFBDBD;
+  background-color: var(--btn-hoverColor);
+}
+.EditDiary .rdw-option-wrapper {
+  border: 1px solid var(--btntxt-color);
+  border-radius: 5px;
+  background: var(--toolbarBtn-color);
+  color: var(--btntxt-color);
+  transition: 0.5s;
+}
+.EditDiary .rdw-option-wrapper:focus {
+  outline: none;
+}
+.EditDiary .rdw-option-wrapper:hover {
+  box-shadow: 1px 1px 0px #BFBDBD;
+  background-color: var(--btn-hoverColor);
+}
+.EditDiary .editor_class {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 /* WeatherItem */
 .WeatherItem {
   cursor: pointer;

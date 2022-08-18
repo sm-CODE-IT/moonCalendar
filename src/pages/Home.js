@@ -4,8 +4,10 @@ import MyHeader from "../components/MyHeader";
 import Line from "../components/Line";
 /* hooks */
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigator = useNavigate();
   /* for scroll */
   /* when scroll up -> show Header */
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -28,7 +30,7 @@ const Home = () => {
       <MyHeader
         btn1Type="short"
         btn1Text="Feedback"
-        btn1Func={(e) => navigator("/feedback")}
+        btn1Func={() => navigator("/feedback")}
         btn2Type="short"
         btn2Text="sign In"
         btn2Func={(e) => alert("sign clicked")}

@@ -6,11 +6,13 @@ import React, {
   useCallback,
   Suspense,
 } from "react";
+// import ReactDOM from "react-dom";
 /* components */
 import { MyHeader } from "../components/MyHeader";
 import MyFooter from "../components/MyFooter";
 import Line from "../components/Line";
 import WeatherItem from "../components/WeatherItem";
+import EditorContainer from "../components/EditorContainer";
 /* util */
 import useTheme from "../util/useTheme";
 import { useNavigate } from "react-router-dom";
@@ -93,6 +95,16 @@ const EditDiary = () => {
     navigate("/calendar", { replace: true });
   };
 
+  /* Cancel */
+  const handleCancel = () => {
+    if (
+      window.confirm(
+        "작성 중인 내용이 저장되지 않을 수 있습니다. 취소하시겠습니까?"
+      )
+    ) {
+      navigate(-1);
+    }
+  };
   return (
     <div className="EditDiary">
       <MyHeader
@@ -101,7 +113,7 @@ const EditDiary = () => {
         btn1Func={handleSubmit}
         btn2Type="short red"
         btn2Text="Cancel"
-        btn2Func={() => navigate(-1)}
+        btn2Func={handleCancel}
       />
       <section
         className={[
@@ -160,14 +172,9 @@ const EditDiary = () => {
               </div>
             </div>
             <Line weight={1} eachClassName="div_do ted_line"></Line>
-            <div className="input_content_wrapper" ref={contentRef}>
+            <div className="input_content_wrapper">
               {/* Add Content */}
-              <Editor
-                className="body2"
-                editorState={editorState}
-                onChange={setEditorState}
-                placeholder="Enter some text..."
-              />
+              <EditorContainer></EditorContainer>
             </div>
           </div>
           <div className="right_side"></div>
