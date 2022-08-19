@@ -5,6 +5,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Feedback from "./pages/Feedback";
 import EditDiary from "./pages/EditDiary";
+import Calendar from "./pages/Calendar";
 import React, { useReducer } from "react";
 
 const reducer = (state, action) => {
@@ -50,7 +51,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home></Home>}></Route>
             <Route path="/feedback" element={<Feedback></Feedback>}></Route>
-            <Route path="/editDiary" element={<EditDiary></EditDiary>}></Route>
+            <Route path="/editDiary/:date" element={<EditDiary></EditDiary>}></Route>
+            <Route path="/calendar" element={<Calendar></Calendar>}></Route>
           </Routes>
         </div>
       </BrowserRouter>

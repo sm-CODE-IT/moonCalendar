@@ -11,7 +11,6 @@ import React, {
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid' //기본 달력을 그리기 위한 플러그인 - 설치해야함!
 import interactionPlugin from '@fullcalendar/interaction' //이벤트,클릭,드래그 등의 기능을 이용하기 위한 플러그인
-import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 
 import MyButton from '../components/MyButton'
@@ -90,7 +89,7 @@ function Calendar() {
                 navigate(`./new/${dateClickInfo.dateStr}`)
               }
             }}*/
-              navigate(`/EditDiary/${dateClickInfo.dateStr}`)
+              navigate(`/editDiary/${dateClickInfo.dateStr}`)
             }}
             eventMouseEnter={mouseEnterInfo => {
               mouseEnterInfo.el.style.cssText =

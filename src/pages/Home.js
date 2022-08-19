@@ -33,7 +33,7 @@ const Home = () => {
         btn1Func={() => navigator("/feedback")}
         btn2Type="short"
         btn2Text="sign In"
-        btn2Func={(e) => alert("sign clicked")}
+        btn2Func={(e) => navigator("/calendar")}
       />
       <div
         className={[
