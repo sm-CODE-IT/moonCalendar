@@ -14,7 +14,7 @@ import WeatherItem from "../components/WeatherItem";
 import EditorContainer from "../components/EditorContainer";
 /* util */
 import useTheme from "../util/useTheme";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DiaryDispatchContext } from "../App";
 import { weatherList } from "../util/weatherList";
 import { Editor, EditorState } from "draft-js";
@@ -54,7 +54,8 @@ const EditDiary = () => {
 
   /* date */
   const startDateRef = useRef();
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(useParams());
+  const [year, month, day] = date.date.split("-");
 
   /* who */
   const whoRef = useRef();
@@ -72,7 +73,6 @@ const EditDiary = () => {
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
   );
-  console.log(editorState);
 
   /* Submit */
   const { onCreate } = useContext(DiaryDispatchContext);
@@ -137,12 +137,14 @@ const EditDiary = () => {
               <div className="date_wrapper">
                 <img src={calendarSrc} className="icon" />
                 <p className="body2">Date : </p>
-                <input
-                  type="date"
-                  className="info_short_ver body3 start_date"
-                  ref={startDateRef}
-                  onChange={(e) => setDate(e.target.value)}
-                />
+                <div className="info_short_ver body3 start_date">
+                  <span className="hand_write">{year}</span>
+                  <span className="default_write">년 </span>
+                  <span className="hand_write">{month}</span>
+                  <span className="default_write">월 </span>
+                  <span className="hand_write">{day}</span>
+                  <span className="default_write">일 </span>
+                </div>
               </div>
               <div className="who_wrapper">
                 <img src={personSrc} className="icon" />
