@@ -595,3 +595,424 @@ tbody {
   position: relative;
   height: 10rem;
 }
+/*PopupContent*/
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.3);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.popupbox {
+  display: flex;
+
+  position: relative;
+  z-index: 0;
+  width: 50rem;
+  height: 50rem;
+  background-color: var(--bg-color);
+  border: 1px solid #999;
+  border-radius: 4px;
+
+  animation: 0.4s ease-in-out 0s 1 normal forwards running cptskd;
+  box-shadow: rgb(0 0 0 / 9%) 0px 2px 12px 0px;
+}
+.popupbox_2 {
+  display: flex;
+
+  position: relative;
+  z-index: 3;
+  width: 90rem;
+  height: 50rem;
+  background-color: white;
+  opacity: 0.7;
+  border: 1px solid rgb(204, 202, 202);
+  border-radius: 30px;
+
+  animation: 0.4s ease-in-out 0s 1 normal forwards running cptskd;
+  box-shadow: rgb(0 0 0 / 9%) 0px 2px 12px 0px;
+}
+.popupbox_signup {
+  display: flex;
+
+  position: relative;
+  z-index: 3;
+  width: 90rem;
+  height: 50rem;
+  background-color: white;
+  opacity: 0.7;
+  border: 1px solid rgb(204, 202, 202);
+  border-radius: 30px;
+
+  animation: 0.4s ease-in-out 0s 1 normal forwards running cptskd;
+  box-shadow: rgb(0 0 0 / 9%) 0px 2px 12px 0px;
+}
+
+.signin_left {
+  width: 18rem;
+  height: 100%;
+  background: var(--bg-element2);
+  margin-right: 2rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin_left_2 {
+  width: 60rem;
+  height: 100%;
+
+  background: linear-gradient(var(--bg-color), transparent);
+  background-color: white; /*this your primary color*/
+  margin-right: 2rem;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgb(215, 213, 213);
+}
+.signup_left {
+  width: 60rem;
+  height: 100%;
+  /*background: linear-gradient(var(--bg-element2),transparent);*/
+
+  background: linear-gradient(var(--bg-color), transparent);
+  background-color: white; /*this your primary color*/
+  margin-right: 2rem;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgb(215, 213, 213);
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.signup_logo {
+  width: 3rem;
+  height: 3rem;
+}
+.animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.anima {
+  width: 100%;
+
+  overflow: hidden;
+}
+.signup_left {
+  width: 60rem;
+  height: 100%;
+  /*background: linear-gradient(var(--bg-element2),transparent);*/
+
+  background: linear-gradient(var(--bg-color), transparent);
+  background-color: white; /*this your primary color*/
+  margin-right: 2rem;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  background-color: rgb(215, 213, 213);
+}
+.content {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1.15rem;
+  font-weight: bold;
+  line-height: 1.7rem;
+  width: 19rem;
+  white-space: pre-wrap;
+  margin-top: 4rem;
+  margin-left: 20px;
+}
+
+.anima_back {
+  width: 20rem;
+  height: 20rem;
+  background: white;
+  border-radius: 20px;
+  background: linear-gradient(rgba(78, 77, 77, 0.5), transparent);
+  background-color: white; /*this your primary color*/
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+
+  display: flex;
+  justify-items: center;
+  align-content: center;
+}
+.signup_right {
+  background-color: transparent;
+
+  width: 24rem;
+  height: 90%;
+  margin-top: 4rem;
+
+  display: flex;
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-between;
+}
+.signin_right {
+  background-color: pink;
+
+  width: 26rem;
+  height: 90%;
+  margin-top: 4rem;
+
+  display: flex;
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-evenly;
+}
+
+/*.signin_right_3 {
+  position: relative;
+  width: 26rem;
+  height: 55rem;
+  margin: 0 auto;
+}*/
+.signin_right_3_test {
+  top: 5%;
+  left: 20%;
+  right: 20%;
+  position: absolute;
+
+  font-size: 30px;
+  width: 26rem;
+  height: 55rem;
+  border-radius: 30px;
+  z-index: 1;
+}
+#video {
+  z-index: 0;
+  opacity: 0.8;
+}
+.signin_right_32 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  border-radius: 10px;
+  padding-right: 15%;
+  padding-left: 15%;
+
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-evenly;
+
+  backdrop-filter: blur(40px);
+}
+
+.signin_3_bg_test {
+  display: flex;
+
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+/*backdrop-filter: blur(40px);*/
+
+.signin_3_bg {
+  background-image: url('//public/assets/calendar.7png');
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  justify-content: 'flex-end';
+}
+.signup_3_bg {
+  padding-top: 8rem;
+  top: 20%;
+  width: 100vw;
+  height: 120vh;
+  background-size: cover;
+}
+.signup_3_logo {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+}
+.Signup_3 {
+  transition: 3s;
+}
+.signup_right_3 {
+  position: relative;
+  width: 26rem;
+  height: 50rem;
+  margin: 0 auto;
+  top: 5%;
+  left: 20%;
+  right: 20%;
+  position: absolute;
+
+  font-size: 30px;
+  border-radius: 30px;
+  z-index: 1;
+}
+.signup_right_32 {
+  position: absolute;
+  z-index: 10000;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  backdrop-filter: blur(40px);
+  opacity: 0.8;
+  border-radius: 10px;
+  padding-right: 15%;
+  padding-left: 15%;
+
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-evenly;
+}
+
+.close {
+  position: absolute;
+  cursor: pointer;
+  border: 1px solid #999;
+  border-radius: 50%;
+  margin: 10px;
+  right: 0%;
+  top: 0%;
+}
+
+.signin_logo {
+  justify-content: flex-start;
+  align-items: center;
+
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*.signin_logo_2{
+  justify-content: flex-start;
+  align-items: center;
+  
+  z-index:1;
+  width: 40%;
+  height: auto;
+  display: block;
+ 
+  background-color: var(--bg-color);
+  border-radius: 20px;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+  
+}*/
+
+.signin_right {
+  background-image: url('//public/assets/calendar6.png');
+  height: 85%;
+  margin-top: 7rem;
+  background-color: transparent;
+
+  display: flex;
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-between;
+}
+
+.submit_signin {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: end;
+}
+
+.signin_right_signup {
+  width: 26rem;
+  height: 90%;
+  margin-top: 4rem;
+  background-color: var(--bg-color);
+
+  display: flex;
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-evenly;
+}
+.description {
+  margin-bottom: 10rem;
+}
+.footer_signup {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: end;
+}
+
+.or {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  bottom: 15%;
+  margin-top: 2rem;
+}
+.google {
+  margin-right: 5rem;
+}
+.signin {
+  bottom: 0;
+  flex-direction: end;
+}
+/*input*/
+
+.MyInput {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+
+  gap: 0.75rem;
+  padding: 0.625rem 0rem 0.625rem 0.625rem;
+  position: absolute;
+  box-sizing: border-box;
+  width: 26rem;
+  height: 3.75rem;
+
+  background-color: transparent;
+}
+.input {
+  margin-bottom: 2rem;
+}
+.MyInput_error {
+  border: 2px solid red;
+}
+
+.input_text {
+  margin: 0;
+}
+input:focus {
+  outline: none !important;
+  border-color: var(--system-blue);
+  box-shadow: 0 0 10px #719ece;
+}
+input:enabled {
+  color: pink;
+}
+input:disabled {
+  color: violet;
+}
