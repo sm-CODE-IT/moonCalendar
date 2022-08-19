@@ -212,10 +212,6 @@ const Home = () => {
             excepturi, officiis asperiores perferendis alias, assumenda nobis ab
             dolor esse quos! Natus quaerat nobis quae perferendis eius! <br />
             <br /> <br />
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa
-            delectus magni, accusamus officiis praesentium doloremque voluptatum
-            sapiente perspiciatis consectetur adipisci ullam velit inventore
-            libero nisi in recusandae? A, assumenda sit.
           </p>
         </div>
       </section>
