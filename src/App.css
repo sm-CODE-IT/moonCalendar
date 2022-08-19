@@ -1,4 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+/* full size */
+@media (max-width: 2140px) {
+  .Feedback .main_wrapper {
+    width: 70vw;
+  }
+  .EditDiary .left_side, .right_side {
+    width: 20vw;
+  }
+  .EditDiary .input {
+    width: 60vw;
+    padding: 1rem;
+  }
+}
+/* half size */
+@media (max-width: 1240px) {
+  .Feedback .main_wrapper {
+    width: 80vw;
+  }
+  .EditDiary .left_side, .right_side {
+    width: 15vw;
+  }
+  .EditDiary .input {
+    width: 70vw;
+    padding: 0.5rem;
+  }
+}
+/* quat size */
+@media (max-width: 640px) {
+  .Feedback .main_wrapper {
+    width: 90vw;
+  }
+  .EditDiary .left_side, .right_side {
+    display: none;
+  }
+  .EditDiary .input {
+    width: 80vw;
+  }
+}
 /* dark, light mode */
 :root, :root.light{
   --bg-color: #fff;
@@ -8,7 +46,9 @@
   --border-color:#363636;
   --btntxt-color:black;
   --btn-hoverColor: #ffc700;
-  --header-Color: #e0e0e0;
+  --header-color: #e0e0e0;
+  --shadow-color: #aaaaaa;
+  --toolbarBtn-color: #e0e0e0;
   --grayscale-gray1: #000000;
   --grayscale-gray2: #363636;
   --grayscale-gray3: #707070;
@@ -31,7 +71,9 @@
   --border-color:#e0e0e0;
   --btntxt-color:white;
   --btn-hoverColor: #42abbc;
-  --header-Color: #3d3d42;
+  --header-color: #3d3d42;
+  --shadow-color: #707070;
+  --toolbarBtn-color: #707070;
   --grayscale-gray1: #000000;
   --grayscale-gray2: #363636;
   --grayscale-gray3: #707070;
@@ -130,7 +172,6 @@ body {
 }
 .App{
   font-family: 'Nanum Myeongjo', serif;
-  height: 500vh;
   margin: 0;
 }
 /* MyHeader */
@@ -139,7 +180,7 @@ body {
   width: 100%;
   top: 0;
   border-bottom: 1px solid var(--line-color);
-  background-color: var(--header-Color);
+  background-color: var(--header-color);
 }
 /* MyHeader Scroll Event */
 .scroll_up {
@@ -150,6 +191,7 @@ body {
   transform: translateY(-100%); 
   transition: all 0.5s ease-in-out;
 }
+/* */
 .MyHeader .MyHeader_wrapper {
   display: flex;
   justify-content: space-around;
@@ -174,7 +216,8 @@ body {
 .MyHeader .head_btn_right2{
   margin-right:1rem;
 }
-/*  MyButton */
+/*  MyButton */ 
+/* type: default */
 .MyButton {
   cursor: pointer;
   border: none;
@@ -193,6 +236,11 @@ body {
   color: var(--btntxt-color);
   border:1px solid var(--border-color);
 }
+/* type: long */
+.long {
+  padding-left: 7vw;
+  padding-right: 7vw;
+}
 .MyButton:hover {
   background-color: var(--btn-hoverColor);
   transition: 0.5s;
@@ -200,8 +248,280 @@ body {
 /* MyFooter */
 .MyFooter {
   padding: 1rem;
-  background-color: var(--header-Color);
-  position: relative;
+  background-color: var(--header-color);
+  margin-top: 3rem;
+}
+/* Home */
+.Home .main {
+  margin-top: 15rem;
+  margin-left: 9vw;
+  margin-right: 9vw;
+}
+.Home .content {
+  margin-left: 8vw;
+  margin-right: 8vw;
+}
+.Home .home_background_wrapper {
+  background-image: url("../public/assets/background_2.jpg");
+  background-size: cover;
+  opacity: 0.2;
+  position: fixed;
+  top: 7.5rem;
   left: 0;
-  bottom: -500vh; /* body height -> how handle */
+  right: 0;
+  bottom: 0;
+}
+.Home .home_background_wrapper {
+  background-image: url("../public/assets/background_2.jpg");
+  background-size: cover;
+  opacity: 0.2;
+  transition: all 0.5s ease-in-out;
+}
+.Home .background_scroll_up {
+  position: fixed;
+  top: 7.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.Home .background_scroll_down {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.Home .home_line {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+/* Feedback */
+.Feedback .main_wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+.Feedback .main {
+  /* background-color: var(--system-red); */
+  margin-top: 10rem;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+.Feedback .comment {
+  margin-bottom: 4rem;
+}
+.Feedback .alert {
+  color: var(--system-red);
+}
+.Feedback .input_box_wrapper {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-bottom: 6rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Feedback .input_box_one, .input_box_four {
+  padding: 0.5rem;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 20px;
+  margin-bottom: 2rem;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 50px;
+  border-radius: 5px;
+
+  white-space: nowrap;
+  box-shadow: 3px 3px 2px var(--shadow-color);
+}
+.Feedback .input_box_two {
+  padding: 0.75rem;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 20px;
+  margin-bottom: 2rem;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 10px;
+
+  white-space: wrap;
+  box-shadow: 4px 4px 5px var(--shadow-color);
+}
+.Feedback .input_three {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Feedback .plus_button_wrapper {
+  width: 100px;
+  height: 100px;
+  border: 2px dotted var(--line-color);
+  border-radius: 10px;
+  cursor: pointer;
+
+  position: relative;
+}
+.Feedback .plus_button {
+  margin: 10px;
+  width: 80%;
+  height: 80%;
+
+  object-fit: contain;
+}
+.Feedback .myButton_wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Feedback #file_input {
+  display: none;
+}
+/* EditDiary */
+.EditDiary .main_wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+.EditDiary .background_scroll_up {
+  position: absolute;
+  top: 7.6rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.EditDiary .background_scroll_down {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.EditDiary .date_wrapper, .who_wrapper, .weather_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+.EditDiary .icon {
+  width: 32px;
+  height: auto;
+}
+.EditDiary .info_short_ver {
+  font-family: 'Nanum Myeongjo', serif;
+  border-radius: 5px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: none;
+  transition: 1s;
+}
+.EditDiary .MyHeader .red {
+  background-color: var(--system-red);
+}
+.dark ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+.light ::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+}
+.EditDiary .weather_icons_wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 2%;
+}
+.EditDiary .input {
+  margin: 1rem;
+  border: none;
+  background-color: var(--bg-color);
+  color: var(--btntxt-color);
+  transition: 1s;
+}
+.EditDiary .input:focus {
+  outline: none;
+}
+.EditDiary .input_content {
+  box-sizing:content-box;
+  min-height: 80vh;
+  resize: vertical;
+
+  white-space: wrap;
+}
+.EditDiary .diary_info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  
+}
+/* toolbar option */
+.EditDiary .editor {
+  color: var(--btntxt-color);
+}
+.EditDiary .toolbar_class {
+  background-color: var(--bg-color);
+  border: none;
+  transition: 1s;
+  margin-top: 0.5rem;
+}
+.EditDiary .rdw-dropdown-wrapper {
+  border: 1px solid var(--btntxt-color);
+  border-radius: 5px;
+  background: var(--toolbarBtn-color);
+  color: black;
+  transition: 0.5s;
+}
+.EditDiary .rdw-dropdown-wrapper:focus {
+  outline: none;
+}
+.EditDiary .rdw-dropdown-wrapper:hover {
+  box-shadow: 1px 1px 0px #BFBDBD;
+  background-color: var(--btn-hoverColor);
+}
+.EditDiary .rdw-option-wrapper {
+  border: 1px solid var(--btntxt-color);
+  border-radius: 5px;
+  background: var(--toolbarBtn-color);
+  color: var(--btntxt-color);
+  transition: 0.5s;
+}
+.EditDiary .rdw-option-wrapper:focus {
+  outline: none;
+}
+.EditDiary .rdw-option-wrapper:hover {
+  box-shadow: 1px 1px 0px #BFBDBD;
+  background-color: var(--btn-hoverColor);
+}
+.EditDiary .editor_class {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+/* WeatherItem */
+.WeatherItem {
+  cursor: pointer;
+
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.WeatherItem_icon_on {
+  background-color: var(--btn-hoverColor);
+  border-radius: 50%;
+}
+.WeatherItem:hover {
+  background-color: var(--btn-hoverColor);
+  border-radius: 50%;
+}
+.WeatherItem .weather_icon {
+  width: 30%;
+  object-fit: cover;
 }

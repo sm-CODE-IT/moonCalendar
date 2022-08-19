@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 /* util */
 import useTheme from "../util/useTheme";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const MyHeader = ({
+export const MyHeader = ({
   btn1Type,
   btn1Text,
   btn1Func,
@@ -75,7 +75,7 @@ const MyHeader = ({
               className="button"
               type={btn1Type}
               text={btn1Text}
-              onClick={() => alert("navigate('feedback')")}
+              onClick={btn1Func}
             />
           </div>
           <div className="head_btn_right3">
@@ -83,7 +83,7 @@ const MyHeader = ({
               className="button"
               type={btn2Type}
               text={btn2Text}
-              onClick={() => alert("navigate('sign')")}
+              onClick={btn2Func}
             />
           </div>
         </div>
