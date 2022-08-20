@@ -6,9 +6,9 @@ import MyFooter from "../components/MyFooter";
 
 /* util */
 import useTheme from "../util/useTheme";
-
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
 
 const Feedback = () => {
   /* for Plus button color */
@@ -59,6 +59,27 @@ const Feedback = () => {
       navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
     }
   };
+
+  /* axios */
+  const axios = require('axios');
+
+  const getTemp = async () => {
+    try {
+      return await axios.get('https://localhost:8080/feedback');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const temp = async () => {
+    const breeds = await getTemp();
+    
+    console.log(temp);
+    console.log(breeds);
+  }
+
+  temp();
+
 
   return (
     <div className="Feedback">
@@ -138,6 +159,7 @@ const Feedback = () => {
           </div>
         </div>
       </div>
+      <MyButton text="axios" type="long" onClick={getTemp}></MyButton>
       <MyFooter></MyFooter>
     </div>
   );

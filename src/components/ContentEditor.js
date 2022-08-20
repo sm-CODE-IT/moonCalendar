@@ -1,8 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
+/* components */
+import MyHeader from "./MyHeader";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { stateToHTML } from "draft-js-export-html";
 import { stateFromHTML } from "draft-js-import-html";
+import { DiaryDispatchContext } from "../App";
+import { useNavigate } from "react-router-dom";
+
 
 function uploadImageCallBack(file) {
   return new Promise((resolve, reject) => {
@@ -37,6 +42,7 @@ class ContentEditor extends Component {
       editorState,
     });
   };
+
   exportHTML = () => {
     this.setState({
       convertedContent: stateToHTML(this.state.editorState.getCurrentContent()),
@@ -55,10 +61,50 @@ class ContentEditor extends Component {
     );
   };
 
+   
+  //   /* Submit */
+  
+  // const handleSubmit = () => {
+  //   if (title.length < 1) {
+  //     titleRef.current.focus();
+  //     return;
+  //   }
+
+  //   if (content.length < 1) {
+  //     contentRef.current.focus();
+  //     return;
+  //   }
+
+  //   if (window.confirm("작성을 완료하시겠습니까?")) {
+  //     onCreate(title, date, who, weather, content);
+  //   }
+
+  //   navigate("/calendar", { replace: true });
+  // };
+
+  // /* Cancel */
+  // const handleCancel = () => {
+  //   if (
+  //     window.confirm(
+  //       "작성 중인 내용이 저장되지 않을 수 있습니다. 취소하시겠습니까?"
+  //     )
+  //   ) {
+  //     navigate(-1);
+  //   }
+  // };
+  // }
+
+  // handleSubmit() {
+  //   const title = this.props.title;
+  //   console.log(title);
+  // }
+
   render() {
+    
     const { editorState } = this.state;
     return (
       <div className="EditorContainer">
+        
         <div className="editor">
           <Editor
             editorState={editorState}
@@ -99,7 +145,7 @@ class ContentEditor extends Component {
         />
       </div>
     );
-  }
+  };
 }
 
 export default ContentEditor;

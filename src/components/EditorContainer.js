@@ -15,7 +15,7 @@ import ContentEditor from "../components/ContentEditor";
 /* util */
 import useTheme from "../util/useTheme";
 import { useNavigate, useParams } from "react-router-dom";
-import { DiaryDispatchContext } from "../App";
+
 import { weatherList } from "../util/weatherList";
 // import { EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
@@ -31,6 +31,11 @@ const EditorContainer = () => {
     setisTopZero(prevScrollPos <= currentScrollPos);
     setPrevScrollPos(currentScrollPos);
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, isTopZero, handleScroll]);
 
   const navigate = useNavigate();
   //   /* icon */
@@ -49,7 +54,6 @@ const EditorContainer = () => {
   const [title, setTitle] = useState("");
 
   /* date */
-  const startDateRef = useRef();
   const [date, setDate] = useState(useParams());
   const [year, month, day] = date.date.split("-");
 
@@ -67,52 +71,15 @@ const EditorContainer = () => {
   const contentRef = useRef();
   const [content, setContent] = useState("");
 
-  /* Submit */
-  const { onCreate } = useContext(DiaryDispatchContext);
-  const handleSubmit = () => {
-    if (title.length < 1) {
-      titleRef.current.focus();
-      return;
-    }
-
-    if (content.length < 1) {
-      contentRef.current.focus();
-      return;
-    }
-
-    if (window.confirm("작성을 완료하시겠습니까?")) {
-      onCreate(title, date, who, weather, content);
-    }
-
-    navigate("/calendar", { replace: true });
-  };
-
-  /* Cancel */
-  const handleCancel = () => {
-    if (
-      window.confirm(
-        "작성 중인 내용이 저장되지 않을 수 있습니다. 취소하시겠습니까?"
-      )
-    ) {
-      navigate(-1);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, isTopZero, handleScroll]);
-  console.log(title, date, who, weather);
-
   return (
     <div className="EditorContainer">
       <MyHeader
         btn1Type="short"
         btn1Text="Submit"
-        btn1Func={handleSubmit}
+        btn1Func={() => {}}
         btn2Type="short red"
         btn2Text="Cancel"
-        btn2Func={handleCancel}
+        btn2Func={() => {}}
       />
       <section
         className={[
@@ -181,7 +148,8 @@ const EditorContainer = () => {
               {/* eidtor */}
               <div className="editor">
                 {/* Add Content */}
-                <ContentEditor></ContentEditor>
+                {/* console.log(title, date, who, weather); */}
+                <ContentEditor title={title} date={date} who={who} weather={weather}></ContentEditor>
               </div>
             </div>
           </div>
