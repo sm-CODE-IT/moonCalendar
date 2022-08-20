@@ -1,3 +1,4 @@
+import ".././css/Home.css";
 /* components */
 import MyFooter from "../components/MyFooter";
 import MyHeader from "../components/MyHeader";

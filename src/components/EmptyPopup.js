@@ -1,4 +1,4 @@
-import ".././css/EmptyPopup.css";
+import ".././css/EditDiary.css";
 import { useState } from "react";
 import { AnimateSharedLayout, motion } from "framer-motion";
 

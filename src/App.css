@@ -251,50 +251,7 @@ body {
   background-color: var(--header-color);
   margin-top: 3rem;
 }
-/* Home */
-.Home .main {
-  margin-top: 15rem;
-  margin-left: 9vw;
-  margin-right: 9vw;
-}
-.Home .content {
-  margin-left: 8vw;
-  margin-right: 8vw;
-}
-.Home .home_background_wrapper {
-  background-image: url("../public/assets/background_2.jpg");
-  background-size: cover;
-  opacity: 0.2;
-  position: fixed;
-  top: 7.5rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.Home .home_background_wrapper {
-  background-image: url("../public/assets/background_2.jpg");
-  background-size: cover;
-  opacity: 0.2;
-  transition: all 0.5s ease-in-out;
-}
-.Home .background_scroll_up {
-  position: fixed;
-  top: 7.5rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.Home .background_scroll_down {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.Home .home_line {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+
 /* Feedback */
 .Feedback .main_wrapper {
   margin-left: auto;

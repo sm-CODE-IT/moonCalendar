@@ -1,3 +1,4 @@
+import "../css/Feedback.css";
 /* components */
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
@@ -8,7 +9,6 @@ import MyFooter from "../components/MyFooter";
 import useTheme from "../util/useTheme";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
 
 const Feedback = () => {
   /* for Plus button color */
@@ -73,13 +73,12 @@ const Feedback = () => {
 
   // const temp = async () => {
   //   const breeds = await getTemp();
-    
+
   //   console.log(temp);
   //   console.log(breeds);
   // }
 
   // temp();
-
 
   return (
     <div className="Feedback">
