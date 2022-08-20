@@ -60,25 +60,25 @@ const Feedback = () => {
     }
   };
 
-  /* axios */
-  const axios = require('axios');
+  // /* axios */
+  // const axios = require('axios');
 
-  const getTemp = async () => {
-    try {
-      return await axios.get('https://localhost:8080/feedback');
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  // const getTemp = async () => {
+  //   try {
+  //     return await axios.get('https://localhost:8080/feedback');
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
-  const temp = async () => {
-    const breeds = await getTemp();
+  // const temp = async () => {
+  //   const breeds = await getTemp();
     
-    console.log(temp);
-    console.log(breeds);
-  }
+  //   console.log(temp);
+  //   console.log(breeds);
+  // }
 
-  temp();
+  // temp();
 
 
   return (
@@ -159,7 +159,6 @@ const Feedback = () => {
           </div>
         </div>
       </div>
-      <MyButton text="axios" type="long" onClick={getTemp}></MyButton>
       <MyFooter></MyFooter>
     </div>
   );
