@@ -1,0 +1,52 @@
+.FinDiary .main_wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+.FinDiary .background_scroll_up {
+    position: absolute;
+    top: 7.6rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.FinDiary .background_scroll_down {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.EditDiary .date_wrapper, .EditDiary .who_wrapper, .EditDiary .weather_wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+.EditDiary .icon {
+    width: 32px;
+    height: auto;
+}
+.EditDiary .info_short_ver {
+    font-family: 'Nanum Myeongjo', serif;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: none;
+    transition: 1s;
+}
+.EditDiary .MyHeader .red {
+    background-color: var(--system-red);
+}
+.dark ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+.light ::-webkit-calendar-picker-indicator {
+    filter: invert(0);
+}
+.EditDiary .weather_icons_wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 2%;
+}
