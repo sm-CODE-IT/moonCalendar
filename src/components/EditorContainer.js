@@ -5,6 +5,7 @@ import React, {
   useContext,
   useCallback,
 } from "react";
+import { DiaryDispatchContext } from "../App";
 // import ReactDOM from "react-dom";
 /* components */
 import { MyHeader } from "../components/MyHeader";
@@ -12,6 +13,7 @@ import MyFooter from "../components/MyFooter";
 import Line from "../components/Line";
 import WeatherItem from "../components/WeatherItem";
 import ContentEditor from "../components/ContentEditor";
+import EmptyPopup from "./EmptyPopup";
 /* util */
 import useTheme from "../util/useTheme";
 import { useNavigate, useParams } from "react-router-dom";
@@ -62,24 +64,66 @@ const EditorContainer = () => {
   const [who, setWho] = useState("");
 
   /* weather */
-  const [weather, setWeather] = useState(1);
-  const handleRemote = useCallback((weather) => {
-    setWeather(weather);
+  const [weather_id, setWeather] = useState(1);
+  const handleRemote = useCallback((weather_id) => {
+    setWeather(weather_id);
   }, []);
 
   /* total content */
   const contentRef = useRef();
   const [content, setContent] = useState("");
 
+  /* Submit Button */
+  const { onCreate } = useContext(DiaryDispatchContext);
+  const [visibility, setVisibility] = useState("hidden");
+  const [emptyCus, setEmptyCus] = useState("");
+  const [wantSave, setWantSave] = useState(false);
+  const handleSubmit = () => {
+    if (title < 1) {
+      setEmptyCus("Title");
+      setVisibility("visible");
+      return;
+    }
+
+    if (content === "<p><br></p>") {
+      setEmptyCus("content");
+      setVisibility("visible");
+      return;
+    }
+
+    if (window.confirm("저장하시겠습니까?")) {
+      onCreate(title, date, who, weather_id, content);
+    }
+
+    navigate("/calendar", { replace: true });
+  };
+
+  // useEffect(() => {
+  //   if (content) {
+  //     setContent(content);
+  //   }
+  // }, [content]);
+
+  /* Cancel Button */
+  const handleCancel = () => {
+    if (
+      window.confirm(
+        "취소하시면 작성 중인 내용이 저장되지 않을 수 있습니다.\n취소하시겠습니까?"
+      )
+    ) {
+      navigate(-1);
+    }
+  };
+
   return (
     <div className="EditorContainer">
       <MyHeader
         btn1Type="short"
         btn1Text="Submit"
-        btn1Func={() => {}}
+        btn1Func={handleSubmit}
         btn2Type="short red"
         btn2Text="Cancel"
-        btn2Func={() => {}}
+        btn2Func={handleCancel}
       />
       <section
         className={[
@@ -137,7 +181,7 @@ const EditorContainer = () => {
                       key={it.weather_id}
                       {...it}
                       onClick={handleRemote}
-                      isSelected={it.weather_id === weather}
+                      isSelected={it.weather_id === weather_id}
                     ></WeatherItem>
                   ))}
                 </div>
@@ -149,11 +193,25 @@ const EditorContainer = () => {
               <div className="editor">
                 {/* Add Content */}
                 {/* console.log(title, date, who, weather); */}
-                <ContentEditor title={title} date={date} who={who} weather={weather}></ContentEditor>
+                <ContentEditor
+                  content={content}
+                  setContent={setContent}
+                ></ContentEditor>
               </div>
             </div>
           </div>
           <div className="right_side"></div>
+        </div>
+        <div className="popup_wrapper">
+          {visibility === "visible" ? (
+            <EmptyPopup
+              emptyCus={emptyCus}
+              visibility={visibility}
+              setVisibility={setVisibility}
+            ></EmptyPopup>
+          ) : (
+            <></>
+          )}
         </div>
       </section>
     </div>

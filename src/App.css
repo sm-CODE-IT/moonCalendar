@@ -500,6 +500,10 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+.EditDiary .popup_wrapper {
+  display: flex;
+  justify-content: center;
+}
 /* WeatherItem */
 .WeatherItem {
   cursor: pointer;
