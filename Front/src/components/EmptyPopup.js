@@ -1,4 +1,4 @@
-import "../css/EditDiary.css";
+import "../css/NewDiary.css";
 import { useState } from "react";
 import { AnimateSharedLayout, motion } from "framer-motion";
 

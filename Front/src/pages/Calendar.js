@@ -71,7 +71,7 @@ function Calendar() {
       />
 
       <section className="calendar">
-        <button onClick={() => navigate(`/finDiary/2022-08-05`)}>
+        <button onClick={() => navigate(`/finDiary/2022-08-02`)}>
           goDetail
         </button>
         <Line weight={5} style={{ margin: 20 }}></Line>
@@ -92,7 +92,7 @@ function Calendar() {
                 navigate(`./new/${dateClickInfo.dateStr}`)
               }
             }}*/
-              navigate(`/editDiary/${dateClickInfo.dateStr}`);
+              navigate(`/NewDiary/${dateClickInfo.dateStr}`);
             }}
             eventMouseEnter={(mouseEnterInfo) => {
               mouseEnterInfo.el.style.cssText =

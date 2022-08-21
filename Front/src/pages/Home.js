@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const navigator = useNavigate();
+  const navigate = useNavigate();
   /* for scroll */
   /* when scroll up -> show Header */
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -31,10 +31,10 @@ const Home = () => {
       <MyHeader
         btn1Type="short"
         btn1Text="Feedback"
-        btn1Func={() => navigator("/feedback")}
+        btn1Func={() => navigate("/feedback")}
         btn2Type="short"
         btn2Text="sign In"
-        btn2Func={(e) => navigator("/calendar")}
+        btn2Func={(e) => navigate("/calendar")}
       />
       <div
         className={[

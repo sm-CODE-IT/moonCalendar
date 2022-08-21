@@ -5,12 +5,15 @@ import { DiaryStateContext } from "../App";
 /* components */
 import MyHeader from ".././components/MyHeader";
 import Line from "../components/Line";
+import EditorDiary from "../components/EditorContainer";
 /* utils */
 import { weatherList } from "../util/weatherList";
+import { DiaryDispatchContext } from ".././App";
 
 const FinDiary = () => {
   const { date } = useParams();
   const diaryList = useContext(DiaryStateContext);
+  const { onRemove } = useContext(DiaryDispatchContext);
   const navigate = useNavigate();
 
   /* find target diary */
@@ -26,8 +29,7 @@ const FinDiary = () => {
         navigate("/calendar", { replace: true });
       }
     }
-  }, [data, date, diaryList.length]);
-  console.log(data);
+  }, [data, diaryList.length]);
 
   /* for scroll */
   /* when scroll up -> show Header */
@@ -56,13 +58,12 @@ const FinDiary = () => {
   const weatherSrc =
     process.env.PUBLIC_URL + `/assets/${themeMode}WeatherIcon.png`;
 
-    
   if (!data) {
     return <div className="DiaryPage">로딩중입니다,,,</div>;
   } else {
     const curWeatherData = weatherList.find(
       (it) => parseInt(it.weather_id) === parseInt(data.weather)
-      );
+    );
     /* date */
     const dateStr = data.date;
     const [year, month, day] = dateStr.split("-");
@@ -70,15 +71,23 @@ const FinDiary = () => {
     /* content */
     const contentHTML = data.content;
 
+    /* Delete */
+    const handleRemove = () => {
+      if (window.confirm("정말 삭제하시겠습니까?")) {
+        onRemove(data.date);
+        navigate("/calendar", { replace: true });
+      }
+    };
+
     return (
       <div className="FinDiary">
         <MyHeader
           btn1Type="short"
           btn1Text="Edit"
-          btn1Func={() => alert(`./editDiary:${date}`)}
+          btn1Func={() => navigate(`/editDiary/${data.date}`)}
           btn2Type="short red"
           btn2Text="Delete"
-          btn2Func={() => alert("delete")}
+          btn2Func={handleRemove}
         ></MyHeader>
         <section
           className={[
@@ -124,7 +133,6 @@ const FinDiary = () => {
                     <div className="img_wrapper">
                       <img src={curWeatherData.weather_img} alt="" />
                     </div>
-                    
                   </div>
                 </div>
               </div>
@@ -133,13 +141,17 @@ const FinDiary = () => {
                 {/* eidtor */}
                 <div className="editor">
                   {/* Add Content */}
-                  <div className="content_wrapper" dangerouslySetInnerHTML={{ __html: contentHTML }} ></div>
+                  <div
+                    className="content_wrapper"
+                    dangerouslySetInnerHTML={{ __html: contentHTML }}
+                  ></div>
                 </div>
               </div>
             </div>
             <div className="right_side"></div>
           </div>
         </section>
+        {/* {data && <EditorDiary isEdit={true} data={data}></EditorDiary>} */}
       </div>
     );
   }

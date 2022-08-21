@@ -22,7 +22,7 @@ import { weatherList } from "../util/weatherList";
 // import { EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
 
-const EditorContainer = () => {
+const EditorContainer = ({ isEdit, originData }) => {
   /* for scroll */
   /* when scroll up -> show Header */
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -75,7 +75,7 @@ const EditorContainer = () => {
   const [content, setContent] = useState("");
 
   /* Submit Button */
-  const { onCreate } = useContext(DiaryDispatchContext);
+  const { onCreate, onRemove, onEdit } = useContext(DiaryDispatchContext);
   const [visibility, setVisibility] = useState("hidden");
   const [emptyCus, setEmptyCus] = useState("");
   const handleSubmit = () => {
@@ -91,10 +91,24 @@ const EditorContainer = () => {
       return;
     }
 
-    if (window.confirm("저장하시겠습니까?")) {
+    // if (
+    //   window.confirm(
+    //     isEdit
+    //       ? "새로운 일기 작성을 완료하시겠습니까?"
+    //       : "수정을 완료하시겠습니까?"
+    //   )
+    // ) {
+    //   if (!isEdit) {
+    //     onCreate(title, date, who, weather_id, content);
+    //     navigate("/calendar", { replace: true });
+    //   } else {
+    //     onEdit(title, date, who, weather_id, content);
+    //     navigate(`/finDiary/${date}`, { replace: true });
+    //   }
+    // }
+    if (window.confirm("저장?")) {
       onCreate(title, date, who, weather_id, content);
     }
-
     navigate("/calendar", { replace: true });
   };
 
@@ -114,6 +128,17 @@ const EditorContainer = () => {
       navigate(-1);
     }
   };
+
+  /* 수정 중이라면 기본 정보 셋업 */
+  useEffect(() => {
+    if (isEdit) {
+      setTitle(originData.title);
+      setWho(originData.who);
+      setWeather(originData.weather);
+      setContent(originData.content);
+    }
+  }, [isEdit, originData]);
+  console.log("EditorContainer", content);
 
   return (
     <div className="EditorContainer">
@@ -194,6 +219,7 @@ const EditorContainer = () => {
                 {/* Add Content */}
                 {/* console.log(title, date, who, weather); */}
                 <ContentEditor
+                  isEdit={isEdit}
                   content={content}
                   setContent={setContent}
                 ></ContentEditor>

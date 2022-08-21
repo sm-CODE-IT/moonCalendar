@@ -62,27 +62,101 @@ const Feedback = () => {
 
   /* axios */
   const axios = require("axios");
+  // 1
+  axios.defaults.withCredentials = true;
+  const data = {
+    id: 1,
+    title: "error",
+    contents: ",,,,,",
+    email: "sk@sample.com",
+    read_cnt: 0,
+  };
+  // const headers = {};
+  // async function samplePost() {
+  //   const response = await axios.post(
+  //     "http://localhost:8080/feedback",
+  //     data,
+  //     headers
+  //   );
+  //   return response;
+  // }
+  // samplePost();
 
-  let sample
+  //2
   function componentDidMount() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/comments")
-      .then((response) => {console.log(response.data.length)
-      sample = response.data});
+    axios({
+      url: "/feedback",
+      method: "post",
+
+      // 배포 과정에서 아래 두줄은 주석처리 해야됨.
+      baseURL: "http://localhost:8080",
+      withCredentials: true,
+    }).then(function (response) {
+      console.log(response);
+    });
   }
   componentDidMount();
-  console.log("sample", sample);
+
+  //3
+  // function testAxios() {
+  //   axios({
+  //     url: "/feedback",
+  //     method: "post",
+  //     data: {
+  //       id: "sample",
+  //       title: "error",
+  //       contents: ",,,,,",
+  //       email: "sk@sample.com",
+  //       read_cnt: 0,
+  //     },
+
+  //     baseURL: "http://localhost:8080",
+  //     //withCredentials: true,
+  //   }).then(function (response) {
+  //     console.log(response.data);
+  //   });
+  // }
+  // testAxios();
+
+  //4
+  // const EMPLOYEE_API_BASE_URL = "http://localhost:8080/feedback";
+  // axios.get(EMPLOYEE_API_BASE_URL).then(function (response) {
+  //   console.log(response);
+  // });
+
+  //5
+  // function constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     id: "",
+  //     title: "",
+  //     contents: "",
+  //     email: "",
+  //     read_cnt: "",
+  //   };
+  // }
+
+  // function componentDidMount() {
+  //   console.log("componentDidMount");
+  //   axios.get("http://localhost:8080/feedback").then((response) => {
+  //     console.log(response.data);
+  //   });
+  // }
+  // componentDidMount();
+
+  // 6
 
   return (
     <div className="Feedback">
       <MyHeader
         btn1Type="short"
         btn1Text="Feedback"
-        btn1Func={() => navigator("/feedback")}
+        btn1Func={() => navigate("/feedback")}
         btn2Type="short"
         btn2Text="sign In"
         btn2Func={(e) => alert("sign clicked")}
       />
+
       <div className="main_wrapper">
         <div className="main">
           <div className="comment">

@@ -1,7 +1,7 @@
 import React, { Component, useContext } from "react";
 /* components */
 import MyHeader from "./MyHeader";
-import { EditorState } from "draft-js";
+import { EditorState, ContentState, convertFromRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { stateToHTML } from "draft-js-export-html";
 import { stateFromHTML } from "draft-js-import-html";
@@ -30,9 +30,17 @@ function uploadImageCallBack(file) {
 class ContentEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      editorState: EditorState.createEmpty(),
-    };
+    if (!this.props.isEdit) {
+      this.state = {
+        editorState: EditorState.createEmpty(),
+      };
+    } else {
+      this.state = {
+        editorState: EditorState.createWithContent(
+          ContentState.createFromText(this.props.content)
+        ),
+      };
+    }
   }
 
   onEditorStateChange: Function = (editorState) => {
@@ -63,6 +71,7 @@ class ContentEditor extends Component {
 
   render() {
     const { editorState } = this.state;
+    console.log(this.props.content);
     let contentState = stateToHTML(this.state.editorState.getCurrentContent());
     this.props.setContent(contentState);
 
@@ -73,6 +82,7 @@ class ContentEditor extends Component {
       .keySeq()
       .findIndex((k) => k === currentBlockKey);
     // console.log(currentBlockIndex);
+    console.log(this.props.content);
     return (
       <div className="EditorContainer">
         <div className="editor">
