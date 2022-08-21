@@ -56,16 +56,19 @@ const FinDiary = () => {
   const weatherSrc =
     process.env.PUBLIC_URL + `/assets/${themeMode}WeatherIcon.png`;
 
-  /* date */
-  console.log(typeof data.date);
-  const [year, month, day] = data.date.split("-");
-
+    
   if (!data) {
     return <div className="DiaryPage">로딩중입니다,,,</div>;
   } else {
     const curWeatherData = weatherList.find(
       (it) => parseInt(it.weather_id) === parseInt(data.weather)
-    );
+      );
+    /* date */
+    const dateStr = data.date;
+    const [year, month, day] = dateStr.split("-");
+
+    /* content */
+    const contentHTML = data.content;
 
     return (
       <div className="FinDiary">
@@ -95,7 +98,7 @@ const FinDiary = () => {
                 <div className="date_wrapper">
                   <img src={calendarSrc} className="icon" />
                   <p className="body2">Date : </p>
-                  <div className="info_short_ver body3 start_date">
+                  <div className="info_short_ver body3">
                     <span className="body3">{year}</span>
                     <span className="body3">년 </span>
                     <span className="body3">{month}</span>
@@ -115,7 +118,13 @@ const FinDiary = () => {
                   <img src={weatherSrc} className="icon" />
                   <p className="body2">Weather : </p>
                   <div className="weather_icons_wrapper">
-                    <img src={curWeatherData.weather_img} alt="" />
+                    <div className="descript_wrapper">
+                      <p className="body2">{curWeatherData.weather_descript}</p>
+                    </div>
+                    <div className="img_wrapper">
+                      <img src={curWeatherData.weather_img} alt="" />
+                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -124,7 +133,7 @@ const FinDiary = () => {
                 {/* eidtor */}
                 <div className="editor">
                   {/* Add Content */}
-                  {/* content 들어가는 자리 */}
+                  <div className="content_wrapper" dangerouslySetInnerHTML={{ __html: contentHTML }} ></div>
                 </div>
               </div>
             </div>

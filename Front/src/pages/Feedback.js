@@ -63,11 +63,15 @@ const Feedback = () => {
   /* axios */
   const axios = require("axios");
 
+  let sample
   function componentDidMount() {
     axios
-      .get("http://localhost:8080/feedback")
-      .then((response) => console.log(response.data));
+      .get("https://jsonplaceholder.typicode.com/comments")
+      .then((response) => {console.log(response.data.length)
+      sample = response.data});
   }
+  componentDidMount();
+  console.log("sample", sample);
 
   return (
     <div className="Feedback">

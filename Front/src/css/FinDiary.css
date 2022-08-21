@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    transition: all 0.5s ease-in-out;
+    /* transition: all 0.5s ease-in-out; */
 }
 .FinDiary .background_scroll_up {
     position: absolute;
@@ -18,17 +18,33 @@
     right: 0;
     bottom: 0;
 }
-.EditDiary .date_wrapper, .EditDiary .who_wrapper, .EditDiary .weather_wrapper {
+.FinDiary .date_wrapper, .FinDiary .who_wrapper, .FinDiary .weather_wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
 }
-.EditDiary .icon {
+.FinDiary .icon {
     width: 32px;
     height: auto;
 }
-.EditDiary .info_short_ver {
+.FinDiary .weather_icons_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.FinDiary .descript_wrapper {
+    margin-right: 0.5rem;
+}
+.FinDiary .weather_icons_wrapper img{
+    width: 28px;
+    height: auto;
+    object-fit: cover;
+}
+.FinDiary .input_title_wrapper {
+    padding: 1rem;
+}
+.FinDiary .info_short_ver {
     font-family: 'Nanum Myeongjo', serif;
     border-radius: 5px;
     background-color: var(--bg-color);
@@ -36,7 +52,7 @@
     border: none;
     transition: 1s;
 }
-.EditDiary .MyHeader .red {
+.FinDiary .MyHeader .red {
     background-color: var(--system-red);
 }
 .dark ::-webkit-calendar-picker-indicator {
@@ -45,8 +61,6 @@
 .light ::-webkit-calendar-picker-indicator {
     filter: invert(0);
 }
-.EditDiary .weather_icons_wrapper {
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    gap: 2%;
+.FinDiary .content_wrapper {
+    padding: 1rem;
 }
