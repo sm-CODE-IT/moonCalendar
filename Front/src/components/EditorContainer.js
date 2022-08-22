@@ -26,11 +26,11 @@ const EditorContainer = ({ isEdit, originData }) => {
   /* for scroll */
   /* when scroll up -> show Header */
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [isTopZero, setisTopZero] = useState(false);
+  const [isTopZero, setIsTopZero] = useState(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
-    setisTopZero(prevScrollPos <= currentScrollPos);
+    setIsTopZero(prevScrollPos <= currentScrollPos);
     setPrevScrollPos(currentScrollPos);
   };
 
@@ -91,32 +91,29 @@ const EditorContainer = ({ isEdit, originData }) => {
       return;
     }
 
-    // if (
-    //   window.confirm(
-    //     isEdit
-    //       ? "새로운 일기 작성을 완료하시겠습니까?"
-    //       : "수정을 완료하시겠습니까?"
-    //   )
-    // ) {
-    //   if (!isEdit) {
-    //     onCreate(title, date, who, weather_id, content);
-    //     navigate("/calendar", { replace: true });
-    //   } else {
-    //     onEdit(title, date, who, weather_id, content);
-    //     navigate(`/finDiary/${date}`, { replace: true });
-    //   }
-    // }
-    if (window.confirm("저장?")) {
-      onCreate(title, date, who, weather_id, content);
+    if (
+      window.confirm(
+        isEdit
+          ? "수정을 완료하시겠습니까?"
+          : "새로운 일기 작성을 완료하시겠습니까?"
+      )
+    ) {
+      if (!isEdit) {
+        onCreate(title, date, who, weather_id, content);
+        navigate("/calendar", { replace: true });
+      } else {
+        console.log(content);
+        onEdit(title, date, who, weather_id, content);
+        navigate(`/finDiary/${date}`, { replace: true });
+      }
     }
-    navigate("/calendar", { replace: true });
   };
 
   // useEffect(() => {
-  //   if (content) {
+  //   if (isEdit) {
   //     setContent(content);
   //   }
-  // }, [content]);
+  // }, []);
 
   /* Cancel Button */
   const handleCancel = () => {
@@ -134,7 +131,7 @@ const EditorContainer = ({ isEdit, originData }) => {
     if (isEdit) {
       setTitle(originData.title);
       setWho(originData.who);
-      setWeather(originData.weather);
+      setWeather(originData.weather_id);
       setContent(originData.content);
     }
   }, [isEdit, originData]);
@@ -217,7 +214,6 @@ const EditorContainer = ({ isEdit, originData }) => {
               {/* eidtor */}
               <div className="editor">
                 {/* Add Content */}
-                {/* console.log(title, date, who, weather); */}
                 <ContentEditor
                   isEdit={isEdit}
                   content={content}

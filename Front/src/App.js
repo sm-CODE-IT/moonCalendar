@@ -29,6 +29,7 @@ const reducer = (state, action) => {
       break;
     }
     case "EDIT": {
+      console.log({ ...action.data });
       newState = state.map((it) =>
         it.date === action.data.date ? { ...action.data } : it
       );
@@ -61,14 +62,14 @@ const App = () => {
   const [data, dispatch] = useReducer(reducer, []);
 
   /* CREATE */
-  const onCreate = (title, date, who, weather, content) => {
+  const onCreate = (title, date, who, weather_id, content) => {
     dispatch({
       type: "CREATE",
       data: {
         title,
         date,
         who,
-        weather,
+        weather_id,
         content,
       },
     });
@@ -78,14 +79,14 @@ const App = () => {
     dispatch({ type: "REMOVE", targetDate });
   };
   /* EDIT */
-  const onEdit = (title, date, who, weather, content) => {
+  const onEdit = (title, date, who, weather_id, content) => {
     dispatch({
       type: "EDIT",
       data: {
         title,
-        data,
+        date,
         who,
-        weather,
+        weather_id,
         content,
       },
     });

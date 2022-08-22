@@ -29,7 +29,7 @@ const FinDiary = () => {
         navigate("/calendar", { replace: true });
       }
     }
-  }, [data, diaryList.length]);
+  }, [data, diaryList]);
 
   /* for scroll */
   /* when scroll up -> show Header */
@@ -61,12 +61,14 @@ const FinDiary = () => {
   if (!data) {
     return <div className="DiaryPage">로딩중입니다,,,</div>;
   } else {
-    const curWeatherData = weatherList.find(
-      (it) => parseInt(it.weather_id) === parseInt(data.weather)
-    );
     /* date */
     const dateStr = data.date;
     const [year, month, day] = dateStr.split("-");
+
+    /* weather */
+    const curWeatherData = weatherList.find(
+      (it) => parseInt(it.weather_id) === parseInt(data.weather_id)
+    );
 
     /* content */
     const contentHTML = data.content;
@@ -151,7 +153,6 @@ const FinDiary = () => {
             <div className="right_side"></div>
           </div>
         </section>
-        {/* {data && <EditorDiary isEdit={true} data={data}></EditorDiary>} */}
       </div>
     );
   }

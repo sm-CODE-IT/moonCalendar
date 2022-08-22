@@ -6,113 +6,119 @@
     transition: all 0.5s ease-in-out;
 }
 .EditDiary .background_scroll_up {
-    position: absolute;
-    top: 7.6rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
+position: absolute;
+top: 7.6rem;
+left: 0;
+right: 0;
+bottom: 0;
 }
 .EditDiary .background_scroll_down {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
 }
-
 .EditDiary .date_wrapper, .EditDiary .who_wrapper, .EditDiary .weather_wrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 1rem;
 }
 .EditDiary .icon {
-    width: 32px;
-    height: auto;
+width: 32px;
+height: auto;
 }
 .EditDiary .info_short_ver {
-    font-family: 'Nanum Myeongjo', serif;
-    border-radius: 5px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border: none;
-    transition: 1s;
+font-family: 'Nanum Myeongjo', serif;
+border-radius: 5px;
+background-color: var(--bg-color);
+color: var(--text-color);
+border: none;
+transition: 1s;
 }
 .EditDiary .MyHeader .red {
     background-color: var(--system-red);
 }
 .dark ::-webkit-calendar-picker-indicator {
-    filter: invert(1);
+filter: invert(1);
 }
 .light ::-webkit-calendar-picker-indicator {
-    filter: invert(0);
+filter: invert(0);
 }
 .EditDiary .weather_icons_wrapper {
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    gap: 2%;
+display: grid;
+grid-template-columns: repeat(5, auto);
+gap: 2%;
 }
-
 .EditDiary .input {
-    margin: 1rem;
-    border: none;
-    background-color: var(--bg-color);
-    color: var(--btntxt-color);
-    transition: 1s;
+margin: 1rem;
+border: none;
+background-color: var(--bg-color);
+color: var(--btntxt-color);
+transition: 1s;
 }
 .EditDiary .input:focus {
-    outline: none;
+outline: none;
+}
+.EditDiary .input_content {
+box-sizing:content-box;
+min-height: 80vh;
+resize: vertical;
+
+white-space: wrap;
 }
 .EditDiary .diary_info {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
+padding: 1.5rem;
+display: flex;
+flex-direction: column;
+
 }
 /* toolbar option */
 .EditDiary .editor {
-    background-color: var(--bg-color);
+color: var(--btntxt-color);
 }
 .EditDiary .toolbar_class {
-    background-color: var(--bg-color);
-    border: none;
-    transition: 1s;
-    margin-top: 0.5rem;
+background-color: var(--bg-color);
+border: none;
+transition: 1s;
+margin-top: 0.5rem;
 }
 .EditDiary .rdw-dropdown-wrapper {
-    border: 1px solid var(--btntxt-color);
-    border-radius: 5px;
-    background: var(--toolbarBtn-color);
-    color: black;
-    transition: 0.5s;
+border: 1px solid var(--btntxt-color);
+border-radius: 5px;
+background: var(--toolbarBtn-color);
+color: black;
+transition: 0.5s;
 }
 .EditDiary .rdw-dropdown-wrapper:focus {
-    outline: none;
+outline: none;
 }
 .EditDiary .rdw-dropdown-wrapper:hover {
-    box-shadow: 1px 1px 0px #BFBDBD;
-    background-color: var(--btn-hoverColor);
+box-shadow: 1px 1px 0px #BFBDBD;
+background-color: var(--btn-hoverColor);
 }
 .EditDiary .rdw-option-wrapper {
-    border: 1px solid var(--btntxt-color);
-    border-radius: 5px;
-    background: var(--toolbarBtn-color);
-    color: var(--btntxt-color);
-    transition: 0.5s;
+border: 1px solid var(--btntxt-color);
+border-radius: 5px;
+background: var(--toolbarBtn-color);
+color: var(--btntxt-color);
+transition: 0.5s;
 }
 .EditDiary .rdw-option-wrapper:focus {
-    outline: none;
+outline: none;
 }
 .EditDiary .rdw-option-wrapper:hover {
-    box-shadow: 1px 1px 0px #BFBDBD;
-    background-color: var(--btn-hoverColor);
+box-shadow: 1px 1px 0px #BFBDBD;
+background-color: var(--btn-hoverColor);
 }
 .EditDiary .editor_class {
-    padding-left: 2rem;
-    padding-right: 2rem;
+padding-left: 2rem;
+padding-right: 2rem;
 }
 .EditDiary .popup_wrapper {
-    display: flex;
-    justify-content: center;
+display: flex;
+justify-content: center;
 }
 .EditDiary .EmptyPopup {
     width: 20rem;

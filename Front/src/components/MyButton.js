@@ -4,7 +4,7 @@ const MyButton = ({ text, type, onClick }) => {
   return (
     <motion.button
       whileTap={{ scale: 0.8 }}
-      className="button MyButton"
+      className={["button MyButton", `${type}`].join(" ")}
       onClick={onClick}
     >
       {text}

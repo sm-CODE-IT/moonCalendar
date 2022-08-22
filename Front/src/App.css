@@ -24,18 +24,18 @@
   .Feedback .main_wrapper {
     width: 80vw;
   }
-  .EditDiary .left_side, .right_side {
-    width: 15vw;
+  .EditDiary .left_side, .EditDiary .right_side {
+    width: 12.5vw;
   }
   .EditDiary .edit_content {
-    width: 70vw;
+    width: 75vw;
     padding: 0.5rem;
   }
-  .FinDiary .left_side, .right_side {
-    width: 15vw;
+  .FinDiary .left_side, .FinDiary .right_side {
+    width: 12.5vw;
   }
   .FinDiary .edit_content {
-    width: 70vw;
+    width: 75vw;
     padding: 0.5rem;
   }
 }
@@ -261,6 +261,7 @@ body {
   padding-left: 7vw;
   padding-right: 7vw;
 }
+
 .MyButton:hover {
   background-color: var(--btn-hoverColor);
   transition: 0.5s;
@@ -271,8 +272,6 @@ body {
   background-color: var(--header-color);
   margin-top: 3rem;
 }
-
-
 
 /* WeatherItem */
 .WeatherItem {

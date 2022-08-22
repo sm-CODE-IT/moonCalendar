@@ -36,8 +36,10 @@ class ContentEditor extends Component {
       };
     } else {
       this.state = {
+        // editorState: EditorState.createWithContent(
+        //   ContentState.stateFromHTML(content)
         editorState: EditorState.createWithContent(
-          ContentState.createFromText(this.props.content)
+          stateFromHTML(this.props.content)
         ),
       };
     }
@@ -82,7 +84,9 @@ class ContentEditor extends Component {
       .keySeq()
       .findIndex((k) => k === currentBlockKey);
     // console.log(currentBlockIndex);
-    console.log(this.props.content);
+    // if (this.props.isEdit) {
+    //   this.props.setContent(this.props.content);
+    // }
     return (
       <div className="EditorContainer">
         <div className="editor">
