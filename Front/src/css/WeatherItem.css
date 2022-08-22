@@ -1,0 +1,25 @@
+/* WeatherItem */
+.WeatherItem {
+  cursor: pointer;
+
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.WeatherItem_icon_on {
+  background-color: var(--btn-hoverColor);
+  border-radius: 50%;
+}
+.WeatherItem:hover {
+  background-color: var(--btn-hoverColor);
+  border-radius: 50%;
+}
+.WeatherItem .weather_icon {
+  width: 30%;
+  object-fit: cover;
+}

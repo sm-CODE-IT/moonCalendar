@@ -1,4 +1,5 @@
 import "../css/FinDiary.css";
+import ".././css/WeatherItem.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { DiaryStateContext } from "../App";

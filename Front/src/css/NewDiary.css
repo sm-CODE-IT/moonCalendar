@@ -52,7 +52,6 @@
     grid-template-columns: repeat(5, auto);
     gap: 2%;
 }
-
 .EditDiary .input {
     margin: 1rem;
     border: none;
