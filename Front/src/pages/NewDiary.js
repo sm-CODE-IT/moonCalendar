@@ -1,4 +1,5 @@
 import ".././css/NewDiary.css";
+import ".././css/WeatherItem.css";
 import React from "react";
 // import ReactDOM from "react-dom";
 /* components */

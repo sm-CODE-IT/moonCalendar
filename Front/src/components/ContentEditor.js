@@ -71,14 +71,25 @@ class ContentEditor extends Component {
   //   );
   // };
 
-  render() {
-    const { editorState } = this.state;
-    console.log(this.props.content);
-    let contentState = stateToHTML(this.state.editorState.getCurrentContent());
+  useEffect = (() => {
+    let contentState;
+    if (!this.props.isEdit) {
+      console.log(this.props.content);
+      contentState = stateToHTML(this.state.editorState.getCurrentContent());
+    }
+    else {
+      contentState = stateToHTML(this.state.editorState.)
+    }
     this.props.setContent(contentState);
+  }, [this.props.isEdit])
+  
 
-    const currentBlockKey = editorState.getSelection().getStartKey();
-    const currentBlockIndex = editorState
+  render() {
+    // const { editorState } = this.state;
+    
+    
+    const currentBlockKey = this.state.editorState.getSelection().getStartKey();
+    const currentBlockIndex = this.state.editorState
       .getCurrentContent()
       .getBlockMap()
       .keySeq()
@@ -91,7 +102,7 @@ class ContentEditor extends Component {
       <div className="EditorContainer">
         <div className="editor">
           <Editor
-            editorState={editorState}
+            editorState={this.state.editorState}
             onEditorStateChange={this.onEditorStateChange}
             placeholder="content"
             toolbar={{
