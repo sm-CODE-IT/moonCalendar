@@ -64,13 +64,14 @@ const Feedback = () => {
   const axios = require("axios");
   // 1
   axios.defaults.withCredentials = true;
-  const data = {
-    id: 1,
-    title: "error",
-    contents: ",,,,,",
-    email: "sk@sample.com",
-    read_cnt: 0,
-  };
+  const USERS_API_URL = 'http://localhost:8080/feedback';
+  // const data = {
+  //   id: 1,
+  //   title: "error",
+  //   contents: ",,,,,",
+  //   email: "sk@sample.com",
+  //   read_cnt: 0,
+  // };
   // const headers = {};
   // async function samplePost() {
   //   const response = await axios.post(
@@ -83,19 +84,19 @@ const Feedback = () => {
   // samplePost();
 
   //2
-  function componentDidMount() {
-    axios({
-      url: "/feedback",
-      method: "post",
+  // function componentDidMount() {
+  //   axios({
+  //     url: "/feedback",
+  //     method: "post",
 
-      // 배포 과정에서 아래 두줄은 주석처리 해야됨.
-      baseURL: "http://localhost:8080",
-      withCredentials: true,
-    }).then(function (response) {
-      console.log(response);
-    });
-  }
-  componentDidMount();
+  //     // 배포 과정에서 아래 두줄은 주석처리 해야됨.
+  //     baseURL: "http://localhost:8080",
+  //     withCredentials: true,
+  //   }).then(function (response) {
+  //     console.log(response);
+  //   });
+  // }
+  // componentDidMount();
 
   //3
   // function testAxios() {
@@ -145,6 +146,16 @@ const Feedback = () => {
   // componentDidMount();
 
   // 6
+  function getUsers() {
+    return axios.get(USERS_API_URL);
+  }
+
+  function componentDidMount() {
+    getUsers().then((response) => {
+      console.log(response)
+    })
+  }
+  componentDidMount();
 
   return (
     <div className="Feedback">

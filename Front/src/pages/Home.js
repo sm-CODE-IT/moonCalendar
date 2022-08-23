@@ -18,7 +18,6 @@ const Home = () => {
     const currentScrollPos = window.pageYOffset;
     setisTopZero(prevScrollPos <= currentScrollPos);
     setPrevScrollPos(currentScrollPos);
-    console.log(isTopZero);
   };
 
   useEffect(() => {

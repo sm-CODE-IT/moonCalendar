@@ -4,6 +4,7 @@ import App from "./App";
 import { render } from "react-dom"; // add this
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
+
 render(
   <React.StrictMode>
     <App />
