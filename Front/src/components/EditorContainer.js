@@ -73,6 +73,7 @@ const EditorContainer = ({ isEdit, originData }) => {
   /* total content */
   const contentRef = useRef();
   const [content, setContent] = useState("");
+  const [contentRaw, setContentRaw] = useState({});
 
   /* Submit Button */
   const { onCreate, onRemove, onEdit } = useContext(DiaryDispatchContext);
@@ -99,21 +100,15 @@ const EditorContainer = ({ isEdit, originData }) => {
       )
     ) {
       if (!isEdit) {
-        onCreate(title, date, who, weather_id, content);
+        onCreate(title, date, who, weather_id, content, contentRaw);
         navigate("/calendar", { replace: true });
       } else {
-        console.log(content);
-        onEdit(title, date, who, weather_id, content);
+        console.log("EditorContainer", content);
+        onEdit(title, date, who, weather_id, content, contentRaw);
         navigate(`/finDiary/${date}`, { replace: true });
       }
     }
   };
-
-  // useEffect(() => {
-  //   if (isEdit) {
-  //     setContent(content);
-  //   }
-  // }, []);
 
   /* Cancel Button */
   const handleCancel = () => {
@@ -135,7 +130,6 @@ const EditorContainer = ({ isEdit, originData }) => {
       setContent(originData.content);
     }
   }, [isEdit, originData]);
-  console.log("EditorContainer", content);
 
   return (
     <div className="EditorContainer">
@@ -218,6 +212,9 @@ const EditorContainer = ({ isEdit, originData }) => {
                   isEdit={isEdit}
                   content={content}
                   setContent={setContent}
+                  contentRaw={contentRaw}
+                  setContentRaw={setContentRaw}
+                  originData={originData}
                 ></ContentEditor>
               </div>
             </div>

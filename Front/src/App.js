@@ -42,6 +42,7 @@ const reducer = (state, action) => {
   return newState;
 };
 
+// localStorage.clear();
 export const DiaryDispatchContext = React.createContext();
 export const DiaryStateContext = React.createContext();
 
@@ -62,7 +63,9 @@ const App = () => {
   const [data, dispatch] = useReducer(reducer, []);
 
   /* CREATE */
-  const onCreate = (title, date, who, weather_id, content) => {
+  const onCreate = (title, date, who, weather_id, content, contentRaw) => {
+    const jsonRaw = JSON.stringify(contentRaw);
+    console.log("App", jsonRaw);
     dispatch({
       type: "CREATE",
       data: {
@@ -71,6 +74,7 @@ const App = () => {
         who,
         weather_id,
         content,
+        contentRaw,
       },
     });
   };
@@ -79,7 +83,9 @@ const App = () => {
     dispatch({ type: "REMOVE", targetDate });
   };
   /* EDIT */
-  const onEdit = (title, date, who, weather_id, content) => {
+  const onEdit = (title, date, who, weather_id, content, contentRaw) => {
+    const jsonRaw = JSON.stringify(contentRaw);
+    console.log("App", jsonRaw);
     dispatch({
       type: "EDIT",
       data: {
@@ -88,6 +94,7 @@ const App = () => {
         who,
         weather_id,
         content,
+        contentRaw,
       },
     });
   };

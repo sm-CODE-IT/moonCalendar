@@ -12,7 +12,6 @@ const EditDiary = () => {
   /* find target diary */
   const [originData, setOriginData] = useState();
   useEffect(() => {
-    console.log("EditDiary", diaryList);
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find((it) => it.date === date);
 
@@ -24,7 +23,6 @@ const EditDiary = () => {
       }
     }
   }, [originData, diaryList]);
-  console.log("EditDiary", originData);
 
   return (
     <div className="EditDiary">

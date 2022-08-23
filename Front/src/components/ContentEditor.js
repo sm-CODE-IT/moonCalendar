@@ -1,10 +1,18 @@
 import React, { Component, useContext } from "react";
 /* components */
 import MyHeader from "./MyHeader";
-import { EditorState, ContentState, convertFromRaw } from "draft-js";
+import {
+  EditorState,
+  convertToRaw,
+  ContentState,
+  convertFromRaw,
+  SelectionState,
+} from "draft-js";
+import DraftPasteProcessor from "draft-js/lib/DraftPasteProcessor";
 import { Editor } from "react-draft-wysiwyg";
 import { stateToHTML } from "draft-js-export-html";
 import { stateFromHTML } from "draft-js-import-html";
+import htmlToDraft from "html-to-draftjs";
 import { DiaryDispatchContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
@@ -30,80 +38,39 @@ function uploadImageCallBack(file) {
 class ContentEditor extends Component {
   constructor(props) {
     super(props);
+    let editorState;
     if (!this.props.isEdit) {
-      this.state = {
-        editorState: EditorState.createEmpty(),
-      };
+      editorState = EditorState.createEmpty();
     } else {
-      this.state = {
-        // editorState: EditorState.createWithContent(
-        //   ContentState.stateFromHTML(content)
-        editorState: EditorState.createWithContent(
-          stateFromHTML(this.props.content)
-        ),
-      };
+      const rawContentFromStore = convertFromRaw(
+        this.props.originData.contentRaw
+      );
+      editorState = EditorState.createWithContent(rawContentFromStore);
     }
+    this.state = {
+      editorState: editorState,
+    };
   }
 
-  onEditorStateChange: Function = (editorState) => {
-    // console.log(editorState)
+  onEditorStateChange(editorState) {
     this.setState({
       editorState,
     });
-  };
 
-  // default
-  // exportHTML = () => {
-  //   this.setState({
-  //     convertedContent: stateToHTML(this.state.editorState.getCurrentContent()),
-  //   });
-  // };
-
-  // updateHTML = (e) => {
-  //   e.preventDefault();
-  //   this.setState({ convertedContent: e.target.value });
-  // };
-
-  // importHTML = () => {
-  //   const { editorState } = this.state;
-  //   this.onChange(
-  //     EditorState.push(editorState, stateFromHTML(this.state.convertedContent))
-  //   );
-  // };
-
-  useEffect = (() => {
-    let contentState;
-    if (!this.props.isEdit) {
-      console.log(this.props.content);
-      contentState = stateToHTML(this.state.editorState.getCurrentContent());
-    }
-    else {
-      contentState = stateToHTML(this.state.editorState.)
-    }
-    this.props.setContent(contentState);
-  }, [this.props.isEdit])
-  
+    /* set new State */
+    const editingContent = stateToHTML(editorState.getCurrentContent());
+    this.props.setContent(editingContent);
+    const editingContentRaw = convertToRaw(editorState.getCurrentContent());
+    this.props.setContentRaw(editingContentRaw);
+  }
 
   render() {
-    // const { editorState } = this.state;
-    
-    
-    const currentBlockKey = this.state.editorState.getSelection().getStartKey();
-    const currentBlockIndex = this.state.editorState
-      .getCurrentContent()
-      .getBlockMap()
-      .keySeq()
-      .findIndex((k) => k === currentBlockKey);
-    // console.log(currentBlockIndex);
-    // if (this.props.isEdit) {
-    //   this.props.setContent(this.props.content);
-    // }
     return (
       <div className="EditorContainer">
         <div className="editor">
           <Editor
             editorState={this.state.editorState}
-            onEditorStateChange={this.onEditorStateChange}
+            onEditorStateChange={this.onEditorStateChange.bind(this)}
             placeholder="content"
             toolbar={{
               options: [
