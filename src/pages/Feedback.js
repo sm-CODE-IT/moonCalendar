@@ -1,4 +1,5 @@
 import "../css/Feedback.css";
+import { DiaryThemeStateContext } from "../App";
 /* components */
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
@@ -9,11 +10,10 @@ import MyFooter from "../components/MyFooter";
 import useTheme from "../util/useTheme";
 import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
 
 const Feedback = () => {
   /* for Plus button color */
-  let themeMode = "light";
+  let { themeMode } = useContext(DiaryThemeStateContext);
   // console.log(localTheme);
   const plusButtonSrc = process.env.PUBLIC_URL + `/assets/${themeMode}Plus.png`;
   // console.log(plusButtonSrc);
