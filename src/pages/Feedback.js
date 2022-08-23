@@ -7,13 +7,14 @@ import MyFooter from "../components/MyFooter";
 
 /* util */
 import useTheme from "../util/useTheme";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 
 const Feedback = () => {
   /* for Plus button color */
-  const [themeMode, toggleTheme] = useTheme();
-  // console.log(themeMode);
+  let themeMode = "light";
+  // console.log(localTheme);
   const plusButtonSrc = process.env.PUBLIC_URL + `/assets/${themeMode}Plus.png`;
   // console.log(plusButtonSrc);
 
@@ -63,99 +64,19 @@ const Feedback = () => {
   /* axios */
   const axios = require("axios");
   // 1
-  axios.defaults.withCredentials = true;
-  const USERS_API_URL = 'http://localhost:8080/feedback';
-  // const data = {
-  //   id: 1,
-  //   title: "error",
-  //   contents: ",,,,,",
-  //   email: "sk@sample.com",
-  //   read_cnt: 0,
-  // };
-  // const headers = {};
-  // async function samplePost() {
-  //   const response = await axios.post(
-  //     "http://localhost:8080/feedback",
-  //     data,
-  //     headers
-  //   );
-  //   return response;
+  // axios.defaults.withCredentials = true;
+  // const USERS_API_URL = "http://localhost:8080/feedback/write";
+  // // 6
+  // function getUsers() {
+  //   return axios.get(USERS_API_URL);
   // }
-  // samplePost();
 
-  //2
   // function componentDidMount() {
-  //   axios({
-  //     url: "/feedback",
-  //     method: "post",
-
-  //     // 배포 과정에서 아래 두줄은 주석처리 해야됨.
-  //     baseURL: "http://localhost:8080",
-  //     withCredentials: true,
-  //   }).then(function (response) {
+  //   getUsers().then((response) => {
   //     console.log(response);
   //   });
   // }
   // componentDidMount();
-
-  //3
-  // function testAxios() {
-  //   axios({
-  //     url: "/feedback",
-  //     method: "post",
-  //     data: {
-  //       id: "sample",
-  //       title: "error",
-  //       contents: ",,,,,",
-  //       email: "sk@sample.com",
-  //       read_cnt: 0,
-  //     },
-
-  //     baseURL: "http://localhost:8080",
-  //     //withCredentials: true,
-  //   }).then(function (response) {
-  //     console.log(response.data);
-  //   });
-  // }
-  // testAxios();
-
-  //4
-  // const EMPLOYEE_API_BASE_URL = "http://localhost:8080/feedback";
-  // axios.get(EMPLOYEE_API_BASE_URL).then(function (response) {
-  //   console.log(response);
-  // });
-
-  //5
-  // function constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     id: "",
-  //     title: "",
-  //     contents: "",
-  //     email: "",
-  //     read_cnt: "",
-  //   };
-  // }
-
-  // function componentDidMount() {
-  //   console.log("componentDidMount");
-  //   axios.get("http://localhost:8080/feedback").then((response) => {
-  //     console.log(response.data);
-  //   });
-  // }
-  // componentDidMount();
-
-  // 6
-  function getUsers() {
-    return axios.get(USERS_API_URL);
-  }
-
-  function componentDidMount() {
-    getUsers().then((response) => {
-      console.log(response)
-    })
-  }
-  componentDidMount();
 
   return (
     <div className="Feedback">

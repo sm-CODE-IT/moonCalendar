@@ -1,10 +1,13 @@
 const WeatherItem = ({
+  themeMode,
   weather_id,
-  weather_img,
   weather_descript,
   onClick,
   isSelected,
 }) => {
+  const weather_img =
+    process.env.PUBLIC_URL + `/assets/${themeMode}${weather_descript}.png`;
+  console.log("WeatherItem", weather_img);
   return (
     <div
       className={[

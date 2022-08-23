@@ -1,3 +1,5 @@
+import React, { useContext, useReducer } from "react";
+import { DiaryThemeStateContext } from "../App";
 /* components */
 import MyButton from "./MyButton";
 /* toggle button ani */
@@ -6,6 +8,20 @@ import { motion } from "framer-motion";
 import useTheme from "../util/useTheme";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+
+// const themeReducer = (state, action) => {
+//   let newState;
+//   switch (action.type) {
+//     case "THEME": {
+//       newState = action.globalTheme;
+//       break;
+//     }
+//     default: {
+//       return state;
+//     }
+//   }
+//   return newState;
+// };
 
 export const MyHeader = ({
   btn1Type,
@@ -17,6 +33,9 @@ export const MyHeader = ({
 }) => {
   /* for Dark/Light Mode */
   const [themeMode, toggleTheme] = useTheme();
+  const { setThemeMode } = useContext(DiaryThemeStateContext);
+  setThemeMode(themeMode);
+
   const logoBtnSrc =
     themeMode === "light"
       ? process.env.PUBLIC_URL + "/assets/lightLogo.png"

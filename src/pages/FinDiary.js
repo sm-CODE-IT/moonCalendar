@@ -19,6 +19,7 @@ const FinDiary = () => {
 
   /* find target diary */
   const [data, setData] = useState();
+  console.log(diaryList.length);
   useEffect(() => {
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find((it) => it.date === date);

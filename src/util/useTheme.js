@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 export const useTheme = () => {
   // 브라우저 테마 정보 확인
   let initTheme = localStorage.getItem("theme");
+  // let initTheme = prevTheme;
   // default : light
   if (!initTheme) {
     localStorage.setItem("theme", "light");
@@ -25,4 +26,5 @@ export const useTheme = () => {
 
   return [theme, toggleTheme];
 };
+
 export default useTheme;

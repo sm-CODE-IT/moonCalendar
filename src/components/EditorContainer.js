@@ -6,6 +6,7 @@ import React, {
   useCallback,
 } from "react";
 import { DiaryDispatchContext } from "../App";
+import { DiaryThemeStateContext } from "../App";
 // import ReactDOM from "react-dom";
 /* components */
 import { MyHeader } from "./MyHeader";
@@ -41,9 +42,8 @@ const EditorContainer = ({ isEdit, originData }) => {
 
   const navigate = useNavigate();
   //   /* icon */
-  //   const { theme } = useContext(MyHeader);
-  //   console.log(theme);
-  const themeMode = localStorage.getItem("theme");
+  const { themeMode } = useContext(DiaryThemeStateContext);
+  console.log("NewDiary themeMode", themeMode);
   const calendarSrc =
     process.env.PUBLIC_URL + `/assets/${themeMode}CalendarIcon.png`;
   const personSrc =
@@ -194,6 +194,7 @@ const EditorContainer = ({ isEdit, originData }) => {
                 <div className="weather_icons_wrapper">
                   {weatherList.map((it) => (
                     <WeatherItem
+                      themeMode={themeMode}
                       key={it.weather_id}
                       {...it}
                       onClick={handleRemote}

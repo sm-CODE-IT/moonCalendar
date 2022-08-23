@@ -9,10 +9,11 @@ import Calendar from "./pages/Calendar";
 import FinDiary from "./pages/FinDiary";
 import EditDiary from "./pages/EditDiary";
 import List from "./pages/List";
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 
 const reducer = (state, action) => {
   let newState = [];
+  let themeState = "";
   switch (action.type) {
     case "INIT": {
       return action.data;
@@ -29,7 +30,6 @@ const reducer = (state, action) => {
       break;
     }
     case "EDIT": {
-      console.log({ ...action.data });
       newState = state.map((it) =>
         it.date === action.data.date ? { ...action.data } : it
       );
@@ -45,6 +45,7 @@ const reducer = (state, action) => {
 // localStorage.clear();
 export const DiaryDispatchContext = React.createContext();
 export const DiaryStateContext = React.createContext();
+export const DiaryThemeStateContext = React.createContext();
 
 const App = () => {
   useEffect(() => {
@@ -61,6 +62,7 @@ const App = () => {
   }, []);
 
   const [data, dispatch] = useReducer(reducer, []);
+  const [themeMode, setThemeMode] = useState(localStorage.getItem("theme"));
 
   /* CREATE */
   const onCreate = (title, date, who, weather_id, content, contentRaw) => {
@@ -84,8 +86,7 @@ const App = () => {
   };
   /* EDIT */
   const onEdit = (title, date, who, weather_id, content, contentRaw) => {
-    const jsonRaw = JSON.stringify(contentRaw);
-    console.log("App", jsonRaw);
+    // const jsonRaw = JSON.stringify(contentRaw);
     dispatch({
       type: "EDIT",
       data: {
@@ -98,33 +99,36 @@ const App = () => {
       },
     });
   };
+
   return (
-    <DiaryStateContext.Provider value={data}>
-      <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
-        <BrowserRouter>
-          <div className="App">
-            <Routes>
-              <Route path="/" element={<Home></Home>}></Route>
-              <Route path="/feedback" element={<Feedback></Feedback>}></Route>
-              <Route path="/list" element={<List></List>}></Route>
-              <Route
-                path="/newDiary/:date"
-                element={<NewDiary></NewDiary>}
-              ></Route>
-              <Route
-                path="/finDiary/:date"
-                element={<FinDiary></FinDiary>}
-              ></Route>
-              <Route
-                path="/editDiary/:date"
-                element={<EditDiary></EditDiary>}
-              ></Route>
-              <Route path="/calendar" element={<Calendar></Calendar>}></Route>
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </DiaryDispatchContext.Provider>
-    </DiaryStateContext.Provider>
+    <DiaryThemeStateContext.Provider value={{ themeMode, setThemeMode }}>
+      <DiaryStateContext.Provider value={data}>
+        <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
+          <BrowserRouter>
+            <div className="App">
+              <Routes>
+                <Route path="/" element={<Home></Home>}></Route>
+                <Route path="/feedback" element={<Feedback></Feedback>}></Route>
+                <Route path="/list" element={<List></List>}></Route>
+                <Route
+                  path="/newDiary/:date"
+                  element={<NewDiary></NewDiary>}
+                ></Route>
+                <Route
+                  path="/finDiary/:date"
+                  element={<FinDiary></FinDiary>}
+                ></Route>
+                <Route
+                  path="/editDiary/:date"
+                  element={<EditDiary></EditDiary>}
+                ></Route>
+                <Route path="/calendar" element={<Calendar></Calendar>}></Route>
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </DiaryDispatchContext.Provider>
+      </DiaryStateContext.Provider>
+    </DiaryThemeStateContext.Provider>
   );
 };
 
