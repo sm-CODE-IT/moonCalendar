@@ -71,7 +71,7 @@ function Calendar() {
       />
 
       <section className="calendar">
-        <button onClick={() => navigate(`/finDiary/2022-08-09`)}>
+        <button onClick={() => navigate(`/finDiary/2022-08-11`)}>
           goDetail
         </button>
         <Line weight={5} style={{ margin: 20 }}></Line>

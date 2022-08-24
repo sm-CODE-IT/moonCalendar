@@ -1,3 +1,34 @@
+/* full size */
+@media (max-width: 2140px) {
+    .Home .text_wrapper {
+        margin-left: 8vw;
+        margin-right: 8vw;
+    }
+    .Home .title {
+        width: 350px;
+        font-size: 8rem;
+        line-height: 1.06;
+    }
+    .Home .sub_title {
+        font-size: 3rem;
+    }
+}
+/* half size */
+@media (max-width: 1240px) {
+    .Home .text_wrapper {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .Home .title {
+        width: 80%;
+        font-size: 5rem;
+        line-height: 1.06;
+    }
+    .Home .sub_title {
+        font-size: 2rem;
+    }
+}
+
 /* Home */
 .Home .background_scroll_up {
     position: fixed;
@@ -13,54 +44,33 @@
     right: 0;
     bottom: 0;
 }
+.Home .first_page_wrapper {
+    /* background-color: var(--system-red); */
+    height: calc(100vh / 1.8);
+}
 .Home .main {
-    margin-top: 20rem;
+    margin-top: 16rem;
     margin-left: 9vw;
     margin-right: 9vw;
 }
-.Home .content {
-    margin-left: 8vw;
-    margin-right: 8vw;
+.Home .title {
+    font-family: 'SUIT', sans-serif;
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: 4rem;
+    /* transition: 1s; */
 }
-.Home .size_88 {
-    font-size: 5.5rem;
-    line-height: 5rem;
-    font-weight: 800;
-}
-.Home .size_88 .colored{
+.Home .colored{
     background: linear-gradient(#ffc700, #42abbc);
     color: transparent;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.Home .size_ {
-    font-size: 3rem;
+.Home .sub_title {
+    font-family: 'SUIT', sans-serif;
     line-height: 3.5rem;
 }
-.Home .temp {
-    width: 15rem;
-    height: 15rem;
-    background: linear-gradient(#ffc700, #42abbc);
-    margin-bottom: 5rem;
-}
-/* .Home .home_background_wrapper {
-    background-image: url("../.././public/assets/background_2.jpg");
-    background-size: cover;
-    opacity: 0.2;
-    position: fixed;
-    top: 7.5rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-.Home .home_background_wrapper {
-    background-image: url("../.././public/assets/background_2.jpg");
-    background-size: cover;
-    opacity: 0.2;
-    transition: all 0.5s ease-in-out;
-} */
-
-.Home .home_line {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
+.Home .lottie_scroll {
+    width: 100%;
+    height: 18rem;
+ }

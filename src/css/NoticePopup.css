@@ -1,0 +1,20 @@
+.popup_wrapper {
+    display: flex;
+    justify-content: center;
+}
+.EmptyPopup {
+    width: 20rem;
+    height: 2.5rem;
+
+    background-color: var(--btn-color);
+    border: 2px solid var(--system-red);
+    border-radius: 5px;
+    color: var(--system-red);
+
+    position: absolute;
+    top: 1rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

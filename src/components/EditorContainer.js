@@ -15,6 +15,7 @@ import Line from "./Line";
 import WeatherItem from "./WeatherItem";
 import ContentEditor from "./ContentEditor";
 import EmptyPopup from "./EmptyPopup";
+import IsNotChangedPopup from "./IsNotChangedPopup";
 /* util */
 import useTheme from "../util/useTheme";
 import { useNavigate, useParams } from "react-router-dom";
@@ -43,7 +44,6 @@ const EditorContainer = ({ isEdit, originData }) => {
   const navigate = useNavigate();
   //   /* icon */
   const { themeMode } = useContext(DiaryThemeStateContext);
-  console.log("NewDiary themeMode", themeMode);
   const calendarSrc =
     process.env.PUBLIC_URL + `/assets/${themeMode}CalendarIcon.png`;
   const personSrc =
@@ -74,12 +74,18 @@ const EditorContainer = ({ isEdit, originData }) => {
   const contentRef = useRef();
   const [content, setContent] = useState("");
   const [contentRaw, setContentRaw] = useState({});
+  let prevContent;
+  let prevContentRaw;
+  if (isEdit) {
+    prevContent = originData.content;
+    prevContentRaw = originData.contentRaw;
+  }
 
   /* Submit Button */
   const { onCreate, onRemove, onEdit } = useContext(DiaryDispatchContext);
   const [visibility, setVisibility] = useState("hidden");
   const [emptyCus, setEmptyCus] = useState("");
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     if (title < 1) {
       setEmptyCus("Title");
       setVisibility("visible");
@@ -88,6 +94,10 @@ const EditorContainer = ({ isEdit, originData }) => {
 
     if (content === "<p><br></p>") {
       setEmptyCus("content");
+      setVisibility("visible");
+      return;
+    }
+    if (isEdit && prevContent === content) {
       setVisibility("visible");
       return;
     }
@@ -103,7 +113,6 @@ const EditorContainer = ({ isEdit, originData }) => {
         onCreate(title, date, who, weather_id, content, contentRaw);
         navigate("/calendar", { replace: true });
       } else {
-        console.log("EditorContainer", content);
         onEdit(title, date, who, weather_id, content, contentRaw);
         navigate(`/finDiary/${date}`, { replace: true });
       }
@@ -128,6 +137,7 @@ const EditorContainer = ({ isEdit, originData }) => {
       setWho(originData.who);
       setWeather(originData.weather_id);
       setContent(originData.content);
+      // setContentRaw(originData.contentRaw);
     }
   }, [isEdit, originData]);
 
@@ -229,6 +239,16 @@ const EditorContainer = ({ isEdit, originData }) => {
               visibility={visibility}
               setVisibility={setVisibility}
             ></EmptyPopup>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className="popup_wrapper">
+          {visibility === "visible" ? (
+            <IsNotChangedPopup
+              visibility={visibility}
+              setVisibility={setVisibility}
+            ></IsNotChangedPopup>
           ) : (
             <></>
           )}

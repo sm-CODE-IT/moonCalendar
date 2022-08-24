@@ -71,6 +71,9 @@ const FinDiary = () => {
     const curWeatherData = weatherList.find(
       (it) => parseInt(it.weather_id) === parseInt(data.weather_id)
     );
+    const weather_img =
+      process.env.PUBLIC_URL +
+      `/assets/${themeMode}${curWeatherData.weather_descript}.png`;
 
     /* content */
     const contentHTML = data.content;
@@ -135,7 +138,7 @@ const FinDiary = () => {
                       <p className="body2">{curWeatherData.weather_descript}</p>
                     </div>
                     <div className="img_wrapper">
-                      <img src={curWeatherData.weather_img} alt="" />
+                      <img src={weather_img} alt="" />
                     </div>
                   </div>
                 </div>

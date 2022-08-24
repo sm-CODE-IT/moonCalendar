@@ -1,8 +1,7 @@
 import "../css/NoticePopup.css";
-import { useState } from "react";
 import { AnimateSharedLayout, motion } from "framer-motion";
 
-const EmptyPopup = ({ emptyCus, visibility, setVisibility }) => {
+const EmptyPopup = ({ visibility, setVisibility }) => {
   setTimeout(() => {
     setVisibility("hidden");
   }, 2000);
@@ -16,7 +15,7 @@ const EmptyPopup = ({ emptyCus, visibility, setVisibility }) => {
         className={["EmptyPopup", `${visibility}`].join(" ")}
       >
         <div className="text_wrapper">
-          <div className="body1">! {emptyCus} is Empty !</div>
+          <div className="body1">! Content is Not Changed !</div>
         </div>
       </motion.div>
     </AnimateSharedLayout>
