@@ -35,18 +35,26 @@ const Home = () => {
         btn2Text="sign In"
         btn2Func={(e) => navigate("/calendar")}
       />
-      <div
+      {/* <div
         className={[
           "home_background_wrapper",
           isTopZero ? "background_scroll_down" : "background_scroll_up",
         ].join(" ")}
       >
-    </div>
+    </div> */}
       <section>
         <div className="main">
-          <p className="h1 size_10 content">Moon Calendar</p>
-          <p className="title1 content">
-            (왜 이름을 moon Calendar로 했는지)
+          <p className="h1 size_88 content">
+            <span className="non_colored">
+              Moon 
+            </span>
+            <span className="colored">
+               Calendar
+            </span>
+             
+          </p>
+          <p className="title1 size_ content">
+            Use the MoonCalendar to record your memories
           </p>
           <p className="body1 content">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam

@@ -1,5 +1,6 @@
 import "../css/Feedback.css";
 import { DiaryThemeStateContext } from "../App";
+import axios from "axios";
 /* components */
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
@@ -10,6 +11,29 @@ import MyFooter from "../components/MyFooter";
 import useTheme from "../util/useTheme";
 import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+
+// const { createProxyMiddleware } = require('http-proxy-middleware');
+
+// module.exports = function (app) {
+//   app.use(
+//     '/feedback',
+//     createProxyMiddleware({
+//       target: 'list/getFeedbackListPage',
+//       pathRewrite: {
+//         '^/feedback': '',
+//       },
+//     }),
+//   );
+// }
+// export const getData = async () => {
+//   try {
+//     const { data } = await axios.get("feedback/list");
+//     console.log("data", data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 const Feedback = () => {
   /* for Plus button color */
@@ -63,20 +87,91 @@ const Feedback = () => {
 
   /* axios */
   const axios = require("axios");
+  // const [dataState, setDataState] = useState();
   // 1
   axios.defaults.withCredentials = true;
-  const USERS_API_URL = "http://localhost:8080/feedback/write";
-  // 6
+  const GET_API_URL = "/feedback/list";
+  const POST_API_URL = "/feedback/write";
+  const [postedData, setPostedData] = useState([]);
+  const [dbTitle, setDbTitle] = useState("");
+  const [dbContents, setDbContents] = useState("");
+  const [dbEmail, setDbEmail] = useState("");
+  // contents, title, email
   function getUsers() {
-    return axios.get(USERS_API_URL);
+    return axios.get(GET_API_URL);
+  }
+  function setUsers(title, contents, email) {
+    axios.post(GET_API_URL, {
+      title,
+      contents,
+      email,
+    });
   }
 
   function componentDidMount() {
     getUsers().then((response) => {
-      console.log(response);
+      console.log(response.data);
+      // const data = response.data;
+      // this.setDataState({data});
     });
+    // setUsers(dbTitle, dbContents, dbEmail).then((response) => {
+    //   setPostedData([])
+    //   setDbTitle('');
+    //   setDbContents('');
+    //   setDbEmail('');
+    // });
   }
   componentDidMount();
+
+  // const [title, setTitle] = useState('');
+  //  const [body, setBody] = useState('');
+  //  const [posts, setPosts] = useState([]);
+
+  // const hs = (e) => {
+  //     e.preventDefault();
+  //     addPosts(title, body);
+  //  };
+
+  //  const addPosts = (title, body) => {
+  //     axios
+  //        .post(USERS_API_URL, {
+  //           title: title,
+  //           body: body,
+  //        })
+  //        .then((response) => {
+  //           setPosts([response.data, ...posts]);
+  //        });
+  //     setTitle('');
+  //     setBody('');
+  //  };
+
+  // console.log("dataState", dataState);
+
+  // 2
+  // const { createProxyMiddleware } = require('http-proxy-middleware');
+
+  // module.exports = function (app) {
+  // app.use(
+  //   '/feedback',
+  //   createProxyMiddleware({
+  //     target: 'list/getFeedbackListPage',
+  //     pathRewrite: {
+  //       '^/feedback': '',
+  //     },
+  //   }),
+  // );
+
+  // const getData = async () => {
+  //   try {
+  //     const { data } = await axios.get("feedback/list");
+  //     console.log("data", data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // getData();
+  // getData();
+
 
   return (
     <div className="Feedback">
