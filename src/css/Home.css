@@ -23,12 +23,12 @@
     margin-right: 8vw;
 }
 .Home .size_10 {
-    font-size: 5.6rem;
+    font-size: 5.5rem;
     font-weight: 800;
-    /* background: linear-gradient(#ffc700, #42abbc);
+    background: linear-gradient(#ffc700, #42abbc);
     color: transparent;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
+    -webkit-text-fill-color: transparent;
 }
 .Home .temp {
     width: 15rem;

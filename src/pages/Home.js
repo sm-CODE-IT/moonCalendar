@@ -40,11 +40,14 @@ const Home = () => {
           "home_background_wrapper",
           isTopZero ? "background_scroll_down" : "background_scroll_up",
         ].join(" ")}
-      ></div>
+      >
+    </div>
       <section>
         <div className="main">
           <p className="h1 size_10 content">Moon Calendar</p>
-          <p className="title1 content"></p>
+          <p className="title1 content">
+            (왜 이름을 moon Calendar로 했는지)
+          </p>
           <p className="body1 content">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam
             vel qui eius ea quo libero nesciunt id sequi. Libero debitis
@@ -55,6 +58,15 @@ const Home = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam
             vel qui eius ea quo libero nesciunt id sequi. Libero debitis
             reprehenderit ullam iste, modi natus dolorum earum error animi?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam
+            vel qui eius ea quo libero nesciunt id sequi. Libero debitis
+            reprehenderit ullam iste, modi natus dolorum earum error animi?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam
+            vel qui eius ea quo libero nesciunt id sequi. Libero debitis
+            reprehenderit ullam iste, modi natus dolorum earum error animi?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam
+            vel qui eius ea quo libero nesciunt id sequi. Libero debitis
+            reprehenderit ullam iste, modi natus dolorum earum error animi? eprehenderit ullam iste, modi natus dolorum earum error animi?
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam
             vel qui eius ea quo libero nesciunt id sequi. Libero debitis
             reprehenderit ullam iste, modi natus dolorum earum error animi?

@@ -64,19 +64,19 @@ const Feedback = () => {
   /* axios */
   const axios = require("axios");
   // 1
-  // axios.defaults.withCredentials = true;
-  // const USERS_API_URL = "http://localhost:8080/feedback/write";
-  // // 6
-  // function getUsers() {
-  //   return axios.get(USERS_API_URL);
-  // }
+  axios.defaults.withCredentials = true;
+  const USERS_API_URL = "http://localhost:8080/feedback/write";
+  // 6
+  function getUsers() {
+    return axios.get(USERS_API_URL);
+  }
 
-  // function componentDidMount() {
-  //   getUsers().then((response) => {
-  //     console.log(response);
-  //   });
-  // }
-  // componentDidMount();
+  function componentDidMount() {
+    getUsers().then((response) => {
+      console.log(response);
+    });
+  }
+  componentDidMount();
 
   return (
     <div className="Feedback">
