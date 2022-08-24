@@ -125,8 +125,7 @@ const Home = () => {
               variants={child}
               className="title2 sub_title text_wrapper"
             >
-              Use the MoonCalendar to <span className="colored">record</span>{" "}
-              your memories
+              Moon Calendar is a Web that can record your memories. Also, it can check the month's schedule at a glance
             </motion.div>
           </motion.div>
         </div>
