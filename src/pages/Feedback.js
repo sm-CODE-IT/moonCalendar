@@ -84,7 +84,6 @@ const Feedback = () => {
   //     navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
   //   }
   // };
-  
   /* axios */
   const axios = require("axios");
   // const [dataState, setDataState] = useState();
@@ -113,12 +112,43 @@ const Feedback = () => {
   //   }
   //   componentDidMount();
 
-  /* push */
+  /* GET */
+  axios.defaults.withCredentials = true;
+  const GET_API_URL = "/feedback/list";
+  
+  // contents, title, email
+  function getUsers() {
+    return axios.get(GET_API_URL);
+  }
+  // function setUsers(title, contents, email) {
+  //   axios.post(GET_API_URL, {
+  //     title,
+  //     contents,
+  //     email,
+  //   });
+  // }
+
+  function componentDidMount() {
+    getUsers().then((response) => {
+      console.log(response.data);
+      // const data = response.data;
+      // this.setDataState({data});
+    });
+    // setUsers(dbTitle, dbContents, dbEmail).then((response) => {
+    //   setPostedData([])
+    //   setDbTitle('');
+    //   setDbContents('');
+    //   setDbEmail('');
+    // });
+  }
+  componentDidMount();
+
+  /* POST */
   const POST_API_URL = "/feedback/write";
-  const [title, setTitle] = useState("");
-  const [contents, setContents] = useState("");
-  const [image, setImage] = useState([]);
-  const [email, setEmail] = useState("");
+  const [title, setTitle] = useState();
+  const [contents, setContents] = useState();
+  const [image, setImage] = useState();
+  const [email, setEmail] = useState();
 
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(true);
@@ -188,6 +218,19 @@ const Feedback = () => {
 
   // console.log("dataState", dataState);
 
+
+  function setUsers(title, contents, email) {
+    console.log("post data", {
+      title: title,
+      contents: contents,
+      email: email,
+    });
+    axios.post(POST_API_URL, {
+      title: title,
+      contents: contents,
+      email: email,
+    });
+  }
 
   return (
     <div className="Feedback">

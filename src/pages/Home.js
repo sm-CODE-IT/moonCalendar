@@ -118,7 +118,7 @@ const Home = () => {
     y.set(event.clientY - rect.top);
   };
   const { scrollYProgress } = useScroll();
-  // console.log(scrollYProgress);
+  //console.log(scrollYProgress);
 
   /* animation lottie */
   // const handScrollSrc =
