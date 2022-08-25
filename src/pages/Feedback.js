@@ -58,9 +58,72 @@ const Feedback = () => {
   const [inputFourContent, setInputFourContent] = useState("");
 
   /* for submit button */
+  // const navigate = useNavigate();
+  // const [isValid, setIsValid] = useState(true);
+  // const handleSubmit = () => {
+  //   var validRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+  //   if (inputOneContent.length < 1) {
+  //     inputOneRef.current.focus();
+  //     return;
+  //   }
+
+  //   if (inputTwoContent.length < 1) {
+  //     inputTwoRef.current.focus();
+  //     return;
+  //   }
+
+  //   if (!validRegex.test(inputFourContent)) {
+  //     inputFourRef.current.focus();
+  //     setIsValid(false);
+  //     return;
+  //   }
+
+  //   setIsValid(true);
+  //   if (window.confirm("제출하시겠습니까?")) {
+  //     navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
+  //   }
+  // };
+  
+  /* axios */
+  const axios = require("axios");
+  // const [dataState, setDataState] = useState();
+  // 1
+  // axios.defaults.withCredentials = true;
+  // const GET_API_URL = "feedback/list";
+  
+  // // contents, title, email
+  // function getUsers() {
+  //   return axios.get(GET_API_URL);
+  // }
+  
+  
+  // function componentDidMount() {
+  //   getUsers().then((response) => {
+  //     console.log(response.data);
+  //     // const data = response.data;
+  //     // this.setDataState({data});
+  //   });
+  //   // setUsers(dbTitle, dbContents, dbEmail).then((response) => {
+  //     //   setPostedData([])
+  //     //   setDbTitle('');
+  //     //   setDbContents('');
+  //     //   setDbEmail('');
+  //     // });
+  //   }
+  //   componentDidMount();
+
+  /* push */
+  const POST_API_URL = "/feedback/write";
+  const [title, setTitle] = useState("");
+  const [contents, setContents] = useState("");
+  const [image, setImage] = useState([]);
+  const [email, setEmail] = useState("");
+
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(true);
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     var validRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
     if (inputOneContent.length < 1) {
@@ -80,61 +143,39 @@ const Feedback = () => {
     }
 
     setIsValid(true);
+    console.log("before submit?", inputOneContent, inputTwoContent, inputFourContent);
     if (window.confirm("제출하시겠습니까?")) {
+      setTitle(inputOneContent);
+      setContents(inputTwoContent);
+      setImage("");
+      setEmail(inputFourContent);
+      console.log("submit?", inputOneContent, inputTwoContent, inputFourContent)
+      // setUsers(dbTitle, dbContents, dbImage, dbEmail);
       navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
     }
   };
 
-  /* axios */
-  const axios = require("axios");
-  // const [dataState, setDataState] = useState();
-  // 1
-  axios.defaults.withCredentials = true;
-  const GET_API_URL = "/feedback/list";
-  const POST_API_URL = "/feedback/write";
-  const [postedData, setPostedData] = useState([]);
-  const [dbTitle, setDbTitle] = useState("");
-  const [dbContents, setDbContents] = useState("");
-  const [dbEmail, setDbEmail] = useState("");
-  // contents, title, email
-  function getUsers() {
-    return axios.get(GET_API_URL);
-  }
-  function setUsers(title, contents, email) {
-    axios.post(GET_API_URL, {
-      title,
-      contents,
-      email,
-    });
-  }
-
-  function componentDidMount() {
-    getUsers().then((response) => {
-      console.log(response.data);
-      // const data = response.data;
-      // this.setDataState({data});
-    });
-    // setUsers(dbTitle, dbContents, dbEmail).then((response) => {
-    //   setPostedData([])
-    //   setDbTitle('');
-    //   setDbContents('');
-    //   setDbEmail('');
-    // });
-  }
-  componentDidMount();
+  // function setUsers(dbTitle, dbContents, dbImage, dbEmail) {
+  //   axios.post(POST_API_URL, {
+  //     dbTitle,
+  //     dbContents,
+  //     dbImage,
+  //     dbEmail,
+  //   }.then((response) => console.log(response)));
+  // }
 
   // const [title, setTitle] = useState('');
-  //  const [body, setBody] = useState('');
-  //  const [posts, setPosts] = useState([]);
+  // const [body, setBody] = useState('');
+  // const [posts, setPosts] = useState([]);
 
-  // const hs = (e) => {
+  // const handlePush = (e) => {
   //     e.preventDefault();
   //     addPosts(title, body);
   //  };
 
   //  const addPosts = (title, body) => {
   //     axios
-  //        .post(USERS_API_URL, {
+  //        .post(POST_API_URL, {
   //           title: title,
   //           body: body,
   //        })
@@ -146,31 +187,6 @@ const Feedback = () => {
   //  };
 
   // console.log("dataState", dataState);
-
-  // 2
-  // const { createProxyMiddleware } = require('http-proxy-middleware');
-
-  // module.exports = function (app) {
-  // app.use(
-  //   '/feedback',
-  //   createProxyMiddleware({
-  //     target: 'list/getFeedbackListPage',
-  //     pathRewrite: {
-  //       '^/feedback': '',
-  //     },
-  //   }),
-  // );
-
-  // const getData = async () => {
-  //   try {
-  //     const { data } = await axios.get("feedback/list");
-  //     console.log("data", data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // getData();
-  // getData();
 
 
   return (

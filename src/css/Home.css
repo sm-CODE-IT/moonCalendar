@@ -156,6 +156,11 @@
     transform: rotate(45deg);
     /* background: rgba(0, 0, 0, 0.5); */
  }
+ .Home .icon_5_wrapper {
+    position: absolute;
+    left: 76vw;
+    top: 22rem;
+ }
  .Home .logo_img {
     width: 100%;
  }

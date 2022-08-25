@@ -90,6 +90,20 @@ const Home = () => {
   const icon_2_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Second.png`;
   const icon_3_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Third.png`;
   const icon_4_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Fourth.png`;
+  const PlanetContainer = useRef();
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: PlanetContainer.current,
+      renderer: "svg",
+      rendererSettings: {
+        mount: true,
+      },
+      loop: true,
+      autoplay: true,
+      animationData: require(`.././data/Planet.json`),
+    });
+  }, []);
+
 
   /* 3D */
   const x = useMotionValue(200);
@@ -104,7 +118,7 @@ const Home = () => {
     y.set(event.clientY - rect.top);
   };
   const { scrollYProgress } = useScroll();
-  console.log(scrollYProgress);
+  // console.log(scrollYProgress);
 
   /* animation lottie */
   // const handScrollSrc =
@@ -191,15 +205,48 @@ const Home = () => {
                 className="logo_img logo_1_img"
               />
             </motion.div>
-            <div className="icon_wrapper icon_2_wrapper">
-              <img src={icon_2_Src} alt="" className="logo_img" />
-            </div>
-            <div className="icon_wrapper icon_3_wrapper">
-              <img src={icon_3_Src} alt="" className="logo_img" />
-            </div>
-            <div className="icon_wrapper icon_4_wrapper">
-              <img src={icon_4_Src} alt="" className="logo_img" />
-            </div>
+            <motion.div 
+            className="icon_wrapper icon_2_wrapper"
+            animate={{
+                y: [10, 0, 10],
+                // scale: [1, 1.1, 1, 0.9, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                type: "spring",
+                damping: 3,
+                stiffness: 50,
+              }}>
+              <motion.img src={icon_2_Src} alt="" className="logo_img" />
+            </motion.div>
+            <motion.div className="icon_wrapper icon_3_wrapper" animate={{
+                y: [10, 0, 10],
+                // scale: [1, 1.1, 1, 0.9, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                type: "spring",
+                damping: 3,
+                stiffness: 50,
+              }}>
+              <motion.img src={icon_3_Src} alt="" className="logo_img" />
+            </motion.div>
+            <motion.div className="icon_wrapper icon_4_wrapper" animate={{
+                y: [0, 15, 0],
+                // scale: [1, 1.1, 1, 0.9, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                type: "spring",
+                damping: 3,
+                stiffness: 50,
+              }}>
+              <motion.img src={icon_4_Src} alt="" className="logo_img" />
+            </motion.div>
+            <div className="icon_5_wrapper" ref={PlanetContainer}></div>
           </div>
           {/* </div> */}
         </section>
