@@ -1,0 +1,77 @@
+/*calendar*/
+.App {
+  width: 100vw;
+}
+.calendar {
+  width: 100vw;
+  left: 0;
+}
+.calendar.home_line {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.start {
+  margin-top: 1em;
+  margin-left: 8%;
+  margin-right: 8%;
+}
+table {
+  background-image: url('/public/assets/calendar.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.Calendar > .calendar {
+  opacity: 0.75;
+}
+.Calendar > .calendar {
+  margin-top: 10rem;
+}
+
+.fc-daygrid-day-number {
+  color: white;
+  font-family: 'Nanum Myeongjo';
+}
+
+.fc-toolbar-title {
+  font-family: 'Nanum Myeongjo';
+  color: var(--btntxt-color);
+}
+
+.fc-col-header-cell-cushion {
+  color: white;
+  font-family: 'Nanum Myeongjo';
+}
+button.fc-prev-button.fc-button.fc-button-primary {
+  background-color: var(--line-color);
+  border-color: white;
+}
+button.fc-next-button.fc-button.fc-button-primary {
+  background-color: var(--line-color);
+  border-color: white;
+}
+
+.fc-daygrid-dot-event {
+  padding: 0px;
+}
+tbody {
+  height: 1000px;
+}
+.fc-daygrid-day-events:hover {
+  background-image: url('/public/assets/addDiary_yellow.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}
+/* background-image: url('/public/assets/addDiary\ .png');*/
+.background {
+  background-repeat: no-repeat;
+}
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+  position: relative;
+  height: 10rem;
+}

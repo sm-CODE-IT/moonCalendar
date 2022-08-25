@@ -22,19 +22,19 @@ const Home = () => {
   const navigate = useNavigate();
   /* for scroll */
   /* when scroll up -> show Header */
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [isTopZero, setisTopZero] = useState(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    setisTopZero(prevScrollPos <= currentScrollPos);
-    setPrevScrollPos(currentScrollPos);
-  };
+  // const [prevScrollPos, setPrevScrollPos] = useState(0);
+  // const [isTopZero, setisTopZero] = useState(false);
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // const handleScroll = () => {
+  //   const currentScrollPos = window.pageYOffset;
+  //   setisTopZero(prevScrollPos <= currentScrollPos);
+  //   setPrevScrollPos(currentScrollPos);
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, isTopZero, handleScroll]);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [prevScrollPos, isTopZero, handleScroll]);
 
   /* motion */
   // TEXT animation
@@ -123,8 +123,8 @@ const Home = () => {
   /* 3D */
   const x = useMotionValue(200);
   const y = useMotionValue(200);
-  const rotateX = useTransform(y, [0, 400], [45, -45]);
-  const rotateY = useTransform(x, [0, 400], [-45, 45]);
+  const rotateX = useTransform(y, [0, 400], [5, -5]);
+  const rotateY = useTransform(x, [0, 400], [-5, 5]);
 
   const handleMouse = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -193,13 +193,14 @@ const Home = () => {
           </div>
         </section>
         <section>
-          {/* <div
-            className={[
-              "page page_back",
-              isTopZero ? "background_scroll_down" : "background_scroll_up",
-            ].join(" ")}
-          > */}
-          <div className="incons_wrapper">
+          <div className="incons_wrapper" onMouseMove={handleMouse}>
+            {/* <motion.div
+              className="mouse_move"
+              style={{
+                rotateX: rotateX,
+                rotateY: rotateY,
+              }}
+            > */}
             <motion.div
               className="icon_wrapper icon_1_wrapper"
               animate={{
@@ -274,6 +275,7 @@ const Home = () => {
             <div className="icon_5_wrapper" ref={PlanetContainer}></div>
             <div className="icon_6_wrapper" ref={CircleContainer}></div>
           </div>
+
           {/* </div> */}
         </section>
       </div>
