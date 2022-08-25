@@ -36,20 +36,6 @@ const Home = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos, isTopZero, handleScroll]);
 
-  // const helloContainer = useRef();
-  // useEffect(() => {
-  //   lottie.loadAnimation({
-  //     container: helloContainer.current,
-  //     renderer: "svg",
-  //     rendererSettings: {
-  //       mount: false,
-  //     },
-  //     loop: 1,
-  //     autoplay: true,
-  //     animationData: require("../data/lightHello.json"),
-  //   });
-  // }, []);
-
   /* motion */
   // TEXT animation
   // Variants for Container of words.
@@ -82,14 +68,13 @@ const Home = () => {
     },
   };
 
-  // Hand Draw Text
-
   // ICON
   const { themeMode } = useContext(DiaryThemeStateContext);
   const icon_1_Src = process.env.PUBLIC_URL + `/assets/${themeMode}First.png`;
   const icon_2_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Second.png`;
   const icon_3_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Third.png`;
   const icon_4_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Fourth.png`;
+  /* planet */
   const PlanetContainer = useRef();
   useEffect(() => {
     lottie.loadAnimation({
@@ -104,6 +89,36 @@ const Home = () => {
     });
   }, []);
 
+  /* Rotate Circle */
+  const CircleContainer = useRef();
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: CircleContainer.current,
+      renderer: "svg",
+      rendererSettings: {
+        mount: true,
+      },
+      loop: true,
+      autoplay: true,
+      animationData: require(`.././data/rotate-circle.json`),
+    });
+  }, []);
+
+  /* bg_space */
+  const SpaceContainer = useRef();
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: SpaceContainer.current,
+      renderer: "svg",
+      rendererSettings: {
+        mount: true,
+        preserveAspectRatio: "none", // "xMidYMid slice",
+      },
+      loop: true,
+      autoplay: true,
+      animationData: require(`.././data/bg-space.json`),
+    });
+  }, []);
 
   /* 3D */
   const x = useMotionValue(200);
@@ -198,6 +213,7 @@ const Home = () => {
                 damping: 3,
                 stiffness: 50,
               }}
+              style={{ rotate: 25 }}
             >
               <motion.img
                 src={icon_1_Src}
@@ -205,9 +221,9 @@ const Home = () => {
                 className="logo_img logo_1_img"
               />
             </motion.div>
-            <motion.div 
-            className="icon_wrapper icon_2_wrapper"
-            animate={{
+            <motion.div
+              className="icon_wrapper icon_2_wrapper"
+              animate={{
                 y: [10, 0, 10],
                 // scale: [1, 1.1, 1, 0.9, 1],
               }}
@@ -217,10 +233,14 @@ const Home = () => {
                 type: "spring",
                 damping: 3,
                 stiffness: 50,
-              }}>
+              }}
+              style={{ rotate: -25 }}
+            >
               <motion.img src={icon_2_Src} alt="" className="logo_img" />
             </motion.div>
-            <motion.div className="icon_wrapper icon_3_wrapper" animate={{
+            <motion.div
+              className="icon_wrapper icon_3_wrapper"
+              animate={{
                 y: [10, 0, 10],
                 // scale: [1, 1.1, 1, 0.9, 1],
               }}
@@ -230,10 +250,13 @@ const Home = () => {
                 type: "spring",
                 damping: 3,
                 stiffness: 50,
-              }}>
+              }}
+            >
               <motion.img src={icon_3_Src} alt="" className="logo_img" />
             </motion.div>
-            <motion.div className="icon_wrapper icon_4_wrapper" animate={{
+            <motion.div
+              className="icon_wrapper icon_4_wrapper"
+              animate={{
                 y: [0, 15, 0],
                 // scale: [1, 1.1, 1, 0.9, 1],
               }}
@@ -243,15 +266,21 @@ const Home = () => {
                 type: "spring",
                 damping: 3,
                 stiffness: 50,
-              }}>
+              }}
+              style={{ rotate: 45 }}
+            >
               <motion.img src={icon_4_Src} alt="" className="logo_img" />
             </motion.div>
             <div className="icon_5_wrapper" ref={PlanetContainer}></div>
+            <div className="icon_6_wrapper" ref={CircleContainer}></div>
           </div>
           {/* </div> */}
         </section>
       </div>
       <div className="lottie_scroll" ref={handScrollContainer}></div>
+      <div className="space_background_wrapper">
+        <div className="space_background" ref={SpaceContainer}></div>
+      </div>
 
       <p className="body1 text_wrapper">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, nemo

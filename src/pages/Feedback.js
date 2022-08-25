@@ -12,7 +12,6 @@ import useTheme from "../util/useTheme";
 import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 // const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // module.exports = function (app) {
@@ -90,13 +89,12 @@ const Feedback = () => {
   // 1
   // axios.defaults.withCredentials = true;
   // const GET_API_URL = "feedback/list";
-  
+
   // // contents, title, email
   // function getUsers() {
   //   return axios.get(GET_API_URL);
   // }
-  
-  
+
   // function componentDidMount() {
   //   getUsers().then((response) => {
   //     console.log(response.data);
@@ -113,9 +111,10 @@ const Feedback = () => {
   //   componentDidMount();
 
   /* GET */
+
   axios.defaults.withCredentials = true;
-  const GET_API_URL = "/feedback/list";
-  
+  const GET_API_URL = "feedback/list";
+
   // contents, title, email
   function getUsers() {
     return axios.get(GET_API_URL);
@@ -144,7 +143,7 @@ const Feedback = () => {
   componentDidMount();
 
   /* POST */
-  const POST_API_URL = "/feedback/write";
+  const POST_API_URL = "feedback/write";
   const [title, setTitle] = useState();
   const [contents, setContents] = useState();
   const [image, setImage] = useState();
@@ -173,26 +172,35 @@ const Feedback = () => {
     }
 
     setIsValid(true);
-    console.log("before submit?", inputOneContent, inputTwoContent, inputFourContent);
+    console.log(
+      "before submit?",
+      inputOneContent,
+      inputTwoContent,
+      inputFourContent
+    );
     if (window.confirm("제출하시겠습니까?")) {
       setTitle(inputOneContent);
       setContents(inputTwoContent);
       setImage("");
       setEmail(inputFourContent);
-      console.log("submit?", inputOneContent, inputTwoContent, inputFourContent)
-      // setUsers(dbTitle, dbContents, dbImage, dbEmail);
+      console.log(
+        "submit?",
+        inputOneContent,
+        inputTwoContent,
+        inputFourContent
+      );
+      setUsers(title, contents, email);
       navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
     }
   };
 
-  // function setUsers(dbTitle, dbContents, dbImage, dbEmail) {
-  //   axios.post(POST_API_URL, {
-  //     dbTitle,
-  //     dbContents,
-  //     dbImage,
-  //     dbEmail,
-  //   }.then((response) => console.log(response)));
-  // }
+  function setUsers(title, contents, email) {
+    axios.post(POST_API_URL, {
+      title,
+      contents,
+      email,
+    });
+  }
 
   // const [title, setTitle] = useState('');
   // const [body, setBody] = useState('');
@@ -217,20 +225,6 @@ const Feedback = () => {
   //  };
 
   // console.log("dataState", dataState);
-
-
-  function setUsers(title, contents, email) {
-    console.log("post data", {
-      title: title,
-      contents: contents,
-      email: email,
-    });
-    axios.post(POST_API_URL, {
-      title: title,
-      contents: contents,
-      email: email,
-    });
-  }
 
   return (
     <div className="Feedback">
