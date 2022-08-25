@@ -1,4 +1,5 @@
 import '.././App.css'
+import './../css/Calendar.css'
 import React, {
   useContext,
   useEffect,
@@ -81,8 +82,6 @@ function Calendar() {
             initialView="dayGridMonth"
             editable="false" //이벤트,드래그 등의 편집 기능 활용여부
             top="130px "
-            height="150vh"
-            width="150vh"
             dayMaxEvents="1"
             dateClick={dateClickInfo => {
               /* if (isUnion(dateClickInfo)) {
@@ -109,6 +108,7 @@ function Calendar() {
               center: 'title',
               end: `next`,
             }}
+            handleWindowResize="true"
           />
         </div>
       </section>

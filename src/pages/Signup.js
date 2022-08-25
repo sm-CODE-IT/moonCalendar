@@ -10,6 +10,8 @@ import lottie from 'lottie-web'
 
 import { motion } from 'framer-motion'
 
+import './../css/Signup.css'
+
 const Signup = () => {
   const navigate = useNavigate()
 
@@ -19,14 +21,6 @@ const Signup = () => {
     setisOpen(!isOpen)
   }
 
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-    passwordConfirm: '',
-    name: '',
-  })
-  const [input, setInput] = useState('')
-  const [message, setMessage] = useState('')
   /*const [email,setEData] = useState("");
     const [password,setPData] = useState("");
     const [passwordConfirm,setCData] = useState("");
@@ -36,41 +30,39 @@ const Signup = () => {
     themeMode === 'light'
       ? process.env.PUBLIC_URL + '/assets/lightLogo.png'
       : process.env.PUBLIC_URL + '/assets/darkLogo.png'
-  const changeText = e => {
-    const { name, value } = e.target
-    setState({
-      ...input,
-      [name]: value,
-    })
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [name, setName] = useState('')
+  /*const submit = () => {
+    axios
+      .post('http://localhost:8080/signup', null, {
+        params: {
+          email: email,
+          password: password,
+          passwordConfirm: passwordConfirm,
+          name: name,
+        },
+      })
+      .catch(function () {
+        console.log('실패함')
+      })
+  }*/
+  /* axios */
+  const axios = require('axios')
+  // const [dataState, setDataState] = useState();
+  // 1
+  axios.defaults.withCredentials = true
+  const USERS_API_URL = '/feedback/list'
+  function getUsers() {
+    return axios.get(USERS_API_URL)
   }
 
-  const initialState = {
-    email: '',
-    password: '',
-    passwordConfirm: '',
-    name: '',
-  }
-  const reset = () => {
-    setState(() => initialState)
-  }
-
-  const { email, password, passwordConfirm, name } = state
-  const submit = e => {
-    e.preventDefault()
-    const profile = {
-      email: state.email,
-      password: state.password,
-      passwordConfirm: state.passwordConfirm,
-      name: state.name,
-    }
-    axios({
-      url: 'http://localhost:8080/signup',
-      method: 'post',
-    }).then(response => {
-      if (response.data != null) {
-        this.setState(this.initialState)
-        alert('saved successfully')
-      }
+  function componentDidMount() {
+    getUsers().then(response => {
+      console.log(response.data)
+      // const data = response.data;
+      // this.setDataState({data});
     })
   }
   const likecontainer = useRef()
@@ -86,98 +78,111 @@ const Signup = () => {
   //<img  className="signin_logo_2" src={logoBtnSrc}/>
   return (
     <motion.div
-      className="signup_3"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 50 }}
-      transition={{ duration: 2, ease: 'easeInOut' }}
+      initial={{
+        opacity: 0,
+      }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 2,
+      }}
+      exit={{
+        opacity: 1,
+      }}
     >
-      <form onSubmit={submit} action="/user/signup" method="post">
-        <div className="Signup">
-          <div className="background">
-            <div className="popupbox_2">
-              <div className="signup_left">
-                <div className="logo">
-                  <img className="signup_logo" src={logoBtnSrc} />
-                  <h2 className="h3">MoonCalendar</h2>
+      <div className="Signup">
+        <div className="background">
+          <div className="popupbox_2">
+            <div className="signup_left">
+              <div className="logo">
+                <img className="signup_logo" src={logoBtnSrc} />
+                <h2 className="h3">MoonCalendar</h2>
+              </div>
+              <section className="animation">
+                <div className="anima_back">
+                  <div className="anima" ref={likecontainer}></div>
                 </div>
-                <section className="animation">
-                  <div className="anima_back">
-                    <div className="anima" ref={likecontainer}></div>
-                  </div>
 
-                  <div className="content">
-                    &nbsp;This has been by far one of the most
-                    &nbsp;&nbsp;&nbsp;rewarding experience of my life.
-                    &nbsp;thank you for letting me part of this
-                  </div>
-                </section>
-              </div>
-              <div className="signup_right">
-                <h1 className="h1">Create Account</h1>
+                <div className="content_signup">
+                  &nbsp;This has been by far one of the most
+                  &nbsp;&nbsp;&nbsp;rewarding experience of my life. &nbsp;thank
+                  you for letting me part of this
+                </div>
+              </section>
+            </div>
+            <div className="signup_right">
+              <h1 className="h1" style={{ color: 'black' }}>
+                Create Account
+              </h1>
 
-                <section>
-                  <p className="input_text caption">Email</p>
-                  <MyInput
-                    className="MyInput caption"
-                    id="email"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={changeText}
-                    required={true}
-                  ></MyInput>
-                </section>
-                <section>
-                  <p className="input_text caption">Password</p>
-                  <MyInput
-                    className="MyInput"
-                    id="password"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={changeText}
-                    required={true}
-                  ></MyInput>
-                </section>
-                <section>
-                  <p className="input_text caption">Confirm</p>
-                  <MyInput
-                    className="MyInput caption"
-                    id="passwordConfirm"
-                    type="password"
-                    name="passwordConfirm"
-                    value={passwordConfirm}
-                    onChange={changeText}
-                    placeholder="PasswordConfirm"
-                    required={true}
-                  ></MyInput>
-                </section>
+              <section className="email_wrapper">
+                <input
+                  className="MyInput caption"
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={e => {
+                    setEmail(e.target.value)
+                  }}
+                  required={true}
+                ></input>
+                <span>Email</span>
+              </section>
+              <section className="pwd_wrapper">
+                <input
+                  className="MyInput"
+                  id="password"
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={e => {
+                    setPassword(e.target.value)
+                  }}
+                  required={true}
+                ></input>
+                <span>Password</span>
+              </section>
+              <section className="pwdConfirm_wrapper">
+                <input
+                  className="MyInput caption"
+                  id="passwordConfirm"
+                  type="password"
+                  name="passwordConfirm"
+                  value={passwordConfirm}
+                  onChange={e => {
+                    setPasswordConfirm(e.target.value)
+                  }}
+                  required={true}
+                ></input>
+                <span>PasswordConfirm</span>
+              </section>
 
-                <section>
-                  <p className="input_text caption">Name</p>
-                  <MyInput
-                    className="MyInput caption"
-                    id="name"
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={name}
-                    onChange={changeText}
-                    required={true}
-                  ></MyInput>
-                </section>
+              <section className="name_wrapper">
+                <input
+                  className="MyInput caption"
+                  id="name"
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={e => {
+                    setName(e.target.value)
+                  }}
+                  required={true}
+                ></input>
+                <span>Name</span>
+              </section>
 
-                <footer className="footer_signup">
-                  <MyButton onClick={submit} type="submit" text={'Sign In'} />
-                </footer>
-              </div>
+              <footer className="footer_signup">
+                <MyButton
+                  type="submit"
+                  text={'Sign In'}
+                  onClick={() => componentDidMount}
+                />
+              </footer>
             </div>
           </div>
         </div>
-      </form>
+      </div>
     </motion.div>
   )
 }

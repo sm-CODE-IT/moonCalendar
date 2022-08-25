@@ -7,73 +7,68 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import './../App.css'
+import './../css/Signup_3.css'
 import spaceVideo from './space.mp4'
 
 import { motion } from 'framer-motion'
 
 const Signup_3 = () => {
   const navigate = useNavigate()
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-    passwordConfirm: '',
-    name: '',
-  })
-  const [input, setInput] = useState('')
-  const [message, setMessage] = useState('')
-  /*const [email,setEData] = useState("");
-    const [password,setPData] = useState("");
-    const [passwordConfirm,setCData] = useState("");
-    const [name,setNData] = useState("");*/
+
+  const [email, setEData] = useState('')
+  const [password, setPData] = useState('')
+  const [passwordConfirm, setCData] = useState('')
+  const [name, setNData] = useState('')
   const [themeMode, toggleTheme] = useTheme()
   const logoBtnSrc =
     themeMode === 'light'
       ? process.env.PUBLIC_URL + '/assets/lightLogo.png'
       : process.env.PUBLIC_URL + '/assets/darkLogo.png'
-  const changeText = e => {
-    const { name, value } = e.target
-    setState({
-      ...input,
-      [name]: value,
-    })
+
+  /*const submit = () => {
+    axios
+      .post('http://localhost:8080/signup', null, {
+        params: {
+          email: email,
+          password: password,
+          passwordConfirm: passwordConfirm,
+          name: name,
+        },
+      })
+      .catch(function () {
+        console.log('실패함')
+      })
+  }*/
+  /* axios */
+  const axios = require('axios')
+  // const [dataState, setDataState] = useState();
+  // 1
+  axios.defaults.withCredentials = true
+  const USERS_API_URL = '/feedback/list'
+  function getUsers() {
+    return axios.get(USERS_API_URL)
   }
 
-  const initialState = {
-    email: '',
-    password: '',
-    passwordConfirm: '',
-    name: '',
-  }
-  const reset = () => {
-    setState(() => initialState)
-  }
-
-  const { email, password, passwordConfirm, name } = state
-  const submit = e => {
-    e.preventDefault()
-    const profile = {
-      email: state.email,
-      password: state.password,
-      passwordConfirm: state.passwordConfirm,
-      name: state.name,
-    }
-    axios({
-      url: 'http://localhost:8080/signup',
-      method: 'post',
-    }).then(response => {
-      if (response.data != null) {
-        this.setState(this.initialState)
-        alert('saved successfully')
-      }
+  function componentDidMount() {
+    getUsers().then(response => {
+      console.log(response.data)
+      // const data = response.data;
+      // this.setDataState({data});
     })
   }
   return (
     <motion.div
-      className="signup_3"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 50 }}
-      transition={{ duration: 2, ease: 'easeInOut' }}
+      initial={{
+        opacity: 0,
+      }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 2,
+      }}
+      exit={{
+        opacity: 1,
+        ease: 'easeInOut',
+      }}
     >
       <div className="signup_3_bg_test">
         <video muted autoPlay={'autoplay'} preload="auto" loop id="video">
@@ -86,62 +81,62 @@ const Signup_3 = () => {
 
             <h1 className="h1">Welcome Back!</h1>
 
-            <section className="email_wrapper">
-              <p className="input_text caption">Email</p>
-              <MyInput
+            <section className="email_wrappers">
+              <input
                 className="MyInput caption"
                 id="email"
                 type="email"
                 name="email"
-                placeholder="Email"
                 value={email}
-                onChange={changeText}
+                onChange={e => setEData(e.target.value)}
                 required={true}
-              ></MyInput>
+              ></input>
+              <span>Email</span>
             </section>
-            <section className="pwd_wrapper">
-              <p className="input_text caption">Password</p>
-              <MyInput
+            <section className="pwd_wrappers">
+              <input
                 className="MyInput"
                 id="password"
                 type="password"
                 name="password"
-                placeholder="Password"
                 value={password}
-                onChange={changeText}
+                onChange={e => setPData(e.target.value)}
                 required={true}
-              ></MyInput>
+              ></input>
+              <span>Password</span>
             </section>
-            <section>
-              <p className="input_text caption">Confirm</p>
-              <MyInput
+            <section className="pwdConfirm_wrappers">
+              <input
                 className="MyInput caption"
                 id="passwordConfirm"
                 type="password"
                 name="passwordConfirm"
                 value={passwordConfirm}
-                onChange={changeText}
-                placeholder="PasswordConfirm"
+                onChange={e => setCData(e.target.value)}
                 required={true}
-              ></MyInput>
+              ></input>
+              <span>PasswordConfirm</span>
             </section>
 
-            <section>
-              <p className="input_text caption">Name</p>
-              <MyInput
+            <section className="names_wrapper">
+              <input
                 className="MyInput caption"
                 id="name"
                 type="text"
                 name="name"
-                placeholder="Name"
                 value={name}
-                onChange={changeText}
+                onChange={e => setNData(e.target.value)}
                 required={true}
-              ></MyInput>
+              ></input>
+              <span>Name</span>
             </section>
 
             <footer className="footer_signup">
-              <MyButton onClick={submit} type="submit" text={'Sign In'} />
+              <MyButton
+                onClick={() => componentDidMount}
+                type="submit"
+                text={'Sign In'}
+              />
             </footer>
           </div>
         </div>

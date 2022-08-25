@@ -4,15 +4,15 @@ import MyButton from '../components/MyButton'
 import MyInput from '../components/MyInput'
 import useTheme from '../util/useTheme'
 import Link, { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import Lottie from 'react-lottie-player'
 
 import lottie from 'lottie-web'
-import { signin } from '../service/ApiService'
 import { motion } from 'framer-motion'
 
-const Signin = () => {
+import './../css/Signin.css'
+import './../App.css'
+const Signin = ({ toggle }) => {
   const navigate = useNavigate()
+  const [change, setChange] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [input, setInput] = useState('')
@@ -27,6 +27,7 @@ const Signin = () => {
       ? process.env.PUBLIC_URL + '/assets/lightLogo.png'
       : process.env.PUBLIC_URL + '/assets/darkLogo.png'
 
+  /*
   const handleSubmit = (event, state) => {
     event.preventDefault()
     const data = new FormData(event.target)
@@ -34,7 +35,7 @@ const Signin = () => {
     password = data.get('password')
     // ApiService의 signin 메서드를 사용 해 로그인.
     signin({ email: email, password: password })
-  }
+  }*/
   const changeText = e => {
     setEmail(e.target.value)
   }
@@ -44,6 +45,20 @@ const Signin = () => {
   const handleLogin = e => {
     window.location.href = `/oauth2/authorization/google}`
   }
+  const axios = require('axios')
+
+  axios.defaults.withCredentials = true
+  const USERS_API_URL = '/login'
+  function getUsers() {
+    return axios.get(USERS_API_URL)
+  }
+
+  function componentDidMount() {
+    getUsers().then(response => {
+      console.log(response.data)
+    })
+  }
+
   const likecontainer = useRef()
   useEffect(() => {
     lottie.loadAnimation({
@@ -57,13 +72,18 @@ const Signin = () => {
 
   return (
     <motion.div
-      className="signup_3"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 50 }}
-      transition={{ duration: 2, ease: 'easeInOut' }}
+      initial={{
+        opacity: 0,
+      }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 2,
+      }}
+      exit={{
+        opacity: 1,
+      }}
     >
-      <form action="/user/signup" method="post">
+      <div className="Signin">
         <div className="background">
           <div className="popupbox_2">
             <div className="signin_left_2">
@@ -73,44 +93,46 @@ const Signin = () => {
               </div>
               <section className="animation">
                 <div className="anima_back">
-                  <div className="anima">
-                    <div className="anima" ref={likecontainer}></div>
-                  </div>
+                  <div className="anima" ref={likecontainer}></div>
                 </div>
 
-                <div className="content">
+                <div className="content_signin">
                   &nbsp;This has been by far one of the most
                   &nbsp;&nbsp;&nbsp;rewarding experience of my life. &nbsp;thank
                   you for letting me part of this
                 </div>
               </section>
             </div>
-            <div className="signin_right">
-              <h1 className="h1">Welcome Back!</h1>
 
-              <section className="email_wrapper">
-                <MyInput
+            <div className="signin_right">
+              <h1 className="h1" style={{ color: 'black' }}>
+                Welcome Back!
+              </h1>
+
+              <div className="email_wrapper">
+                <input
                   className="MyInput caption"
                   id="email"
                   type="email"
                   name="email"
-                  placeholder="Email"
                   value={email}
                   onChange={changeText}
-                  required={true}
-                ></MyInput>
-              </section>
+                  required="required"
+                ></input>
+                <span>Email</span>
+              </div>
+
               <section className="pwd_wrapper">
-                <MyInput
+                <input
                   className="MyInput"
                   id="password"
                   type="password"
                   name="password"
-                  placeholder="Password"
                   value={password}
                   onChange={changeText_2}
                   required={true}
-                ></MyInput>
+                ></input>
+                <span>Password</span>
               </section>
               <div>
                 <div className="submit_signin">
@@ -118,11 +140,13 @@ const Signin = () => {
                     className="submit_button"
                     text={'Submit'}
                     type="submit"
+                    onClick={() => componentDidMount}
                   />
                 </div>
 
                 <div className="or">
-                  <span className="line_3" style={{ width: '13rem' }}></span>OR
+                  <span className="line_3" style={{ width: '13rem' }}></span>
+                  <p style={{ color: 'black' }}>OR</p>
                   <span className="line_3" style={{ width: '13rem' }}></span>
                 </div>
                 <div className="social">
@@ -138,7 +162,6 @@ const Signin = () => {
                       className="naver"
                       src={'.././assets/NavorIcon.png'}
                       alt=""
-                      onClick={{}}
                     />
                   </a>
                 </div>
@@ -155,9 +178,15 @@ const Signin = () => {
                 </p>
               </footer>
             </div>
+
+            <img
+              src={process.env.PUBLIC_URL + '/assets/x.png'}
+              onClick={() => toggle()}
+              className="x"
+            />
           </div>
         </div>
-      </form>
+      </div>
     </motion.div>
   )
 }

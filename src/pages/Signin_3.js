@@ -7,113 +7,109 @@ import Link, { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import './../App.css'
-import lottie from 'lottie-web'
-import Lottie from 'react-lottie-player'
+import './../css/Signin_3.css'
 
-import lottieJson from './96849-astronaut-in-space.json'
 import spaceVideo from './space.mp4'
 import { motion } from 'framer-motion'
 
 const Signin_3 = () => {
   const navigate = useNavigate()
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-    passwordConfirm: '',
-    name: '',
-  })
-  const [input, setInput] = useState('')
-  const [message, setMessage] = useState('')
-  /*const [email,setEData] = useState("");
-    const [password,setPData] = useState("");
-    const [passwordConfirm,setCData] = useState("");
-    const [name,setNData] = useState("");*/
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   const [themeMode, toggleTheme] = useTheme()
   const logoBtnSrc =
     themeMode === 'light'
       ? process.env.PUBLIC_URL + '/assets/lightLogo.png'
       : process.env.PUBLIC_URL + '/assets/darkLogo.png'
-  const changeText = e => {
-    const { name, value } = e.target
-    setState({
-      ...input,
-      [name]: value,
-    })
+
+  /*const submit = e => {
+    axios
+      .post('http://localhost:8080/login', null, {
+        params: {
+          email: email,
+          password: password,
+        },
+      })
+      .then(response => {})
+      .catch(function (error) {
+        console.log('실패')
+      })
+  }*/
+  /* axios */
+  const axios = require('axios')
+  // const [dataState, setDataState] = useState();
+  // 1
+  axios.defaults.withCredentials = true
+  const USERS_API_URL = '/feedback/list'
+  function getUsers() {
+    return axios.get(USERS_API_URL)
   }
 
-  const initialState = {
-    email: '',
-    password: '',
-    passwordConfirm: '',
-    name: '',
-  }
-  const reset = () => {
-    setState(() => initialState)
-  }
-
-  const { email, password, passwordConfirm, name } = state
-  const submit = e => {
-    e.preventDefault()
-    const profile = {
-      email: state.email,
-      password: state.password,
-      passwordConfirm: state.passwordConfirm,
-      name: state.name,
-    }
-    axios({
-      url: 'http://localhost:8080/signup',
-      method: 'post',
-    }).then(response => {
-      if (response.data != null) {
-        this.setState(this.initialState)
-        alert('saved successfully')
-      }
+  function componentDidMount() {
+    getUsers().then(response => {
+      console.log(response.data)
+      // const data = response.data;
+      // this.setDataState({data});
     })
   }
 
   return (
     <motion.div
-      className="signup_3"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 50 }}
-      transition={{ duration: 2, ease: 'easeInOut' }}
+      initial={{
+        opacity: 0,
+      }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 2,
+      }}
+      exit={{
+        opacity: 1,
+        ease: 'easeInOut',
+      }}
     >
       <div className="signin_3_bg_test">
         <video muted autoPlay={'autoplay'} preload="auto" loop id="video">
-          <source src={spaceVideo} type="video/mp4" />
+          <source src={'./function.mp4'} type="video/mp4" />
         </video>
         <div className="signin_right_3_test">
           <div className="signin_right_32">
+            <img className="x" src={process.env.PUBLIC_URL + '/assets/x.png'} />
             <img
               className="signup_3_logo"
               src={process.env.PUBLIC_URL + '/assets/darkLogo.png'}
             />
+
             <h1 className="h1">Welcome Back!</h1>
 
-            <section className="email_wrapper">
-              <MyInput
+            <section className="email_wrappers">
+              <input
                 className="MyInput caption"
                 id="email"
                 type="email"
                 name="email"
-                placeholder="Email"
                 value={email}
-                onChange={changeText}
+                onChange={e => {
+                  setEmail(e.target.value)
+                }}
                 required={true}
-              ></MyInput>
+              ></input>
+              <span>Email</span>
             </section>
-            <section className="pwd_wrapper">
-              <MyInput
+
+            <section className="pwd_wrappers">
+              <input
                 className="MyInput"
                 id="password"
                 type="password"
                 name="password"
-                placeholder="Password"
                 value={password}
-                onChange={changeText}
+                onChange={e => {
+                  setPassword(e.target.value)
+                }}
                 required={true}
-              ></MyInput>
+              ></input>
+              <span>Password</span>
             </section>
             <div>
               <div className="submit_signin">
@@ -121,6 +117,7 @@ const Signin_3 = () => {
                   className="submit_button"
                   text={'Submit'}
                   type="submit"
+                  onClick={() => componentDidMount}
                 />
               </div>
 

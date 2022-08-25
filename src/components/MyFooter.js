@@ -1,16 +1,43 @@
+import lottie from 'lottie-web'
+import { useState, useEffect, useRef } from 'react'
+
+import './../css/MyFooter.css'
 const MyFooter = () => {
+  const container = useRef()
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: require('./../pages/spaceman.json'),
+    })
+  }, [])
+  const container2 = useRef()
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container2.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: require('./../pages/moon_city.json'),
+    })
+  }, [])
   return (
     <div className="MyFooter">
-      <br />
-      <p className="h1">나중에 footer 형식 정해야됨</p>
-      <p className="body2">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi quod
-        temporibus optio. Dolorem optio perferendis animi eligendi, dolores
-        nostrum. Dolores ab earum ratione, reiciendis tenetur molestiae
-        veritatis rerum modi perferendis?
-      </p>
+      <div className="Footer">
+        <br />
+        <p className="title1">Need Help? Write Feedback</p>
+        <img
+          src={process.env.PUBLIC_URL + '/assets/github.png'}
+          className="github"
+        />
+        <p className="title1">sm-CODE-IT/moonCalendar</p>
+        <p className="title1">김민희 | 김정윤 | Sohn-SooKyoung | 윤소영</p>
+      </div>
+      <div className="picture2" ref={container2}></div>
     </div>
-  );
-};
+  )
+}
 
-export default MyFooter;
+export default MyFooter

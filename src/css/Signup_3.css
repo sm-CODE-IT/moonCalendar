@@ -1,0 +1,224 @@
+.signup_right_3 {
+  position: relative;
+  width: 26rem;
+  height: 50rem;
+  margin: 0 auto;
+  top: 5%;
+  left: 20%;
+  right: 20%;
+  position: absolute;
+
+  font-size: 30px;
+  border-radius: 30px;
+  z-index: 1;
+}
+.signup_right_32 {
+  position: absolute;
+  z-index: 10000;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  backdrop-filter: blur(40px);
+  opacity: 0.8;
+  border-radius: 10px;
+  padding-right: 15%;
+  padding-left: 15%;
+
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-evenly;
+}
+#video {
+  z-index: 0;
+  opacity: 0.8;
+}
+.signup_3_bg_test {
+  width: 100vw;
+  height: 120vh;
+  background-size: cover;
+}
+.email_wrappers {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+  margin-bottom: 0;
+}
+.email_wrappers input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid transparent;
+  border-left: solid transparent;
+  border-right: solid transparent;
+  border-bottom: solid rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 0.4em;
+  transition: 0.5s;
+  background: transparent;
+}
+.email_wrappers span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.email_wrappers input:valid ~ span,
+.email_wrappers input:focus ~ span {
+  background: transparent;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.5em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.email_wrappers input:valid,
+.email_wrappers input:focus {
+  border: 1px solid #00dfc4;
+}
+
+.pwd_wrappers {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+}
+.pwd_wrappers input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid transparent;
+  border-left: solid transparent;
+  border-right: solid transparent;
+  border-bottom: solid rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+  transition: 0.5s;
+  background-color: transparent;
+}
+.pwd_wrappers span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.pwd_wrappers input:valid ~ span,
+.pwd_wrappers input:focus ~ span {
+  background-color: transparent;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.5em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.pwd_wrappers input:valid,
+.pwd_wrappers input:focus {
+  border: 1px solid #00dfc4;
+}
+
+.names_wrapper {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+}
+.names_wrapper input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid transparent;
+  border-left: solid transparent;
+  border-right: solid transparent;
+  border-bottom: solid rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+  transition: 0.5s;
+  background-color: transparent;
+}
+.names_wrapper span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.names_wrapper input:valid ~ span,
+.names_wrapper input:focus ~ span {
+  background-color: transparent;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.5em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.names_wrapper input:valid,
+.names_wrapper input:focus {
+  border: 1px solid #00dfc4;
+}
+
+.pwdConfirm_wrappers {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+}
+.pwdConfirm_wrappers input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid transparent;
+  border-left: solid transparent;
+  border-right: solid transparent;
+  border-bottom: solid rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+  transition: 0.5s;
+  background-color: transparent;
+}
+.pwdConfirm_wrappers span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.pwdConfirm_wrappers input:valid ~ span,
+.pwdConfirm_wrappers input:focus ~ span {
+  background-color: transparent;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.5em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.pwdConfirm_wrappers input:valid,
+.pwdConfirm_wrappers input:focus {
+  border: 1px solid #00dfc4;
+}

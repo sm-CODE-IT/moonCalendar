@@ -1,0 +1,36 @@
+/* MyFooter */
+.Footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 10rem;
+}
+.MyFooter {
+  background-color: var(--header-color);
+  z-index: 1;
+}
+.github {
+  margin-bottom: 4.5rem;
+}
+.left {
+  justify-content: start;
+}
+.picture {
+  overflow: hidden;
+  width: 18rem;
+  height: 18rem;
+  margin: 0;
+}
+.under {
+  overflow: hidden;
+  z-index: 0;
+}
+.picture2 {
+  z-index: 0;
+  position: relative;
+  left: 0;
+  width: 100%;
+
+  margin: 0;
+}
