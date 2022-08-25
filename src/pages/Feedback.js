@@ -149,16 +149,11 @@ const Feedback = () => {
     setIsValid(true);
     console.log("handleSubmit", inputOneContent);
     if (window.confirm("제출하시겠습니까?")) {
-      setTitle(inputOneContent);
-      setContents(inputTwoContent);
-      setImage("");
-      setEmail(inputFourContent);
-      console.log("submit?", title, contents, email);
-      setUsers(title, contents, image, email);
-      // navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
+      setUsers(inputOneContent, inputTwoContent, inputFourContent);
+      navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
     }
   };
-  function setUsers(title, contents, image, email) {
+  function setUsers(title, contents, email) {
     console.log("post data", {
       title: title,
       contents: contents,
