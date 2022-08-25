@@ -8,7 +8,14 @@ import { DiaryThemeStateContext } from "../App";
 /* hooks */
 import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, useAnimation } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  useMotionValue,
+  useTransform,
+  useScroll,
+  useWillChange,
+} from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const Home = () => {
@@ -42,8 +49,9 @@ const Home = () => {
   //     animationData: require("../data/lightHello.json"),
   //   });
   // }, []);
-  /* motion */
 
+  /* motion */
+  // TEXT animation
   // Variants for Container of words.
   const container = {
     hidden: { opacity: 0 },
@@ -52,7 +60,6 @@ const Home = () => {
       transition: { staggerChildren: 0.3 },
     },
   };
-
   // Variants for each word.
   const child = {
     visible: {
@@ -74,6 +81,30 @@ const Home = () => {
       },
     },
   };
+
+  // Hand Draw Text
+
+  // ICON
+  const { themeMode } = useContext(DiaryThemeStateContext);
+  const icon_1_Src = process.env.PUBLIC_URL + `/assets/${themeMode}First.png`;
+  const icon_2_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Second.png`;
+  const icon_3_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Third.png`;
+  const icon_4_Src = process.env.PUBLIC_URL + `/assets/${themeMode}Fourth.png`;
+
+  /* 3D */
+  const x = useMotionValue(200);
+  const y = useMotionValue(200);
+  const rotateX = useTransform(y, [0, 400], [45, -45]);
+  const rotateY = useTransform(x, [0, 400], [-45, 45]);
+
+  const handleMouse = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    x.set(event.clientX - rect.left);
+    y.set(event.clientY - rect.top);
+  };
+  const { scrollYProgress } = useScroll();
+  console.log(scrollYProgress);
 
   /* animation lottie */
   // const handScrollSrc =
@@ -103,42 +134,98 @@ const Home = () => {
       />
       {/* <div
         className={[
-          "home_background_wrapper",
+          "main_wrapper",
           isTopZero ? "background_scroll_down" : "background_scroll_up",
         ].join(" ")}
-      >
-    </div> */}
-      <section>
-        <div className="first_page_wrapper">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            animate="visible"
-            className="main"
-          >
-            {/* <div className="lottieHello" ref={helloContainer}></div> */}
-            <motion.div variants={child} className="h1 title text_wrapper">
-              Moon
-              <span className="colored"> Calendar</span>
-            </motion.div>
+      > */}
+      <div className="first_page_wrapper">
+        <section>
+          <div className="page page_front">
             <motion.div
-              variants={child}
-              className="title2 sub_title text_wrapper"
+              variants={container}
+              initial="hidden"
+              animate="visible"
+              className="main"
             >
-              Moon Calendar is a Web that can record your memories. Also, it can check the month's schedule at a glance
+              {/* <div className="lottieHello" ref={helloContainer}></div> */}
+
+              <motion.div variants={child} className="h1 title text_wrapper">
+                Moon
+                <span className="colored"> Calendar</span>
+              </motion.div>
+              <motion.div
+                variants={child}
+                className="title2 sub_title text_wrapper"
+              >
+                Moon Calendar is a Web that can record your memories. Also, it
+                can check the month's schedule at a glance
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
-        <div className="lottie_scroll" ref={handScrollContainer}></div>
-        <p className="body1 text_wrapper">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, nemo
-          debitis blanditiis, rerum dolorum nihil quod eius rem ipsum laudantium
-          cupiditate temporibus totam reiciendis quas? Eos explicabo molestias
-          rerum voluptatum.
-        </p>
-        <p className="body1 content"></p>
-      </section>
+          </div>
+        </section>
+        <section>
+          {/* <div
+            className={[
+              "page page_back",
+              isTopZero ? "background_scroll_down" : "background_scroll_up",
+            ].join(" ")}
+          > */}
+          <div className="incons_wrapper">
+            <motion.div
+              className="icon_wrapper icon_1_wrapper"
+              animate={{
+                y: [0, 10, 0],
+                // scale: [1, 1.1, 1, 0.9, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                type: "spring",
+                damping: 3,
+                stiffness: 50,
+              }}
+            >
+              <motion.img
+                src={icon_1_Src}
+                alt=""
+                className="logo_img logo_1_img"
+              />
+            </motion.div>
+            <div className="icon_wrapper icon_2_wrapper">
+              <img src={icon_2_Src} alt="" className="logo_img" />
+            </div>
+            <div className="icon_wrapper icon_3_wrapper">
+              <img src={icon_3_Src} alt="" className="logo_img" />
+            </div>
+            <div className="icon_wrapper icon_4_wrapper">
+              <img src={icon_4_Src} alt="" className="logo_img" />
+            </div>
+          </div>
+          {/* </div> */}
+        </section>
+      </div>
+      <div className="lottie_scroll" ref={handScrollContainer}></div>
+
+      <p className="body1 text_wrapper">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, nemo
+        debitis blanditiis, rerum dolorum nihil quod eius rem ipsum laudantium
+        cupiditate temporibus totam reiciendis quas? Eos explicabo molestias
+        rerum voluptatum. orem ipsum dolor sit amet consectetur adipisicing
+        elit. Illum, nemo debitis blanditiis, rerum dolorum nihil quod eius rem
+        ipsum laudantium cupiditate temporibus totam reiciendis quas? Eos
+        explicabo molestias rerum voluptatum.orem ipsum dolor sit amet
+        consectetur adipisicing elit. Illum, nemo debitis blanditiis, rerum
+        dolorum nihil quod eius rem ipsum laudantium cupiditate temporibus totam
+        reiciendis quas? Eos explicabo molestias rerum voluptatum.orem ipsum
+        dolor sit amet consectetur adipisicing elit. Illum, nemo debitis
+        blanditiis, rerum dolorum nihil quod eius rem ipsum laudantium
+        cupiditate temporibus totam reiciendis quas? Eos explicabo molestias
+        rerum voluptatum.
+      </p>
+
+      <p className="body1 content"></p>
       {/* <MyFooter></MyFooter> */}
+      {/* </div> */}
     </div>
   );
 };

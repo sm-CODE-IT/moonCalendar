@@ -203,6 +203,7 @@ body {
   top: 0;
   border-bottom: 1px solid var(--line-color);
   background-color: var(--header-color);
+  z-index: 9;
 }
 /* MyHeader Scroll Event */
 .scroll_up {

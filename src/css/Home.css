@@ -12,6 +12,22 @@
     .Home .sub_title {
         font-size: 3rem;
     }
+    .Home .icon_1_wrapper {
+        width: 10rem;
+        height: 10rem;
+     }
+     .Home .icon_2_wrapper {
+        width: 7rem;
+        height: 7rem;
+     }
+     .Home .icon_3_wrapper {
+        width: 8rem;
+        height: 8rem;
+     }
+     .Home .icon_4_wrapper {
+        width: 8rem;
+        height: 8rem;
+     }
 }
 /* half size */
 @media (max-width: 1240px) {
@@ -27,26 +43,51 @@
     .Home .sub_title {
         font-size: 2rem;
     }
+    .Home .icon_1_wrapper {
+        width: 7rem;
+        height: 7rem;
+     }
+     .Home .icon_2_wrapper {
+        width: 5rem;
+        height: 5rem;
+     }
+     .Home .icon_3_wrapper {
+        width: 8rem;
+        height: 8rem;
+     }
+     .Home .icon_4_wrapper {
+        width: 6rem;
+        height: 6rem;
+     }
 }
 
 /* Home */
-.Home .background_scroll_up {
-    position: fixed;
+.Home .first_page_wrapper {
+    /* background-color:#42abbc; */
+}
+/* .Home .background_scroll_up {
+    position: absolute;
     top: 7.5rem;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index:
 }
 .Home .background_scroll_down {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-}
-.Home .first_page_wrapper {
+} */
+
+.Home .page_front {
     /* background-color: var(--system-red); */
+    /* background: rgba(255, 255, 255, 0.8); */
+
+    width: 80vw;
     height: calc(100vh / 1.8);
+    transform: translateZ(5vw);
 }
 .Home .main {
     margin-top: 16rem;
@@ -70,7 +111,51 @@
     font-family: 'SUIT', sans-serif;
     line-height: 3.5rem;
 }
+.Home .incons_wrapper {
+    /* background-color: var(--system-blue);
+    margin-top: 7.5rem; */
+}
 .Home .lottie_scroll {
     width: 100%;
     height: 18rem;
+ }
+ .Home .incons_wrapper {
+    /* position: absolute;
+    left: 80vw;
+    top: 7.6rem; */
+    /* background: rgba(0, 0, 0, 0.8); */
+    /* background-color: var(--system-blue); */
+ }
+
+ .Home .icon_1_wrapper {
+    position: absolute;
+    left: 45vw;
+    top: 12rem;
+    transform: rotate(25deg);
+    /* background: rgba(0, 0, 0, 0.5); */
+ }
+ .Home .icon_2_wrapper {
+    position: absolute;
+    left: 60vw;
+    top: 25rem;
+    transform: rotate(-25deg);
+    /* background: rgba(0, 0, 0, 0.5); */
+ }
+ .Home .icon_3_wrapper {
+    position: absolute;
+    left: 65vw;
+    top: 10rem;
+    transform: rotate(0deg);
+
+    /* background: rgba(0, 0, 0, 0.5); */
+ }
+ .Home .icon_4_wrapper {
+    position: absolute;
+    left: 75vw;
+    top: 18rem;
+    transform: rotate(45deg);
+    /* background: rgba(0, 0, 0, 0.5); */
+ }
+ .Home .logo_img {
+    width: 100%;
  }
