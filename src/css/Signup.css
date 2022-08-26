@@ -1,0 +1,294 @@
+.background_signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background-image: linear-gradient(
+    -225deg,
+    #69eacb 0%,
+    #eaccf8 48%,
+    #6654f1 100%
+  );
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+.popupbox_2 {
+  display: flex;
+
+  position: relative;
+  z-index: 3;
+  width: 90rem;
+  height: 50rem;
+  background-color: white;
+
+  border: 1px solid rgb(204, 202, 202);
+  border-radius: 30px;
+
+  animation: 0.4s ease-in-out 0s 1 normal forwards running cptskd;
+  box-shadow: rgb(0 0 0 / 9%) 0px 2px 12px 0px;
+}
+.signup_left {
+  width: 60rem;
+  height: 100%;
+
+  background-image: linear-gradient(
+    -225deg,
+    #2cd8d5 0%,
+    #c5c1ff 56%,
+    #ffbac3 100%
+  );
+
+  margin-right: 2rem;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.signup_logo {
+  width: 3rem;
+  height: 3rem;
+}
+.animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.anima {
+  width: 100%;
+  overflow: hidden;
+}
+.content_signup {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1.15rem;
+  font-weight: bold;
+  line-height: 1.7rem;
+  width: 19rem;
+  white-space: pre-wrap;
+  margin-top: 4rem;
+  margin-left: 20px;
+}
+
+.anima_back {
+  width: 20rem;
+  height: 20rem;
+  background: white;
+  border-radius: 20px;
+
+  background-image: linear-gradient(
+    -225deg,
+    #2cd8d5 0%,
+    #c5c1ff 56%,
+    #ffbac3 100%
+  );
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+
+  display: flex;
+  justify-items: center;
+  align-content: center;
+}
+.footer_signup {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: end;
+}
+.signup_right {
+  background-color: transparent;
+
+  width: 24rem;
+  height: 90%;
+  margin-top: 4rem;
+
+  display: flex;
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-between;
+}
+.email_wrapper {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+}
+.email_wrapper input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid rgba(255, 255, 255, 0.25);
+  border-left: solid rgba(255, 255, 255, 0.25);
+  border-right: solid rgba(255, 255, 255, 0.25);
+  border-bottom: solid rgba(61, 60, 60, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+  transition: 0.5s;
+}
+.email_wrapper span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.email_wrapper input:valid ~ span,
+.email_wrapper input:focus ~ span {
+  background-color: white;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.7em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.email_wrapper input:valid,
+.email_wrapper input:focus {
+  border: 1px solid #00dfc4;
+}
+
+.pwd_wrapper {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+}
+.pwd_wrapper input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid rgba(255, 255, 255, 0.25);
+  border-left: solid rgba(255, 255, 255, 0.25);
+  border-right: solid rgba(255, 255, 255, 0.25);
+  border-bottom: solid rgba(61, 60, 60, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+  transition: 0.5s;
+}
+.pwd_wrapper span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.pwd_wrapper input:valid ~ span,
+.pwd_wrapper input:focus ~ span {
+  background-color: white;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.7em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.pwd_wrapper input:valid,
+.pwd_wrapper input:focus {
+  border: 1px solid #00dfc4;
+}
+.name_wrapper {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+}
+.name_wrapper input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid rgba(255, 255, 255, 0.25);
+  border-left: solid rgba(255, 255, 255, 0.25);
+  border-right: solid rgba(255, 255, 255, 0.25);
+  border-bottom: solid rgba(61, 60, 60, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+  transition: 0.5s;
+}
+.name_wrapper span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.name_wrapper input:valid ~ span,
+.name_wrapper input:focus ~ span {
+  background-color: white;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.7em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.name_wrapper input:valid,
+.name_wrapper input:focus {
+  border: 1px solid #00dfc4;
+}
+
+.pwdConfirm_wrapper {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+}
+.pwdConfirm_wrapper input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid rgba(255, 255, 255, 0.25);
+  border-left: solid rgba(255, 255, 255, 0.25);
+  border-right: solid rgba(255, 255, 255, 0.25);
+  border-bottom: solid rgba(61, 60, 60, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+  transition: 0.5s;
+}
+.pwdConfirm_wrapper span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.pwdConfirm_wrapper input:valid ~ span,
+.pwdConfirm_wrapper input:focus ~ span {
+  background-color: white;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.7em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.pwdConfirm_wrapper input:valid,
+.pwdConfirm_wrapper input:focus {
+  border: 1px solid #00dfc4;
+}
