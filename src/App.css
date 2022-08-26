@@ -270,9 +270,9 @@ body {
   transition: 0.5s;
 }
 /* MyFooter */
-.MyFooter {
+/*.MyFooter {
   padding: 1rem;
   background-color: var(--header-color);
   margin-top: 3rem;
-}
+}*/
 
