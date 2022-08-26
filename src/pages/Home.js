@@ -21,6 +21,7 @@ import ImageOne from '../components/ImageOne'
 import ImageTwo from '../components/ImageTwo'
 
 const Home = () => {
+ const [isOpenPopup, setisOpenPopup] = useState(false)
   const navigate = useNavigate();
   /* for scroll */
   /* when scroll up -> show Header */
@@ -32,6 +33,9 @@ const Home = () => {
   //   setisTopZero(prevScrollPos <= currentScrollPos);
   //   setPrevScrollPos(currentScrollPos);
   // };
+    const toggle = () => {
+    setisOpenPopup(!isOpenPopup)
+  }
 
   // useEffect(() => {
   //   window.addEventListener("scroll", handleScroll);
@@ -163,7 +167,7 @@ const Home = () => {
         btn1Func={() => navigate("/feedback")}
         btn2Type="short"
         btn2Text="sign In"
-        btn2Func={(e) => navigate("/calendar")}
+        btn2Func={toggle}
       />
       {/* <div
         className={[
@@ -173,6 +177,9 @@ const Home = () => {
       > */}
       <div className="first_page_wrapper">
         <section>
+         {isOpenPopup && (
+          <SigninGroup toggle={(toggle, isOpenPopup, setisOpenPopup)} />
+        )}
           <div className="page page_front">
             <motion.div
               variants={container}
