@@ -17,6 +17,8 @@ import {
   useWillChange,
 } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import ImageOne from '../components/ImageOne'
+import ImageTwo from '../components/ImageTwo'
 
 const Home = () => {
   const navigate = useNavigate();
@@ -286,25 +288,23 @@ const Home = () => {
         <div className="space_background" ref={SpaceContainer}></div>
       </div>
 
-      <p className="body1 text_wrapper">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, nemo
-        debitis blanditiis, rerum dolorum nihil quod eius rem ipsum laudantium
-        cupiditate temporibus totam reiciendis quas? Eos explicabo molestias
-        rerum voluptatum. orem ipsum dolor sit amet consectetur adipisicing
-        elit. Illum, nemo debitis blanditiis, rerum dolorum nihil quod eius rem
-        ipsum laudantium cupiditate temporibus totam reiciendis quas? Eos
-        explicabo molestias rerum voluptatum.orem ipsum dolor sit amet
-        consectetur adipisicing elit. Illum, nemo debitis blanditiis, rerum
-        dolorum nihil quod eius rem ipsum laudantium cupiditate temporibus totam
-        reiciendis quas? Eos explicabo molestias rerum voluptatum.orem ipsum
-        dolor sit amet consectetur adipisicing elit. Illum, nemo debitis
-        blanditiis, rerum dolorum nihil quod eius rem ipsum laudantium
-        cupiditate temporibus totam reiciendis quas? Eos explicabo molestias
-        rerum voluptatum.
+      <ImageOne />
+
+      <h1 className="h1 title-box">Write Your Memories</h1>
+      <p className="text-box">
+        Our website is designed to keep your diary of memories that will never
+        <br />
+        come back more safely and to be viewed again at any time.We hope that
+        <br />
+        you will make more memories with our website while systematically
+        <br />
+        managing your diary so that it can be recognized at a glance.
       </p>
 
-      <p className="body1 content"></p>
-      {/* <MyFooter></MyFooter> */}
+      <ImageTwo />
+
+      {/* <p className="body1 content"></p> */}
+      <MyFooter></MyFooter>
       {/* </div> */}
     </div>
   );
