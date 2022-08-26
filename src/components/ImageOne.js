@@ -15,3 +15,4 @@ const ImageOne = () => (
 )
 
 export default ImageOne
+
