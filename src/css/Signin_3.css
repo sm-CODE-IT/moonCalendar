@@ -1,0 +1,162 @@
+.signin_3_bg_test {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+.signin_right_3_test {
+  top: 5%;
+  left: 20%;
+  right: 20%;
+  position: absolute;
+  font-size: 30px;
+  width: 26rem;
+  height: 55rem;
+  border-radius: 30px;
+  z-index: 1;
+}
+.signin_right_32 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  border-radius: 10px;
+  padding-right: 15%;
+  padding-left: 15%;
+
+  flex-direction: column; /*block과 다른점*/
+  justify-content: space-evenly;
+
+  background-image: linear-gradient(
+    -225deg,
+    #473b7b 0%,
+    #3584a7 51%,
+    #30d2be 100%
+  );
+  opacity: 0.85;
+}
+.signup_3_logo {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+}
+.or {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  bottom: 15%;
+  margin-top: 2rem;
+}
+.google {
+  margin-right: 5rem;
+}
+.signin {
+  bottom: 0;
+  flex-direction: end;
+}
+#video {
+  z-index: 0;
+  opacity: 0.8;
+}
+.x {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.email_wrappers {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+}
+.email_wrappers input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid transparent;
+  border-left: solid transparent;
+  border-right: solid transparent;
+  border-bottom: solid rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 0.4em;
+  transition: 0.5s;
+  background: transparent;
+}
+.email_wrappers span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 0.5em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.email_wrappers input:valid ~ span,
+.email_wrappers input:focus ~ span {
+  background: transparent;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.4em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.email_wrappers input:valid,
+.email_wrappers input:focus {
+  border: 1px solid #00dfc4;
+}
+
+.pwd_wrappers {
+  position: relative;
+  width: 25rem;
+  height: 1.7rem;
+  margin-top: 1.6rem;
+}
+.pwd_wrappers input {
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem;
+  border-top: solid transparent;
+  border-left: solid transparent;
+  border-right: solid transparent;
+  border-bottom: solid rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+  transition: 0.5s;
+  background-color: transparent;
+}
+.pwd_wrappers span {
+  position: absolute;
+  top: 8px;
+  padding: 0.65rem;
+  pointer-events: none;
+  font-size: 0.5em;
+  color: black;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.pwd_wrappers input:valid ~ span,
+.pwd_wrappers input:focus ~ span {
+  background-color: transparent;
+  color: #00dfc4;
+  transform: translateX(10px) translateY(-9.5px);
+  font-size: 0.4em;
+  padding: 0 10px;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.pwd_wrappers input:valid,
+.pwd_wrappers input:focus {
+  border: 1px solid #00dfc4;
+}
