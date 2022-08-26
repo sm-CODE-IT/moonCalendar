@@ -218,8 +218,12 @@ body {
 .MyHeader .MyHeader_wrapper {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .MyHeader .head_btn_left {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: 7.5rem;
 }
 .logo{
