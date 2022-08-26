@@ -1,20 +1,19 @@
-const MyFooter = () => {
-  rimport lottie from 'lottie-web'
-import { useState, useEffect, useRef } from 'react'
+import lottie from "lottie-web";
+import { useState, useEffect, useRef } from "react";
 
-import './../css/MyFooter.css'
+import "./../css/MyFooter.css";
 
 const MyFooter = () => {
-  const container2 = useRef()
+  const container2 = useRef();
   useEffect(() => {
     lottie.loadAnimation({
       container: container2.current,
-      renderer: 'svg',
+      renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require('./../pages/moon_city.json'),
-    })
-  }, [])
+      animationData: require("../data/moon_city.json"),
+    });
+  }, []);
 
   return (
     <div className="MyFooter">
@@ -23,7 +22,7 @@ const MyFooter = () => {
           <br />
           <p className="title1">Need Help? Write Feedback</p>
           <img
-            src={process.env.PUBLIC_URL + '/assets/githubs.png'}
+            src={process.env.PUBLIC_URL + "/assets/githubs.png"}
             className="github"
           />
           <p className="title1">sm-CODE-IT/moonCalendar</p>
@@ -32,7 +31,7 @@ const MyFooter = () => {
         <div className="lottie-bg" ref={container2}></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MyFooter
+export default MyFooter;

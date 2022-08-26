@@ -72,8 +72,9 @@ function Calendar() {
   const getEventList = useMemo(() => {
     let eventList = [];
     for (var key of diaryList) {
+      console.log("key content", key.content.split('"')[1]);
       const obj = {
-        title: key.date,
+        title: key.date + " " + key.content.split('"')[1],
         start: key.date,
         allDay: false,
       };
@@ -85,7 +86,7 @@ function Calendar() {
 
   /* DiaryList 컴포넌트로 diaryList에 eventInfo 넘겨주기 */
   const renderEventContent = (eventInfo) => {
-    return <DiaryItem img_src={""} date={eventInfo.event.title}></DiaryItem>;
+    return <DiaryItem source={eventInfo.event.title}></DiaryItem>;
   };
 
   return (
@@ -109,9 +110,9 @@ function Calendar() {
             plugins={[dayGridPlugin, interactionPlugin]}
             initialView="dayGridMonth"
             editable="false" //이벤트,드래그 등의 편집 기능 활용여부
-            top="130px "
-            height="150vh"
-            width="150vh"
+            // top="130px "
+            // height="100vh"
+            // width="150vh"
             dayMaxEvents="1"
             dateClick={(dateClickInfo) => {
               if (isUnion(dateClickInfo)) {

@@ -1,29 +1,28 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from "react";
 
-import MyButton from '../components/MyButton'
-import MyInput from '../components/MyInput'
-import useTheme from '../util/useTheme'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import MyButton from "../components/MyButton";
+import useTheme from "../util/useTheme";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-import './../App.css'
-import './../css/Signup_3.css'
-import spaceVideo from './../data/space.mp4'
+import "./../App.css";
+import "./../css/Signup_3.css";
+import spaceVideo from "./../data/space.mp4";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 const Signup_3 = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [email, setEData] = useState('')
-  const [password, setPData] = useState('')
-  const [passwordConfirm, setCData] = useState('')
-  const [name, setNData] = useState('')
-  const [themeMode, toggleTheme] = useTheme()
+  const [email, setEData] = useState("");
+  const [password, setPData] = useState("");
+  const [passwordConfirm, setCData] = useState("");
+  const [name, setNData] = useState("");
+  const [themeMode, toggleTheme] = useTheme();
   const logoBtnSrc =
-    themeMode === 'light'
-      ? process.env.PUBLIC_URL + '/assets/lightLogo.png'
-      : process.env.PUBLIC_URL + '/assets/darkLogo.png'
+    themeMode === "light"
+      ? process.env.PUBLIC_URL + "/assets/lightLogo.png"
+      : process.env.PUBLIC_URL + "/assets/darkLogo.png";
 
   /*const submit = () => {
     axios
@@ -39,12 +38,12 @@ const Signup_3 = () => {
         console.log('실패함')
       })
   }*/
-  const axios = require('axios')
-  axios.defaults.withCredentials = true
+  const axios = require("axios");
+  axios.defaults.withCredentials = true;
 
   const submit = () => {
     axios
-      .post('http://localhost:8080/signup', null, {
+      .post("http://localhost:8080/signup", null, {
         email: email,
         password: password,
         passwordConfirm: passwordConfirm,
@@ -52,12 +51,12 @@ const Signup_3 = () => {
       })
 
       .then(function () {
-        navigate('/signingroup')
+        navigate("/signingroup");
       })
       .catch(function () {
-        console.log('실패함')
-      })
-  }
+        console.log("실패함");
+      });
+  };
   return (
     <motion.div
       initial={{
@@ -69,11 +68,11 @@ const Signup_3 = () => {
       }}
       exit={{
         opacity: 1,
-        ease: 'easeInOut',
+        ease: "easeInOut",
       }}
     >
       <div className="signup_3_bg_test">
-        <video muted autoPlay={'autoplay'} preload="auto" loop id="video">
+        <video muted autoPlay={"autoplay"} preload="auto" loop id="video">
           <source src={spaceVideo} type="video/mp4" />
         </video>
 
@@ -90,7 +89,7 @@ const Signup_3 = () => {
                 type="email"
                 name="email"
                 value={email}
-                onChange={e => setEData(e.target.value)}
+                onChange={(e) => setEData(e.target.value)}
                 required={true}
               ></input>
               <span>Email</span>
@@ -102,7 +101,7 @@ const Signup_3 = () => {
                 type="password"
                 name="password"
                 value={password}
-                onChange={e => setPData(e.target.value)}
+                onChange={(e) => setPData(e.target.value)}
                 required={true}
               ></input>
               <span>Password</span>
@@ -114,7 +113,7 @@ const Signup_3 = () => {
                 type="password"
                 name="passwordConfirm"
                 value={passwordConfirm}
-                onChange={e => setCData(e.target.value)}
+                onChange={(e) => setCData(e.target.value)}
                 required={true}
               ></input>
               <span>PasswordConfirm</span>
@@ -127,7 +126,7 @@ const Signup_3 = () => {
                 type="text"
                 name="name"
                 value={name}
-                onChange={e => setNData(e.target.value)}
+                onChange={(e) => setNData(e.target.value)}
                 required={true}
               ></input>
               <span>Name</span>
@@ -137,13 +136,13 @@ const Signup_3 = () => {
               <MyButton
                 onClick={() => submit()}
                 type="submit"
-                text={'Sign In'}
+                text={"Sign In"}
               />
             </footer>
           </div>
         </div>
       </div>
     </motion.div>
-  )
-}
-export default Signup_3
+  );
+};
+export default Signup_3;

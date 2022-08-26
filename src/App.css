@@ -203,7 +203,7 @@ body {
   top: 0;
   border-bottom: 1px solid var(--line-color);
   background-color: var(--header-color);
-  z-index: 9;
+  z-index: 5;
 }
 /* MyHeader Scroll Event */
 .scroll_up {
@@ -220,7 +220,7 @@ body {
   justify-content: space-around;
 }
 .MyHeader .head_btn_left {
-  height:7.5rem;
+  height: 7.5rem;
 }
 .logo{
   max-width:100%;

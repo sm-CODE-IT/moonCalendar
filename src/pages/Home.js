@@ -4,6 +4,8 @@ import lottie from "lottie-web";
 import MyFooter from "../components/MyFooter";
 import MyHeader from "../components/MyHeader";
 import Line from "../components/Line";
+import SigninGroup from "./SigninGroup";
+
 import { DiaryThemeStateContext } from "../App";
 /* hooks */
 import { useState, useEffect, useRef, useContext } from "react";
@@ -17,11 +19,11 @@ import {
   useWillChange,
 } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import ImageOne from '../components/ImageOne'
-import ImageTwo from '../components/ImageTwo'
+import ImageOne from "../components/ImageOne";
+import ImageTwo from "../components/ImageTwo";
 
 const Home = () => {
- const [isOpenPopup, setisOpenPopup] = useState(false)
+  const [isOpenPopup, setisOpenPopup] = useState(false);
   const navigate = useNavigate();
   /* for scroll */
   /* when scroll up -> show Header */
@@ -33,9 +35,9 @@ const Home = () => {
   //   setisTopZero(prevScrollPos <= currentScrollPos);
   //   setPrevScrollPos(currentScrollPos);
   // };
-    const toggle = () => {
-    setisOpenPopup(!isOpenPopup)
-  }
+  const toggle = () => {
+    setisOpenPopup(!isOpenPopup);
+  };
 
   // useEffect(() => {
   //   window.addEventListener("scroll", handleScroll);
@@ -177,9 +179,9 @@ const Home = () => {
       > */}
       <div className="first_page_wrapper">
         <section>
-         {isOpenPopup && (
-          <SigninGroup toggle={(toggle, isOpenPopup, setisOpenPopup)} />
-        )}
+          {isOpenPopup && (
+            <SigninGroup toggle={(toggle, isOpenPopup, setisOpenPopup)} />
+          )}
           <div className="page page_front">
             <motion.div
               variants={container}

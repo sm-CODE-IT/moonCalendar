@@ -116,7 +116,7 @@
     width: 80vw;
     height: calc(100vh / 1.8);
     /* transform: translateZ(5vw); */
-    z-index: 9;
+    z-index: 5;
 }
 .Home .main {
     margin-top: 16rem;
@@ -143,6 +143,7 @@
 .Home .incons_wrapper {
     /* background-color: var(--system-blue);
     margin-top: 7.5rem; */
+    z-index: 5;
 }
 .Home .lottie_scroll {
     width: 100%;

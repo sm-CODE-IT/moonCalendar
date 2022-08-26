@@ -1,45 +1,44 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from "react";
 
-import MyButton from '../components/MyButton'
-import MyInput from '../components/MyInput'
-import useTheme from '../util/useTheme'
-import Link, { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import MyButton from "../components/MyButton";
+import useTheme from "../util/useTheme";
+import Link, { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-import lottie from 'lottie-web'
+import lottie from "lottie-web";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
-import './../css/Signup.css'
+import "./../css/Signup.css";
 
 const Signup = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [isOpen, setisOpen] = useState(false)
+  const [isOpen, setisOpen] = useState(false);
 
   const click = () => {
-    setisOpen(!isOpen)
-  }
+    setisOpen(!isOpen);
+  };
 
   /*const [email,setEData] = useState("");
     const [password,setPData] = useState("");
     const [passwordConfirm,setCData] = useState("");
     const [name,setNData] = useState("");*/
-  const [themeMode, toggleTheme] = useTheme()
+  const [themeMode, toggleTheme] = useTheme();
   const logoBtnSrc =
-    themeMode === 'light'
-      ? process.env.PUBLIC_URL + '/assets/lightLogo.png'
-      : process.env.PUBLIC_URL + '/assets/darkLogo.png'
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordConfirm, setPasswordConfirm] = useState('')
-  const [name, setName] = useState('')
-  const axios = require('axios')
-  axios.defaults.withCredentials = true
+    themeMode === "light"
+      ? process.env.PUBLIC_URL + "/assets/lightLogo.png"
+      : process.env.PUBLIC_URL + "/assets/darkLogo.png";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [name, setName] = useState("");
+  const axios = require("axios");
+  axios.defaults.withCredentials = true;
 
   const submit = () => {
     axios
-      .post('http://localhost:8080/signup', null, {
+      .post("http://localhost:8080/signup", null, {
         email: email,
         password: password,
         passwordConfirm: passwordConfirm,
@@ -47,12 +46,12 @@ const Signup = () => {
       })
 
       .then(function () {
-        navigate('/signingroup')
+        navigate("/signingroup");
       })
       .catch(function () {
-        console.log('실패함')
-      })
-  }
+        console.log("실패함");
+      });
+  };
   /* axios 
   const axios = require('axios')
   const [dataState, setDataState] = useState();
@@ -70,16 +69,16 @@ const Signup = () => {
       this.setDataState({data});
     })
   }*/
-  const likecontainer = useRef()
+  const likecontainer = useRef();
   useEffect(() => {
     lottie.loadAnimation({
       container: likecontainer.current,
-      renderer: 'svg',
+      renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require('./../data/92393-moon.json'),
-    })
-  }, [])
+      animationData: require("./../data/92393-moon.json"),
+    });
+  }, []);
   //<img  className="signin_logo_2" src={logoBtnSrc}/>
   return (
     <motion.div
@@ -115,7 +114,7 @@ const Signup = () => {
               </section>
             </div>
             <div className="signup_right">
-              <h1 className="h1" style={{ color: 'black' }}>
+              <h1 className="h1" style={{ color: "black" }}>
                 Create Account
               </h1>
 
@@ -126,8 +125,8 @@ const Signup = () => {
                   type="email"
                   name="email"
                   value={email}
-                  onChange={e => {
-                    setEmail(e.target.value)
+                  onChange={(e) => {
+                    setEmail(e.target.value);
                   }}
                   required={true}
                 ></input>
@@ -140,8 +139,8 @@ const Signup = () => {
                   type="password"
                   name="password"
                   value={password}
-                  onChange={e => {
-                    setPassword(e.target.value)
+                  onChange={(e) => {
+                    setPassword(e.target.value);
                   }}
                   required={true}
                 ></input>
@@ -154,8 +153,8 @@ const Signup = () => {
                   type="password"
                   name="passwordConfirm"
                   value={passwordConfirm}
-                  onChange={e => {
-                    setPasswordConfirm(e.target.value)
+                  onChange={(e) => {
+                    setPasswordConfirm(e.target.value);
                   }}
                   required={true}
                 ></input>
@@ -169,8 +168,8 @@ const Signup = () => {
                   type="text"
                   name="name"
                   value={name}
-                  onChange={e => {
-                    setName(e.target.value)
+                  onChange={(e) => {
+                    setName(e.target.value);
                   }}
                   required={true}
                 ></input>
@@ -180,7 +179,7 @@ const Signup = () => {
               <footer className="footer_signup">
                 <MyButton
                   type="submit"
-                  text={'Sign In'}
+                  text={"Sign In"}
                   onClick={() => submit()}
                 />
               </footer>
@@ -189,7 +188,7 @@ const Signup = () => {
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

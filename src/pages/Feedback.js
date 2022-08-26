@@ -189,7 +189,7 @@ const Feedback = () => {
         inputTwoContent,
         inputFourContent
       );
-      setUsers(title, contents, email);
+      setUsers(inputOneContent, inputTwoContent, inputFourContent);
       navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
     }
   };

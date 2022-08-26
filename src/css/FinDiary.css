@@ -50,10 +50,12 @@
     filter: invert(0);
 }
 .FinDiary .content_wrapper {
+    padding-left: 2rem;
+    padding-right: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    /* align-items: center; */
 }
 .FinDiary .content_wrapper figure {
     display: flex;
@@ -63,7 +65,7 @@
 
     /* max-width: calc(100vw/5); */
     object-fit: contain;
-    background-color: var(--system-red);
+    /* background-color: var(--system-red); */
 }
 .FinDiary .content_wrapper img {
     max-width: 80%;
