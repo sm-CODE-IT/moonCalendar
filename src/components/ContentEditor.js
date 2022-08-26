@@ -7,7 +7,9 @@ import {
   ContentState,
   convertFromRaw,
   SelectionState,
+  AtomicBlockUtils,
 } from "draft-js";
+
 import DraftPasteProcessor from "draft-js/lib/DraftPasteProcessor";
 import { Editor } from "react-draft-wysiwyg";
 import { stateToHTML } from "draft-js-export-html";
@@ -16,25 +18,24 @@ import htmlToDraft from "html-to-draftjs";
 import { DiaryDispatchContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
-// const uploadCallback = (file, callback) => {
-//   console.log(file);
+// function uploadImageCallBack(file) {
 //   return new Promise((resolve, reject) => {
-//     const reader = new window.FileReader();
-//     console.log(reader);
-//     reader.onloadend = async () => {
-//       const form_data = new FormData();
-//       form_data.append("file", file);
-//       const res = await uploadFile(form_data);
-//       setValue("thumbnail", res.data);
-//       resolve({ data: { link: process.env.REACT_APP_API + res.data } });
-//     };
-//     reader.readAsDataURL(file);
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("POST", "https://api.imgur.com/3/image");
+//     xhr.setRequestHeader("Authorization", "Client-ID 3fe0f25ae92689d");
+//     const data = new FormData();
+//     data.append("image", file);
+//     xhr.send(data);
+//     xhr.addEventListener("load", () => {
+//       const response = JSON.parse(xhr.responseText);
+//       resolve(response);
+//     });
+//     xhr.addEventListener("error", () => {
+//       const error = JSON.parse(xhr.responseText);
+//       reject(error);
+//     });
 //   });
-// };
-//
-// const config = {
-//   image: { uploadCallback: uploadCallback },
-// };
+// }
 
 class ContentEditor extends Component {
   constructor(props) {
@@ -87,10 +88,10 @@ class ContentEditor extends Component {
               textAlign: { inDropdown: false },
               link: { inDropdown: true },
               history: { inDropdown: false },
-              image: {
-                // uploadCallback: uploadImageCallBack,
-                alt: { present: true, mandatory: true },
-              },
+              // image: {
+              //   uploadCallback: uploadImageCallBack,
+              //   alt: { present: true, mandatory: false },
+              // },
             }}
             wrapperClassName="wrapper_class"
             editorClassName="editor_class"

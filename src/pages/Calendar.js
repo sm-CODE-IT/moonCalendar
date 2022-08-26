@@ -6,7 +6,7 @@ import React, {
   useMemo,
   Component,
 } from "react";
-
+import { DiaryStateContext } from "../App";
 // cal modules
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"; //기본 달력을 그리기 위한 플러그인 - 설치해야함!
@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import MyButton from "../components/MyButton";
 import MyHeader from "../components/MyHeader";
 import Line from "../components/Line";
+import DiaryItem from "../components/DiaryItem";
 
 function Calendar() {
   const [isOpenPopup, setisOpenPopup] = useState(false);
@@ -44,20 +45,48 @@ function Calendar() {
   const navigate = useNavigate();
   //const diaryList = useContext(DiaryStateContext);
 
+  const diaryList = useContext(DiaryStateContext);
+  /* find target diary */
+  const [imgSrc, setImgSrc] = useState();
+
   //DiaryList에 일기가 존재하는지 아닌지 판별하는 함수
-  /*const isUnion = dateClickInfo => {
-    let isDif = true
-    FinDiary.forEach(it => {
+  const isUnion = (dateClickInfo) => {
+    let isDif = true;
+    diaryList.forEach((it) => {
       if (it.date === dateClickInfo.dateStr) {
-        isDif = false
+        isDif = false;
       }
-    })
+    });
     if (isDif) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
-  }*/
+  };
+
+  /* set Image */
+
+  const date = new Date();
+  console.log(Date.parse(diaryList.date));
+  /* for FullCalendar events List */
+  const getEventList = useMemo(() => {
+    let eventList = [];
+    for (var key of diaryList) {
+      const obj = {
+        title: key.date,
+        start: key.date,
+        allDay: false,
+      };
+      console.log("getEventList date", key.date);
+      eventList = [obj, ...eventList];
+    }
+    return eventList;
+  }, [diaryList]);
+
+  /* DiaryList 컴포넌트로 diaryList에 eventInfo 넘겨주기 */
+  const renderEventContent = (eventInfo) => {
+    return <DiaryItem img_src={""} date={eventInfo.event.title}></DiaryItem>;
+  };
 
   return (
     <div className="Calendar">
@@ -71,11 +100,8 @@ function Calendar() {
       />
 
       <section className="calendar">
-        <button onClick={() => navigate(`/finDiary/2022-08-11`)}>
-          goDetail
-        </button>
-        <Line weight={5} style={{ margin: 20 }}></Line>
-        <Line weight={3} eachClassName={"home_line"}></Line>
+        {/* <Line weight={5} style={{ margin: 20 }}></Line>
+        <Line weight={3} eachClassName={"home_line"}></Line> */}
         <div className="start">
           <FullCalendar
             className="fullcalendar"
@@ -88,12 +114,12 @@ function Calendar() {
             width="150vh"
             dayMaxEvents="1"
             dateClick={(dateClickInfo) => {
-              /* if (isUnion(dateClickInfo)) {
-                navigate(`./new/${dateClickInfo.dateStr}`)
+              if (isUnion(dateClickInfo)) {
+                navigate(`../newDiary/${dateClickInfo.dateStr}`);
               }
-            }}*/
-              navigate(`/NewDiary/${dateClickInfo.dateStr}`);
             }}
+            // navigate(`/NewDiary/${dateClickInfo.dateStr}`);
+            // }}
             eventMouseEnter={(mouseEnterInfo) => {
               mouseEnterInfo.el.style.cssText =
                 "transform: scaleX(1.4) scaleY(1.2);";
@@ -105,7 +131,8 @@ function Calendar() {
               mouseLeaveInfo.el.style.transition =
                 "1s cubic-bezier(0, 0.83, 0.58, 1.25)";
             }}
-            //eventContent={renderEventContent} //이벤트 내용 커스텀
+            events={getEventList}
+            eventContent={renderEventContent} //이벤트 내용 커스텀
             headerToolbar={{
               //헤드 툴바
               start: "prev",

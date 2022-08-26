@@ -9,21 +9,8 @@ import useTheme from "../util/useTheme";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-// const themeReducer = (state, action) => {
-//   let newState;
-//   switch (action.type) {
-//     case "THEME": {
-//       newState = action.globalTheme;
-//       break;
-//     }
-//     default: {
-//       return state;
-//     }
-//   }
-//   return newState;
-// };
-
 export const MyHeader = ({
+  isDetailPage,
   btn1Type,
   btn1Text,
   btn1Func,
@@ -55,7 +42,7 @@ export const MyHeader = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
-    setVisible(prevScrollPos > currentScrollPos);
+    setVisible(prevScrollPos >= currentScrollPos);
     setPrevScrollPos(currentScrollPos);
   };
 
@@ -70,11 +57,19 @@ export const MyHeader = ({
     >
       <div className="MyHeader_wrapper">
         <div className="head_btn_left">
-          <img
-            className="logo"
-            src={logoBtnSrc}
-            onClick={() => navigate("/")}
-          />
+          {isDetailPage ? (
+            <img
+              className="logo"
+              src={logoBtnSrc}
+              onClick={() => navigate(-1)}
+            />
+          ) : (
+            <img
+              className="logo"
+              src={logoBtnSrc}
+              onClick={() => navigate("/")}
+            />
+          )}
         </div>
         <div className="head_btn_right">
           <div className="head_btn_right1">

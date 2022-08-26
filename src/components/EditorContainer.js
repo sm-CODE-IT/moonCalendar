@@ -25,22 +25,6 @@ import { weatherList } from "../util/weatherList";
 import "draft-js/dist/Draft.css";
 
 const EditorContainer = ({ isEdit, originData }) => {
-  /* for scroll */
-  /* when scroll up -> show Header */
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [isTopZero, setIsTopZero] = useState(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    setIsTopZero(prevScrollPos <= currentScrollPos);
-    setPrevScrollPos(currentScrollPos);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, isTopZero, handleScroll]);
-
   const navigate = useNavigate();
   //   /* icon */
   const { themeMode } = useContext(DiaryThemeStateContext);
@@ -151,11 +135,7 @@ const EditorContainer = ({ isEdit, originData }) => {
         btn2Text="Cancel"
         btn2Func={handleCancel}
       />
-      <section
-        className={[
-          isTopZero ? "background_scroll_down" : "background_scroll_up",
-        ].join(" ")}
-      >
+      <section>
         <div className="main_wrapper">
           <div className="left_side"></div>
           <div className="edit_content">

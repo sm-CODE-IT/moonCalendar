@@ -19,7 +19,6 @@ const FinDiary = () => {
 
   /* find target diary */
   const [data, setData] = useState();
-  console.log(diaryList.length);
   useEffect(() => {
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find((it) => it.date === date);
@@ -32,22 +31,6 @@ const FinDiary = () => {
       }
     }
   }, [data, diaryList]);
-
-  /* for scroll */
-  /* when scroll up -> show Header */
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [isTopZero, setisTopZero] = useState(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    setisTopZero(prevScrollPos <= currentScrollPos);
-    setPrevScrollPos(currentScrollPos);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, isTopZero, handleScroll]);
 
   //   /* icon */
   //   const { theme } = useContext(MyHeader);
@@ -89,6 +72,7 @@ const FinDiary = () => {
     return (
       <div className="FinDiary">
         <MyHeader
+          isDetailPage={true}
           btn1Type="short"
           btn1Text="Edit"
           btn1Func={() => navigate(`/editDiary/${data.date}`)}
@@ -96,11 +80,7 @@ const FinDiary = () => {
           btn2Text="Delete"
           btn2Func={handleRemove}
         ></MyHeader>
-        <section
-          className={[
-            isTopZero ? "background_scroll_down" : "background_scroll_up",
-          ].join(" ")}
-        >
+        <section>
           <div className="main_wrapper">
             <div className="left_side"></div>
             <div className="edit_content">

@@ -2,22 +2,10 @@
     display: flex;
     justify-content: space-between;
     position: relative;
+    top: 7.6rem;
     /* transition: all 0.5s ease-in-out; */
 }
-.FinDiary .background_scroll_up {
-    position: absolute;
-    top: 7.6rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-.FinDiary .background_scroll_down {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
+
 .FinDiary .date_wrapper, .FinDiary .who_wrapper, .FinDiary .weather_wrapper {
     display: flex;
     justify-content: flex-start;
@@ -62,5 +50,21 @@
     filter: invert(0);
 }
 .FinDiary .content_wrapper {
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.FinDiary .content_wrapper figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    /* max-width: calc(100vw/5); */
+    object-fit: contain;
+    background-color: var(--system-red);
+}
+.FinDiary .content_wrapper img {
+    max-width: 80%;
 }

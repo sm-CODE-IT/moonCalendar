@@ -4,20 +4,7 @@
     justify-content: space-between;
     position: relative;
     transition: all 0.5s ease-in-out;
-}
-.EditDiary .background_scroll_up {
-    position: absolute;
     top: 7.6rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-.EditDiary .background_scroll_down {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }
 .EditDiary .date_wrapper, .EditDiary .who_wrapper, .EditDiary .weather_wrapper {
     display: flex;
@@ -115,4 +102,19 @@
 .EditDiary .editor_class {
     padding-left: 2rem;
     padding-right: 2rem;
+}
+.EditDiary .rdw-image-modal {
+    color: black;
+}
+.EditDiary .content_wrapper .rdw-image-imagewrapper {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; */
+
+    /* max-width: calc(100vw/5); */
+}
+
+.EditDiary .edit_content img{
+    max-width: 100%;
 }

@@ -121,18 +121,18 @@ const Home = () => {
   }, []);
 
   /* 3D */
-  const x = useMotionValue(200);
-  const y = useMotionValue(200);
-  const rotateX = useTransform(y, [0, 400], [5, -5]);
-  const rotateY = useTransform(x, [0, 400], [-5, 5]);
+  // const x = useMotionValue(200);
+  // const y = useMotionValue(200);
+  // const rotateX = useTransform(y, [0, 400], [5, -5]);
+  // const rotateY = useTransform(x, [0, 400], [-5, 5]);
 
-  const handleMouse = (event) => {
-    const rect = event.currentTarget.getBoundingClientRect();
+  // const handleMouse = (event) => {
+  //   const rect = event.currentTarget.getBoundingClientRect();
 
-    x.set(event.clientX - rect.left);
-    y.set(event.clientY - rect.top);
-  };
-  const { scrollYProgress } = useScroll();
+  //   x.set(event.clientX - rect.left);
+  //   y.set(event.clientY - rect.top);
+  // };
+  // const { scrollYProgress } = useScroll();
   //console.log(scrollYProgress);
 
   /* animation lottie */
@@ -150,6 +150,8 @@ const Home = () => {
       animationData: require(`.././data/Scroll.json`),
     });
   }, []);
+
+  console.log("Home:");
 
   return (
     <div className="Home">
@@ -193,7 +195,7 @@ const Home = () => {
           </div>
         </section>
         <section>
-          <div className="incons_wrapper" onMouseMove={handleMouse}>
+          <div className="incons_wrapper">
             {/* <motion.div
               className="mouse_move"
               style={{

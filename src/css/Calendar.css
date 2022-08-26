@@ -26,21 +26,16 @@ table {
 
 .Calendar > .calendar {
   opacity: 0.75;
+  margin-top: 9rem;
 }
-.Calendar > .calendar {
-  margin-top: 10rem;
-}
-
 .fc-daygrid-day-number {
   color: white;
   font-family: 'Nanum Myeongjo';
 }
-
 .fc-toolbar-title {
   font-family: 'Nanum Myeongjo';
   color: var(--btntxt-color);
 }
-
 .fc-col-header-cell-cushion {
   color: white;
   font-family: 'Nanum Myeongjo';
@@ -53,7 +48,6 @@ button.fc-next-button.fc-button.fc-button-primary {
   background-color: var(--line-color);
   border-color: white;
 }
-
 .fc-daygrid-dot-event {
   padding: 0px;
 }
@@ -66,12 +60,34 @@ tbody {
   background-size: contain;
   background-position: center;
   cursor: pointer;
+
 }
 /* background-image: url('/public/assets/addDiary\ .png');*/
 .background {
   background-repeat: no-repeat;
 }
 .fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+  cursor: pointer;
   position: relative;
   height: 10rem;
+}
+.DiaryItem {
+  width: auto;
+  height: 10rem;
+  border-radius: 5px;
+  /* background-color: var(--system-blue); */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fc-daygrid-day-events {
+  cursor: pointer;
+}
+.fc-daygrid-day-events img {
+  /* width: 100%;
+  object-fit: cover; */
+  width: 100%; 
+  height: 10rem;
+  object-fit: cover;
 }
