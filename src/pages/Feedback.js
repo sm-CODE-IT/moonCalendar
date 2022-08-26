@@ -84,7 +84,8 @@ const Feedback = () => {
   //   }
   // };
   /* axios */
-  const axios = require("axios");
+  //const axios = require("axios");
+  // axios.defaults.withCredentials = true
   // const [dataState, setDataState] = useState();
   // 1
   // axios.defaults.withCredentials = true;
@@ -143,7 +144,7 @@ const Feedback = () => {
   componentDidMount();
 
   /* POST */
-  const POST_API_URL = "feedback/write";
+  const POST_API_URL = "feedback/write/action";
   const [title, setTitle] = useState();
   const [contents, setContents] = useState();
   const [image, setImage] = useState();
@@ -172,34 +173,45 @@ const Feedback = () => {
     }
 
     setIsValid(true);
-    console.log(
-      "before submit?",
-      inputOneContent,
-      inputTwoContent,
-      inputFourContent
-    );
+    // console.log(
+    //   "before submit?",
+    //   inputOneContent,
+    //   inputTwoContent,
+    //   inputFourContent
+    // );
     if (window.confirm("제출하시겠습니까?")) {
       setTitle(inputOneContent);
       setContents(inputTwoContent);
       setImage("");
       setEmail(inputFourContent);
-      console.log(
-        "submit?",
-        inputOneContent,
-        inputTwoContent,
-        inputFourContent
-      );
+      // console.log(
+      //   "submit?",
+      //   inputOneContent,
+      //   inputTwoContent,
+      //   inputFourContent
+      // );
       setUsers(inputOneContent, inputTwoContent, inputFourContent);
       navigate("/", { replace: true }); // 로그인 된 상태에서만 피드백을 들어갈 수 있으므로 이동 링크를 Calendar.js로 변경해야된다.
     }
   };
 
   function setUsers(title, contents, email) {
-    axios.post(POST_API_URL, {
-      title,
-      contents,
-      email,
-    });
+    axios
+      .post("http://localhost:8080/feedback/write/action", null, {
+        title: title,
+        contents: contents,
+        email: email,
+      })
+      .then(function () {
+        navigate("/feedback");
+        console.log("성공");
+      })
+      .catch(function () {
+        console.log("실패함");
+        console.log(email);
+        console.log(contents);
+        console.log(title);
+      });
   }
 
   // const [title, setTitle] = useState('');
